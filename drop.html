@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Animate-y-axis</title>
+    <style>
+        .animate-y-axis {
+            overflow: hidden;
+            height: 0;
+            transition: height 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggleButton">Toggle animate-y-axis 1</button>
+    <div class="animate-y-axis">
+        <p>This is the content to show and hide.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <button class="toggleButton">Toggle animate-y-axis 2</button>
+    <div class="animate-y-axis">
+        <p>This is another content to show and hide.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <button class="toggleButton">Toggle animate-y-axis 2</button>
+    <div class="animate-y-axis">
+        <p>This is another content to show and hide.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggleButtons = document.querySelectorAll('.toggleButton');
+            toggleButtons.forEach(function (button, index) {
+                button.addEventListener('click', function () {
+                    var content = document.querySelectorAll('.animate-y-axis')[index];
+
+                    if (content.style.height === '0px' || content.style.height === '') {
+                        // Show content
+                        content.style.height = content.scrollHeight + 'px';
+                    } else {
+                        // Hide content
+                        content.style.height = '0px';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

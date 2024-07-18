@@ -1,0 +1,24 @@
+.dashboard-text-editor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    position: relative;
+    border: 1px solid var(--border-color);
+    background-color: #f6f6f6;
+    padding: 1rem;
+}
+
+.input-language {
+    display: flex;
+    width: auto;
+    height: inherit;
+    color: var(--editor-font-color);
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid var(--dark);
+}
+
+.input-language option {
+    color: var(--background-color);
+}

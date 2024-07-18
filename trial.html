@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Image Upload</title>
+    <style>
+        .option-list {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 18px;
+            color: #aaa;
+            margin: 20px auto;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .option-list.dragging {
+            border-color: #000;
+            color: #000;
+        }
+
+        .file-label {
+            display: block;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-name-show {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="option-list" title="DRAG AND DROP IMAGE">
+        <span>
+            <label for="file-input" class="file-label">
+                <p class="file-name-show">DRAG & DROP UPLOAD</p>
+            </label>
+            <input id="file-input" type="file" class="file-input">
+        </span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const optionList = document.querySelector(".option-list");
+        const fileInput = document.getElementById("file-input");
+        const fileNameShow = document.querySelector(".file-name-show");
+
+        optionList.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            optionList.classList.add("dragging");
+        });
+
+        optionList.addEventListener("dragleave", () => {
+            optionList.classList.remove("dragging");
+        });
+
+        optionList.addEventListener("drop", (event) => {
+            event.preventDefault();
+            optionList.classList.remove("dragging");
+            const files = event.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        optionList.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener("change", () => {
+            const files = fileInput.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            fileNameShow.innerHTML = "";
+            for (const file of files) {
+                const listItem = document.createElement("p");
+                listItem.textContent = file.name;
+                fileNameShow.appendChild(listItem);
+            }
+        }
+    });
+
+</script>
+
+</html>
