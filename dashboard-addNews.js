@@ -7,6 +7,7 @@ window.onload = function () {
   previewThumb();
   tags();
   latestTag();
+  textColor();
 };
 
 function caption() {
@@ -161,4 +162,21 @@ function latestTag() {
 
     }
   })
+}
+
+function textColor() {
+  const textColorList = document.querySelectorAll('li.text-color-list');
+  const chevrons = document.querySelectorAll('.cursor-hover .zipped');
+  const body = document.body;
+  chevrons.forEach(function(chevron, i) {
+    textColorList[i].classList.add('hide');
+
+    chevron.onclick = function() {
+      textColorList[i].classList.toggle('hide');
+    }
+  });
+
+  const textBgClass = document.querySelector('.text-bg-class');
+  const textFgClass = document.querySelector('.text-fg-class');
+
 }

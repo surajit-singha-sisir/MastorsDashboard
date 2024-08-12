@@ -262,8 +262,15 @@ li {
 .flex-row {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    gap: 0.6rem;
 }
+.flex-row-custom {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    
+}
+
 
 .flex-col {
     display: flex;
