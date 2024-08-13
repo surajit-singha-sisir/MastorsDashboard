@@ -10,6 +10,7 @@ window.onload = function () {
   textColor();
   videoPreview();
   publishPost();
+  scheduler();
 };
 
 function caption() {
@@ -261,4 +262,27 @@ function publishPost() {
       statusText.value = 'Draft Post !';
     }
   });
+}
+
+function scheduler() {
+  const date = document.querySelector('.custom-date-input input[type="date"]');
+
+  function validateDateTime() {
+    const selectedDate = new Date(date.value);
+    const today = new Date();
+    
+    // Create a date string in the format 'YYYY-MM-DD'
+    const todayString = today.toISOString().split('T')[0];
+    
+    // Reset time portion of today to midnight for comparison
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      alert('Selected date cannot be in the past');
+      // Set the date input to today's date
+      date.value = todayString;
+    }
+  }
+
+  date.addEventListener('change', validateDateTime);
 }
