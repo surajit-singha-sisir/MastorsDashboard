@@ -4,97 +4,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop Image Upload</title>
-    <style>
-        .option-list {
-            border: 2px dashed #ccc;
-            border-radius: 10px;
-            width: 300px;
-            height: 200px;
-            line-height: 200px;
-            text-align: center;
-            font-size: 18px;
-            color: #aaa;
-            margin: 20px auto;
+    <title>Toggle Button Example</title>
+    <!-- <style>
+        body {
+            background-color: #010409;
+            color: white;
+        }
+        /* Toggle button container */
+        .toggle-container {
             position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        /* The switch - the actual toggle */
+        .toggle-switch {
+            position: absolute;
             cursor: pointer;
+            background-color: #4CAF50;
         }
 
-        .option-list.dragging {
-            border-color: #000;
-            color: #000;
+        /* The slider circle inside the toggle */
+        .toggle-switch::before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #4CAF50;
+            transition: 0.4s;
+            border-radius: 50%;
         }
 
-        .file-label {
-            display: block;
-            height: 100%;
-            width: 100%;
-            cursor: pointer;
+        /* When the checkbox is checked, move the slider to the right */
+        input:checked + .toggle-switch {
+            background-color: #e65400;
         }
 
-        .file-input {
-            display: none;
+        input:checked + .toggle-switch::before {
+            transform: translateX(30px);
         }
 
-        .file-name-show {
-            margin: 0;
-        }
-    </style>
+    </style> -->
 </head>
 
+<style>
+    body {
+        background-color: #010409;
+        color: white;
+    }
+
+    .toggle-submit-container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        right: 0;
+        top: 10%;
+        padding: 0.5rem;
+        border-radius: 0.5rem 0 0 0.5rem;
+        background-color: aqua;
+        width: 6rem;
+        height: 3.5rem;
+    }
+
+    .toggle-submit-container .toggle-switch {
+        position: relative;
+        cursor: pointer;
+        width: 4rem;
+        height: 1.5rem;
+        background-color: blue;
+        border-radius: 1rem;
+        transition: all 0.2s ease;
+    }
+
+    .toggle-switch::before {
+        position: absolute;
+        content: "";
+        height: 0.6rem;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        aspect-ratio: 1;
+        background-color: #f8e534;
+        border: 5px solid #7a96c5;
+        transition: 0.3s;
+        border-radius: 50%;
+    }
+
+    .toggle-submit-container input:checked+.toggle-switch {
+        background-color: #0b9907;
+        transition: all 0.2s ease;
+    }
+
+    .toggle-submit-container input:checked+.toggle-switch::before {
+        top: 50%;
+        right: 5%;
+        transform: translate(2.2rem, -50%);
+        transition: all 0.2s ease;
+    }
+
+    #toggleButton {
+        display: none;
+    }
+
+    #submit-add-post-form {
+        position: relative;
+        margin-top: 0.5rem;
+        cursor: pointer;
+    }
+</style>
+
 <body>
-    <div class="option-list" title="DRAG AND DROP IMAGE">
-        <span>
-            <label for="file-input" class="file-label">
-                <p class="file-name-show">DRAG & DROP UPLOAD</p>
-            </label>
-            <input id="file-input" type="file" class="file-input">
-        </span>
-    </div>
 
-    <script src="script.js"></script>
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const optionList = document.querySelector(".option-list");
-        const fileInput = document.getElementById("file-input");
-        const fileNameShow = document.querySelector(".file-name-show");
+    <h2>Toggle Button Example</h2>
 
-        optionList.addEventListener("dragover", (event) => {
-            event.preventDefault();
-            optionList.classList.add("dragging");
-        });
-
-        optionList.addEventListener("dragleave", () => {
-            optionList.classList.remove("dragging");
-        });
-
-        optionList.addEventListener("drop", (event) => {
-            event.preventDefault();
-            optionList.classList.remove("dragging");
-            const files = event.dataTransfer.files;
-            handleFiles(files);
-        });
-
-        optionList.addEventListener("click", () => {
-            fileInput.click();
-        });
-
-        fileInput.addEventListener("change", () => {
-            const files = fileInput.files;
-            handleFiles(files);
-        });
-
-        function handleFiles(files) {
-            fileNameShow.innerHTML = "";
-            for (const file of files) {
-                const listItem = document.createElement("p");
-                listItem.textContent = file.name;
-                fileNameShow.appendChild(listItem);
+    <!-- Toggle Button -->
+    <label class="toggle-submit-container">
+        <input type="checkbox" class="toggle-checkbox" id="toggleButton">
+        <span class="toggle-switch"></span>
+        <input type="submit" name="submit" id="submit-add-post-form">
+    </label>
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const statusText = document.getElementById('submit-add-post-form');
+        statusText.value = 'Draft Post !';
+        toggleButton.addEventListener('change', function () {
+            if (toggleButton.checked) {
+                statusText.value = 'Publish Now !';
+            } else {
+                statusText.value = 'Draft Post !';
             }
-        }
-    });
+        });
+    </script>
 
-</script>
+</body>
 
 </html>
