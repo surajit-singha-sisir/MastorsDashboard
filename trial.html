@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>5 Tab Layout</title>
     <style>
         body {
@@ -89,6 +90,145 @@
         });
     });
 </script>
+=======
+    <title>Toggle Button Example</title>
+    <!-- <style>
+        body {
+            background-color: #010409;
+            color: white;
+        }
+        /* Toggle button container */
+        .toggle-container {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        /* The switch - the actual toggle */
+        .toggle-switch {
+            position: absolute;
+            cursor: pointer;
+            background-color: #4CAF50;
+        }
+
+        /* The slider circle inside the toggle */
+        .toggle-switch::before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #4CAF50;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        /* When the checkbox is checked, move the slider to the right */
+        input:checked + .toggle-switch {
+            background-color: #e65400;
+        }
+
+        input:checked + .toggle-switch::before {
+            transform: translateX(30px);
+        }
+
+    </style> -->
+</head>
+
+<style>
+    body {
+        background-color: #010409;
+        color: white;
+    }
+
+    .toggle-submit-container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        right: 0;
+        top: 10%;
+        padding: 0.5rem;
+        border-radius: 0.5rem 0 0 0.5rem;
+        background-color: aqua;
+        width: 6rem;
+        height: 3.5rem;
+    }
+
+    .toggle-submit-container .toggle-switch {
+        position: relative;
+        cursor: pointer;
+        width: 4rem;
+        height: 1.5rem;
+        background-color: blue;
+        border-radius: 1rem;
+        transition: all 0.2s ease;
+    }
+
+    .toggle-switch::before {
+        position: absolute;
+        content: "";
+        height: 0.6rem;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        aspect-ratio: 1;
+        background-color: #f8e534;
+        border: 5px solid #7a96c5;
+        transition: 0.3s;
+        border-radius: 50%;
+    }
+
+    .toggle-submit-container input:checked+.toggle-switch {
+        background-color: #0b9907;
+        transition: all 0.2s ease;
+    }
+
+    .toggle-submit-container input:checked+.toggle-switch::before {
+        top: 50%;
+        right: 5%;
+        transform: translate(2.2rem, -50%);
+        transition: all 0.2s ease;
+    }
+
+    #toggleButton {
+        display: none;
+    }
+
+    #submit-add-post-form {
+        position: relative;
+        margin-top: 0.5rem;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+
+    <h2>Toggle Button Example</h2>
+
+    <!-- Toggle Button -->
+    <label class="toggle-submit-container">
+        <input type="checkbox" class="toggle-checkbox" id="toggleButton">
+        <span class="toggle-switch"></span>
+        <input type="submit" name="submit" id="submit-add-post-form">
+    </label>
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const statusText = document.getElementById('submit-add-post-form');
+        statusText.value = 'Draft Post !';
+        toggleButton.addEventListener('change', function () {
+            if (toggleButton.checked) {
+                statusText.value = 'Publish Now !';
+            } else {
+                statusText.value = 'Draft Post !';
+            }
+        });
+    </script>
+
+</body>
+>>>>>>> 1f15b53f7e1cbf036114ac50af19f1159cb1a553
 
 </body>
 </html>
