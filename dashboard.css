@@ -37,6 +37,7 @@
     /* LINKS */
     --link-color: #4493f8;
     --active-color: #4493f8;
+    --sub-link-color: #3278d4;
 
     /* DIVS */
     --div-color: #0D1117;
@@ -56,7 +57,7 @@
     --light-blue: #03a9f4;
     --cyan: #00bcd4;
     --teal: #009688;
-    --green: #4caf50;
+    --green: #15c21b;
     --light-green: #8bc34a;
     --lime: #cddc39;
     --yellow: #ffeb3b;
@@ -264,11 +265,12 @@ li {
     flex-direction: row;
     gap: 0.6rem;
 }
+
 .flex-row-custom {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    
+
 }
 
 

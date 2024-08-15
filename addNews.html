@@ -132,7 +132,10 @@
         <!----------------------------------
                 DASHBOARD MAIN START
         ----------------------------------->
-        <div class="dashboard-main">
+        <form action="#" method="post" class="dashboard-main">
+            <!-- FOR BACK-END -->
+            <input type="text" name="csrftoken" id="csrftoken" hidden>
+
             <div class="add-post-2-col">
                 <!----------------------------------
                         POST LEFT START
@@ -562,7 +565,7 @@
 
                     <!-- TOP BOTTOM SPACE COVER -->
                     <div class="adjust-space"></div>
-
+                    <!-- TAGS -->
                     <div class="outer-tags">
                         <p>Tags</p>
                         <div class="tags">
@@ -573,7 +576,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- LATEST TAG -->
                     <div class="latest-tag-list">
                         <p>Latest Tag List</p>
                         <div class="latest-tags">
@@ -586,6 +589,87 @@
                             <section>Economia</section>
                         </div>
                     </div>
+
+
+
+                    <!-- TOP BOTTOM SPACE COVER -->
+                    <div class="adjust-space"></div>
+                    <!-- VIDEO POST -->
+                    <fieldset class="add-post-input-style add-post-caption add-videos" id="showOnVideoClick">
+                        <legend>Video Link</legend>
+                        <div class="add-video">
+                            <input type="text" id="videoLinkInput" placeholder="Paste your video link" maxlength="300">
+                        </div>
+
+                        <!-- Preview -->
+                        <div class="preview-video">
+                            <iframe id="videoPreview" src="" max-width="340" height="auto" allow="autoplay"
+                                allowfullscreen="true"></iframe>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- TOP BOTTOM SPACE COVER -->
+                    <div class="adjust-space"></div>
+                    <!-- REPORTER POST -->
+                    <fieldset class="add-post-input-style set-border-color" id="showOnVideoClick">
+                        <legend>Reporter</legend>
+                        <div class="reporterSection">
+                            <div class="add-post-select-container">
+                                <select id="add-post-category">
+                                    <option value="" disabled selected>-- Select --</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="International">International</option>
+                                    <option value="National">National</option>
+                                    <option value="Religion">Religion</option>
+                                    <option value="Special">Special</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Portfolio">Portfolio</option>
+                                    <option value="Quote">Quote</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="International">International</option>
+                                    <option value="National">National</option>
+                                    <option value="Religion">Religion</option>
+                                    <option value="Special">Special</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Portfolio">Portfolio</option>
+                                    <option value="Quote">Quote</option>
+                                </select>
+
+                            </div>
+                            <input type="text" id="videoLinkInput" placeholder="Paste your video link" maxlength="300">
+                        </div>
+                    </fieldset>
+
+                    <!-- POST SOURCE -->
+                    <fieldset class="add-post-input-style set-border-color" id="showOnVideoClick">
+                        <legend>Source</legend>
+                        <div class="reporterSection">
+                            <input type="text" placeholder="Post Source" maxlength="300">
+                            <input type="text" placeholder="Post Source URL" maxlength="300">
+                        </div>
+                    </fieldset>
+
+                    <!-- SCHEDULE POST -->
+                    <fieldset class="add-post-input-style set-border-color" id="showOnVideoClick">
+                        <legend>Scheduler</legend>
+                        <div class="reporterSection">
+                            <div class="custom-date-input">
+                                <input type="date" title="Input the Schedule Date">
+                            </div>
+
+                            <div class="custom-date-input">
+                                <input type="time" title="Input the Schedule Time">
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+
+
+
                 </div>
                 <!----------------------------------
                             POST LEFT END
@@ -631,7 +715,7 @@
                             <label for="op-2" class="option">
                                 <input type="radio" name="op" id="op-2" value="Gallery"> Gallery
                             </label>
-                            <label for="op-3" class="option">
+                            <label for="op-3" class="option" id="showOnVideo">
                                 <input type="radio" name="op" id="op-3" value="Video"> Video
                             </label>
                             <label for="op-4" class="option">
@@ -695,13 +779,19 @@
 
                 </div>
                 <!----------------------------------
-                        2nd Column END
-            ----------------------------------->
+                            2nd Column END
+                ----------------------------------->
             </div>
             <!----------------------------------
-                DASHBOARD MAIN END
-        ----------------------------------->
-        </div>
+                    DASHBOARD MAIN END
+            ----------------------------------->
+            <!-- Toggle Button -->
+            <label class="toggle-submit-container">
+                <input type="checkbox" class="toggle-checkbox" id="toggleButton">
+                <span class="toggle-switch"></span>
+                <input type="submit" name="submit" id="submit-add-post-form">
+            </label>
+        </form>
     </div>
 </body>
 <script src="dashboard-mastors.js"></script>

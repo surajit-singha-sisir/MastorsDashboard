@@ -1,100 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop Image Upload</title>
+    <title>5 Tab Layout</title>
     <style>
-        .option-list {
-            border: 2px dashed #ccc;
-            border-radius: 10px;
-            width: 300px;
-            height: 200px;
-            line-height: 200px;
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .tab-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            flex: 1;
             text-align: center;
-            font-size: 18px;
-            color: #aaa;
-            margin: 20px auto;
-            position: relative;
-            cursor: pointer;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background-color: #f1f1f1;
         }
 
-        .option-list.dragging {
-            border-color: #000;
-            color: #000;
+        .tab-item.active {
+            background-color: #fff;
+            border-top: 2px solid #007bff;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
         }
 
-        .file-label {
-            display: block;
-            height: 100%;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .file-input {
+        .tab-content {
             display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
         }
 
-        .file-name-show {
-            margin: 0;
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
-
 <body>
-    <div class="option-list" title="DRAG AND DROP IMAGE">
-        <span>
-            <label for="file-input" class="file-label">
-                <p class="file-name-show">DRAG & DROP UPLOAD</p>
-            </label>
-            <input id="file-input" type="file" class="file-input">
-        </span>
-    </div>
 
-    <script src="script.js"></script>
-</body>
+<div class="tabs">
+    <div class="tab-item active" data-tab="tab1">Tab 1</div>
+    <div class="tab-item" data-tab="tab2">Tab 2</div>
+    <div class="tab-item" data-tab="tab3">Tab 3</div>
+    <div class="tab-item" data-tab="tab4">Tab 4</div>
+    <div class="tab-item" data-tab="tab5">Tab 5</div>
+</div>
+
+<div id="tab1" class="tab-content active">
+    <h2>Content for Tab 1</h2>
+    <p>This is the content for Tab 1.</p>
+</div>
+<div id="tab2" class="tab-content">
+    <h2>Content for Tab 2</h2>
+    <p>This is the content for Tab 2.</p>
+</div>
+<div id="tab3" class="tab-content">
+    <h2>Content for Tab 3</h2>
+    <p>This is the content for Tab 3.</p>
+</div>
+<div id="tab4" class="tab-content">
+    <h2>Content for Tab 4</h2>
+    <p>This is the content for Tab 4.</p>
+</div>
+<div id="tab5" class="tab-content">
+    <h2>Content for Tab 5</h2>
+    <p>This is the content for Tab 5.</p>
+</div>
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const optionList = document.querySelector(".option-list");
-        const fileInput = document.getElementById("file-input");
-        const fileNameShow = document.querySelector(".file-name-show");
+    const tabs = document.querySelectorAll('.tab-item');
+    const contents = document.querySelectorAll('.tab-content');
 
-        optionList.addEventListener("dragover", (event) => {
-            event.preventDefault();
-            optionList.classList.add("dragging");
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(item => item.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
         });
-
-        optionList.addEventListener("dragleave", () => {
-            optionList.classList.remove("dragging");
-        });
-
-        optionList.addEventListener("drop", (event) => {
-            event.preventDefault();
-            optionList.classList.remove("dragging");
-            const files = event.dataTransfer.files;
-            handleFiles(files);
-        });
-
-        optionList.addEventListener("click", () => {
-            fileInput.click();
-        });
-
-        fileInput.addEventListener("change", () => {
-            const files = fileInput.files;
-            handleFiles(files);
-        });
-
-        function handleFiles(files) {
-            fileNameShow.innerHTML = "";
-            for (const file of files) {
-                const listItem = document.createElement("p");
-                listItem.textContent = file.name;
-                fileNameShow.appendChild(listItem);
-            }
-        }
     });
-
 </script>
 
+</body>
 </html>

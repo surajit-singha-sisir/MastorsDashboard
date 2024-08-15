@@ -8,6 +8,10 @@ window.onload = function () {
   tags();
   latestTag();
   textColor();
+  videoPreview();
+  publishPost();
+  scheduler();
+  tabContent();
 };
 
 function caption() {
@@ -151,7 +155,9 @@ function tags() {
 }
 
 function latestTag() {
-  const latestTag = document.querySelectorAll('.latest-tag-list .latest-tags section');
+  const latestTag = document.querySelectorAll(
+    ".latest-tag-list .latest-tags section"
+  );
 
   latestTag.forEach(function (tag, i) {
     tag.onclick = function () {
@@ -159,24 +165,126 @@ function latestTag() {
       const section = document.createElement("section");
       addTag.appendChild(section);
       section.innerHTML = tag.textContent;
-
-    }
-  })
+    };
+  });
 }
 
 function textColor() {
-  const textColorList = document.querySelectorAll('li.text-color-list');
-  const chevrons = document.querySelectorAll('.cursor-hover .zipped');
+  const textColorList = document.querySelectorAll("li.text-color-list");
+  const chevrons = document.querySelectorAll(".cursor-hover .zipped");
   const body = document.body;
-  chevrons.forEach(function(chevron, i) {
-    textColorList[i].classList.add('hide');
+  chevrons.forEach(function (chevron, i) {
+    textColorList[i].classList.add("hide");
 
-    chevron.onclick = function() {
-      textColorList[i].classList.toggle('hide');
-    }
+    chevron.onclick = function () {
+      textColorList[i].classList.toggle("hide");
+    };
   });
 
-  const textBgClass = document.querySelector('.text-bg-class');
-  const textFgClass = document.querySelector('.text-fg-class');
-
+  const textBgClass = document.querySelector(".text-bg-class");
+  const textFgClass = document.querySelector(".text-fg-class");
 }
+
+function videoPreview() {
+  document.getElementsByName("op").forEach(function (radio) {
+    radio.addEventListener("change", function () {
+      const fieldset = document.getElementById("showOnVideoClick");
+      if (document.getElementById("op-3").checked) {
+        fieldset.classList.add("show");
+      } else {
+        fieldset.classList.remove("show");
+      }
+    });
+  });
+
+  const link = document.getElementById("videoLinkInput");
+  const preview = document.getElementById("videoPreview");
+
+  function updateVideoLink() {
+    const videoLink = link.value.trim();
+
+    if (videoLink) {
+      preview.src = videoLink;
+    } else {
+      preview.src = "";
+    }
+
+    const drive = "view?usp=drive_link";
+    const drivePreview = "preview";
+    const dropbox = "dl=0";
+    const dropboxPreview = "raw=1";
+
+    if (videoLink.includes(drive)) {
+      const updatedLink = videoLink.replace(drive, drivePreview);
+      preview.src = updatedLink;
+    }
+
+    if (videoLink.includes(dropbox)) {
+      const updatedLink = videoLink.replace(dropbox, dropboxPreview);
+      preview.src = updatedLink;
+    }
+
+    function youtube() {
+      const regex = /([a-zA-Z0-9_-]+)\?si=|\?v=([A-Za-z0-9_-]{1,})/;
+      const match = videoLink.match(regex);
+
+      if (match) {
+        const result = match[1] || match[2];
+        print(result);
+        preview.src = `https://www.youtube.com/embed/${result}?referer=MastorsDeshboard`;
+      } else {
+        print("Not found");
+      }
+    }
+    youtube();
+
+    function facebook() {
+      const result = videoLink;
+      print(result);
+      preview.src = `https://www.facebook.com/plugins/video.php?href=${result}`;
+    }
+    facebook();
+  }
+  // UPDATE INPUT ON LIVE
+  link.oninput = () => {
+    updateVideoLink();
+  };
+}
+
+
+function publishPost() {
+  const toggleButton = document.getElementById('toggleButton');
+  const statusText = document.getElementById('submit-add-post-form');
+  statusText.value = 'Draft Post !';
+  toggleButton.addEventListener('change', function () {
+    if (toggleButton.checked) {
+      statusText.value = 'Publish Now !';
+    } else {
+      statusText.value = 'Draft Post !';
+    }
+  });
+}
+
+function scheduler() {
+  const date = document.querySelector('.custom-date-input input[type="date"]');
+
+  function validateDateTime() {
+    const selectedDate = new Date(date.value);
+    const today = new Date();
+    
+    // Create a date string in the format 'YYYY-MM-DD'
+    const todayString = today.toISOString().split('T')[0];
+    
+    // Reset time portion of today to midnight for comparison
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      alert('Selected date cannot be in the past');
+      // Set the date input to today's date
+      date.value = todayString;
+    }
+  }
+
+  date.addEventListener('change', validateDateTime);
+}
+

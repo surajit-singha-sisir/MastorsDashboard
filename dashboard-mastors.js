@@ -8,6 +8,7 @@ window.onload = function () {
   // chart();
   loadXMLDoc();
   screenshot();
+  tabContent();
 };
 function popupForIcon() {
   // HELP ICON
