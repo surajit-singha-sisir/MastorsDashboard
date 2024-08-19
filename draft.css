@@ -1,0 +1,371 @@
+/* DRAFT POSTS */
+.draft-div-bg {
+    width: 100%;
+    height: auto;
+    background-color: var(--sub-div-color);
+    padding: 1rem;
+}
+
+.total-draft {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ascending::after {
+    content: " ↑";
+}
+
+.descending::after {
+    content: " ↓";
+}
+
+.total-draft p:last-child {
+    color: var(--green);
+}
+
+/* DRAFT TABLE */
+
+.draft-table-container {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow-y: scroll;
+    z-index: 6;
+}
+
+.draft-table {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+}
+
+/* FILTER */
+.reporterSection div input {
+    background: var(--sub-div-color);
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.highlight {
+    position: relative;
+}
+
+.highlight td {
+    color: var(--link-color);
+}
+
+.custom-filter-input input {
+    border-radius: 20rem;
+    position: relative;
+    min-width: 5rem;
+}
+
+.single-line {
+    display: flex;
+    justify-content: center;
+}
+
+#writer-filter,
+#category-filter {
+    display: flex;
+    background-color: var(--sub-div-color);
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    gap: 1rem;
+}
+
+#writer-filter option:nth-child(n),
+#category-filter option:nth-child(n) {
+    padding: 1rem;
+}
+
+.reporterSection {
+    padding: 1rem 0;
+}
+
+.flexDisplay-draft {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.left-data {
+    display: flex;
+    gap: 1rem;
+    flex-basis: 70%;
+}
+
+.right-data {
+    flex-basis: 30%;
+}
+
+/* FILTER SEARCH BAR */
+.reporterSection input {
+    width: auto;
+}
+
+.reporterSection div {
+    width: auto;
+}
+
+.filter-search {
+    position: relative;
+    display: flex;
+}
+
+.filter-search input:first-child {
+    position: absolute;
+    width: 70%;
+    left: 0;
+    border-radius: 2rem 0 0 2rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.filter-search input:last-child {
+    position: absolute;
+    width: 30%;
+    right: 0;
+    background-color: var(--border-color);
+    cursor: pointer;
+}
+
+
+
+
+
+/* WRITER */
+.draft-select-container {
+    width: auto !important;
+    height: auto;
+}
+
+
+
+
+/* THEAD CUSTOM FONT SIZE */
+.draft-table thead {
+    position: relative;
+    font-size: var(--semi-normal-font);
+    z-index: 1;
+}
+
+
+/* ACCENDING DECENDING ORDER */
+.ace-dec-order {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ace-dec-order p {
+    position: relative;
+}
+
+.ace-dec-order span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 0.8rem;
+    aspect-ratio: 1;
+}
+
+.ace-dec-order span img {
+    position: absolute;
+    left: 0.5rem;
+}
+
+/* ADD PADDING ON EVERY TR CHILD */
+.draft-table tr td {
+    padding: 0.5rem 1rem;
+}
+
+.ace-dec-order span img:nth-child(1) {
+    top: 0rem;
+}
+
+.ace-dec-order span img:nth-child(2) {
+    transform: rotate(180deg);
+    top: 0.6rem;
+}
+
+.rotate-icon-0 {
+    transform: rotate(0deg) !important;
+}
+
+.rotate-icon-180 {
+    transform: rotate(180deg);
+}
+
+/* TH STICKY */
+.draft-table th {
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--background-color);
+}
+
+.draft-table thead th::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+}
+
+.draft-table thead th::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+}
+
+.draft-table th:last-child {
+    border-right: none;
+}
+
+.draft-table th:last-child {
+    min-width: 8rem;
+}
+
+.th.sort-asc {}
+
+/* DRAFT ACTION */
+.draft-table .draft-action {
+    position: relative;
+}
+
+.draft-table .draft-action span {
+    position: relative;
+}
+
+.draft-table .draft-action span:first-child {
+    margin-right: 0.6rem;
+}
+
+.draft-table .draft-action span:last-child {
+    margin-left: 0.6rem;
+}
+
+.draft-table .draft-action span:hover::before {
+    content: '';
+    width: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--sub-div-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.draft-table .draft-action img {
+    position: relative;
+    width: 1.1rem;
+    cursor: pointer;
+}
+
+/* TBODY SCROLLER */
+.draft-table tbody {
+    position: relative;
+    height: 80vh;
+    width: inherit;
+    overflow-y: scroll;
+    border: 1px solid var(--border-color);
+    background-color: var(--div-color);
+}
+
+.draft-table tbody tr:nth-child(2n) {
+    background-color: var(--sub-div-color);
+}
+
+/* HOVER */
+.draft-table tbody tr:hover {
+    background-color: var(--border-color);
+    cursor: auto;
+}
+
+.draft-table tbody tr td:not(.draft-table tbody tr td:nth-child(3)) {
+    text-align: center;
+}
+
+.draft-table .draft-tr {
+    position: relative;
+    display: contents;
+    padding: 0 1rem;
+}
+
+
+/* THUMB SIZE */
+.draft-table tbody .draft-thumb-preview {
+    max-width: 10rem;
+    min-width: 5rem;
+}
+
+
+/* DRAFT TABLE SCROLLER */
+.draft-table-container::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: var(--sub-div-color);
+}
+
+.draft-table-container::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 2rem;
+}
+
+.draft-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* TAGS DESIGN */
+.draft-table .draft-tags {
+    position: relative;
+}
+
+.draft-tags button {
+    background-color: var(--sub-div-color);
+    border: 1px solid var(--border-color);
+    padding: 0.2rem 0.5rem;
+    font-size: var(--small-font);
+}
+
+.draft-tags button:hover {
+    background-color: var(--sub-font-color);
+    cursor: text;
+}
+
+.draft-tags button:not(.draft-tags button:last-child) {
+    margin-right: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.dashboard-main {
+    overflow: auto;
+}
+
+
+@media screen and (max-width:1080px) {
+
+    .left-data,
+    .right-data {
+        flex-grow: 1;
+        flex-wrap: wrap;
+    }
+
+    .reporterSection input {
+        width: 100%;
+    }
+}

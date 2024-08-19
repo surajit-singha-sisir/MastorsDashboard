@@ -1,21 +1,17 @@
 print = console.log;
-window.onload = function () {
+
+document.addEventListener("DOMContentLoaded", function () {
   caption();
   nameContainer();
   transitionOnY();
-  dragAndDrop();
-  previewThumb();
   tags();
   latestTag();
   textColor();
   videoPreview();
   publishPost();
   scheduler();
-<<<<<<< HEAD
   tabContent();
-=======
->>>>>>> 1f15b53f7e1cbf036114ac50af19f1159cb1a553
-};
+});
 
 function caption() {
   const inputField = document.querySelector(".add-post-caption-counter input");
@@ -45,35 +41,71 @@ function nameContainer() {
 
 function transitionOnY() {
   var toggleButtons = document.querySelectorAll(".toggleButton");
+
+  // Set initial collapsed state
+  var contentSections = document.querySelectorAll(".animate-y-axis");
+  contentSections.forEach(function (content) {
+    content.style.height = "0px";
+    content.style.overflow = "hidden"; // Ensure content is hidden initially
+  });
+
   toggleButtons.forEach(function (button, index) {
     button.addEventListener("click", function () {
-      var content = document.querySelectorAll(".animate-y-axis")[index];
-
-      var isExpanded = content.style.height !== "0px";
+      var content = contentSections[index];
+      var isExpanded = content.style.height && content.style.height !== "0px";
 
       if (isExpanded) {
-        content.style.height = "0px";
+        // Collapse the content
+        content.style.height = content.scrollHeight + "px"; // Set to the current height for transition
+        requestAnimationFrame(function () {
+          content.style.transition = "height 0.3s ease";
+          content.style.height = "0px";
+        });
       } else {
-        // Expand the content to its full height
-        content.style.height = content.scrollHeight + "px";
+        // Expand the content
+        content.style.height = "0px"; // Set initial height for transition
+        requestAnimationFrame(function () {
+          content.style.transition = "height 0.3s ease";
+          content.style.height = content.scrollHeight + "px";
+        });
       }
+
+      // Reset the transition after it ends
+      content.addEventListener(
+        "transitionend",
+        function () {
+          if (!isExpanded) {
+            content.style.height = "auto";
+          }
+          content.style.transition = "none";
+        },
+        { once: true }
+      );
     });
   });
 }
 
-function dragAndDrop() {
+function dragAndDropWithPreview() {
   const dropZone = document.getElementById("drop-zone");
   const fileInput = document.getElementById("file-input");
+  const previewSection = document.querySelector(".thumb-preview");
+  const captionSection = document.querySelector(".thumb-caption");
+  const image = document.querySelector(".thumb-preview .preview-img img");
+  const imageSize = document.getElementById("image-size");
+  const imageRatio = document.getElementById("image-ratio");
 
+  // Handle drag over event
   dropZone.addEventListener("dragover", (event) => {
     event.preventDefault();
     dropZone.classList.add("dragging");
   });
 
+  // Handle drag leave event
   dropZone.addEventListener("dragleave", () => {
     dropZone.classList.remove("dragging");
   });
 
+  // Handle file drop event
   dropZone.addEventListener("drop", (event) => {
     event.preventDefault();
     dropZone.classList.remove("dragging");
@@ -81,67 +113,66 @@ function dragAndDrop() {
     handleFiles(files);
   });
 
+  // Handle click event to trigger file input
   dropZone.addEventListener("click", () => {
     fileInput.click();
   });
 
+  // Handle file input change event
   fileInput.addEventListener("change", () => {
     const files = fileInput.files;
     handleFiles(files);
   });
 
+  // Handle files for preview and captions
   function handleFiles(files) {
-    for (const file of files) {
-      dropZone.textContent = file.name;
-      dropZone.style.color = "#2df8dd";
+    const file = files[0];
+    if (file) {
+      // Show the preview and caption sections
+      previewSection.style.display = "block";
+      captionSection.style.display = "block";
+
+      const reader = new FileReader();
+      reader.addEventListener("load", function (e) {
+        image.src = e.target.result; // Set the image src to the file's data URL
+
+        // Create an image object to get the dimensions
+        const img = new Image();
+        img.addEventListener("load", function () {
+          const width = img.width;
+          const height = img.height;
+          imageSize.textContent = `${width}px x ${height}px`;
+          imageRatio.textContent = (width / height).toFixed(2) + ":1";
+        });
+        img.src = e.target.result; // Load the image dimensions
+      });
+      reader.readAsDataURL(file); // Read the image file as a data URL
+    } else {
+      // Hide the preview and caption sections if no file is selected
+      previewSection.style.display = "none";
+      captionSection.style.display = "none";
     }
   }
 }
-
-// IMAGE PREVIEW
-function previewThumb() {
-  const inputImage = document.getElementById("file-input");
-  const image = document.querySelector(".thumb-preview .preview-img img");
-  const imageSize = document.getElementById("image-size");
-  const imageRatio = document.getElementById("image-ratio");
-
-  const file = inputImage.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      image.src = e.target.result;
-
-      // Create an image object to get the dimensions
-      const img = new Image();
-      img.onload = function () {
-        const width = img.width;
-        const height = img.height;
-        imageSize.textContent = `${width}px x ${height}px`;
-        imageRatio.textContent = (width / height).toFixed(2) + ":1";
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  }
-}
+dragAndDropWithPreview();
 
 function tags() {
   const addTag = document.querySelector(".tags .added-tag");
   const input = document.querySelector(".input-tag input");
 
   input.oninput = function () {
-    const currentvalue = input.value;
+    const currentValue = input.value;
 
-    if (currentvalue.includes(",")) {
-      const section = document.createElement("section");
-      const values = currentvalue.split(",");
+    if (currentValue.includes(",")) {
+      const values = currentValue.split(",");
       const typedValue = values[0].trim();
 
       if (typedValue) {
-        addTag.appendChild(section);
+        const section = document.createElement("section");
         section.textContent = typedValue;
+        addTag.appendChild(section);
 
-        input.value = "";
+        input.value = ""; // Clear the input field after adding the tag
       }
     }
   };
@@ -150,24 +181,24 @@ function tags() {
     if (event.key === "Backspace" && input.value === "") {
       const lastSection = addTag.lastElementChild;
       if (lastSection) {
-        input.value = lastSection.textContent;
-        addTag.removeChild(lastSection);
+        input.value = lastSection.textContent; // Put the last tag back into the input
+        addTag.removeChild(lastSection); // Remove the last tag from the display
       }
     }
   });
 }
 
 function latestTag() {
-  const latestTag = document.querySelectorAll(
+  const latestTags = document.querySelectorAll(
     ".latest-tag-list .latest-tags section"
   );
 
-  latestTag.forEach(function (tag, i) {
+  latestTags.forEach(function (tag) {
     tag.onclick = function () {
       const addTag = document.querySelector(".tags .added-tag");
       const section = document.createElement("section");
+      section.textContent = tag.textContent;
       addTag.appendChild(section);
-      section.innerHTML = tag.textContent;
     };
   });
 }
@@ -187,7 +218,6 @@ function textColor() {
   const textBgClass = document.querySelector(".text-bg-class");
   const textFgClass = document.querySelector(".text-fg-class");
 }
-<<<<<<< HEAD
 
 function videoPreview() {
   document.getElementsByName("op").forEach(function (radio) {
@@ -255,16 +285,15 @@ function videoPreview() {
   };
 }
 
-
 function publishPost() {
-  const toggleButton = document.getElementById('toggleButton');
-  const statusText = document.getElementById('submit-add-post-form');
-  statusText.value = 'Draft Post !';
-  toggleButton.addEventListener('change', function () {
+  const toggleButton = document.getElementById("toggleButton");
+  const statusText = document.getElementById("submit-add-post-form");
+  statusText.value = "Draft Post !";
+  toggleButton.addEventListener("change", function () {
     if (toggleButton.checked) {
-      statusText.value = 'Publish Now !';
+      statusText.value = "Publish Now !";
     } else {
-      statusText.value = 'Draft Post !';
+      statusText.value = "Draft Post !";
     }
   });
 }
@@ -275,24 +304,22 @@ function scheduler() {
   function validateDateTime() {
     const selectedDate = new Date(date.value);
     const today = new Date();
-    
+
     // Create a date string in the format 'YYYY-MM-DD'
-    const todayString = today.toISOString().split('T')[0];
-    
+    const todayString = today.toISOString().split("T")[0];
+
     // Reset time portion of today to midnight for comparison
     today.setHours(0, 0, 0, 0);
 
     if (selectedDate < today) {
-      alert('Selected date cannot be in the past');
+      alert("Selected date cannot be in the past");
       // Set the date input to today's date
       date.value = todayString;
     }
   }
 
-  date.addEventListener('change', validateDateTime);
+  date.addEventListener("change", validateDateTime);
 }
-
-=======
 
 function videoPreview() {
   document.getElementsByName("op").forEach(function (radio) {
@@ -360,16 +387,15 @@ function videoPreview() {
   };
 }
 
-
 function publishPost() {
-  const toggleButton = document.getElementById('toggleButton');
-  const statusText = document.getElementById('submit-add-post-form');
-  statusText.value = 'Draft Post !';
-  toggleButton.addEventListener('change', function () {
+  const toggleButton = document.getElementById("toggleButton");
+  const statusText = document.getElementById("submit-add-post-form");
+  statusText.value = "Draft Post !";
+  toggleButton.addEventListener("change", function () {
     if (toggleButton.checked) {
-      statusText.value = 'Publish Now !';
+      statusText.value = "Publish Now !";
     } else {
-      statusText.value = 'Draft Post !';
+      statusText.value = "Draft Post !";
     }
   });
 }
@@ -380,20 +406,19 @@ function scheduler() {
   function validateDateTime() {
     const selectedDate = new Date(date.value);
     const today = new Date();
-    
+
     // Create a date string in the format 'YYYY-MM-DD'
-    const todayString = today.toISOString().split('T')[0];
-    
+    const todayString = today.toISOString().split("T")[0];
+
     // Reset time portion of today to midnight for comparison
     today.setHours(0, 0, 0, 0);
 
     if (selectedDate < today) {
-      alert('Selected date cannot be in the past');
+      alert("Selected date cannot be in the past");
       // Set the date input to today's date
       date.value = todayString;
     }
   }
 
-  date.addEventListener('change', validateDateTime);
+  date.addEventListener("change", validateDateTime);
 }
->>>>>>> 1f15b53f7e1cbf036114ac50af19f1159cb1a553

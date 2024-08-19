@@ -3,232 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>5 Tab Layout</title>
+    <title>Table Filter by Date</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
         }
-
-        .tabs {
-            display: flex;
-            border-bottom: 2px solid #ccc;
-            margin-bottom: 20px;
+        .custom-date-input, .custom-filter-input {
+            margin-bottom: 10px;
         }
-
-        .tab-item {
-            padding: 10px 20px;
+        .custom-date-input input, .custom-filter-input input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .draft-action img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
             cursor: pointer;
-            flex: 1;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            background-color: #f1f1f1;
-        }
-
-        .tab-item.active {
-            background-color: #fff;
-            border-top: 2px solid #007bff;
-            border-left: 1px solid #ccc;
-            border-right: 1px solid #ccc;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-        }
-
-        .tab-content.active {
-            display: block;
         }
     </style>
 </head>
 <body>
 
-<div class="tabs">
-    <div class="tab-item active" data-tab="tab1">Tab 1</div>
-    <div class="tab-item" data-tab="tab2">Tab 2</div>
-    <div class="tab-item" data-tab="tab3">Tab 3</div>
-    <div class="tab-item" data-tab="tab4">Tab 4</div>
-    <div class="tab-item" data-tab="tab5">Tab 5</div>
-</div>
+    <!-- DATE -->
+    <div class="custom-date-input">
+        <label for="filter-date">Select Date:</label>
+        <input type="date" id="filter-date" title="Input the Schedule Date">
+    </div>
 
-<div id="tab1" class="tab-content active">
-    <h2>Content for Tab 1</h2>
-    <p>This is the content for Tab 1.</p>
-</div>
-<div id="tab2" class="tab-content">
-    <h2>Content for Tab 2</h2>
-    <p>This is the content for Tab 2.</p>
-</div>
-<div id="tab3" class="tab-content">
-    <h2>Content for Tab 3</h2>
-    <p>This is the content for Tab 3.</p>
-</div>
-<div id="tab4" class="tab-content">
-    <h2>Content for Tab 4</h2>
-    <p>This is the content for Tab 4.</p>
-</div>
-<div id="tab5" class="tab-content">
-    <h2>Content for Tab 5</h2>
-    <p>This is the content for Tab 5.</p>
-</div>
+    <!-- FILTER BUTTON -->
+    <div class="custom-filter-input">
+        <input type="submit" id="filter-button" title="Filter by Date" value="Filter">
+    </div>
 
-<script>
-    const tabs = document.querySelectorAll('.tab-item');
-    const contents = document.querySelectorAll('.tab-content');
+    <!-- Table Structure -->
+    <table id="sorted-table" class="draft-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Tags</th>
+                <th>Category</th>
+                <th>Writer</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt="Thumbnail" class="draft-thumb-preview"></td>
+                <td>Pes its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Russia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>19 September, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span><img src="icons/draft/delete.svg" alt="Delete"></span>
+                </td>
+            </tr>
+            <!-- Additional rows as per previous data -->
+            <tr>
+                <td>2</td>
+                <td><img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/abcd/live/f86b1230-5d8e-11ee-a721-5d65d2c4b6d4.jpg.webp" alt="Thumbnail" class="draft-thumb-preview"></td>
+                <td>New Developments in Space Exploration</td>
+                <td class="draft-tags">
+                    <button>Space</button>
+                    <button>Science</button>
+                    <button>Exploration</button>
+                    <button>Technology</button>
+                </td>
+                <td>Science</td>
+                <td>Alexandra Greene</td>
+                <td>12 August, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span><img src="icons/draft/delete.svg" alt="Delete"></span>
+                </td>
+            </tr>
+            <!-- More rows can be added similarly -->
+        </tbody>
+    </table>
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(item => item.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-
-            tab.classList.add('active');
-            document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
-        });
-    });
-</script>
-=======
-    <title>Toggle Button Example</title>
-    <!-- <style>
-        body {
-            background-color: #010409;
-            color: white;
-        }
-        /* Toggle button container */
-        .toggle-container {
-            position: relative;
-            width: 60px;
-            height: 30px;
-        }
-
-        /* The switch - the actual toggle */
-        .toggle-switch {
-            position: absolute;
-            cursor: pointer;
-            background-color: #4CAF50;
-        }
-
-        /* The slider circle inside the toggle */
-        .toggle-switch::before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 2px;
-            bottom: 2px;
-            background-color: #4CAF50;
-            transition: 0.4s;
-            border-radius: 50%;
-        }
-
-        /* When the checkbox is checked, move the slider to the right */
-        input:checked + .toggle-switch {
-            background-color: #e65400;
-        }
-
-        input:checked + .toggle-switch::before {
-            transform: translateX(30px);
-        }
-
-    </style> -->
-</head>
-
-<style>
-    body {
-        background-color: #010409;
-        color: white;
-    }
-
-    .toggle-submit-container {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        right: 0;
-        top: 10%;
-        padding: 0.5rem;
-        border-radius: 0.5rem 0 0 0.5rem;
-        background-color: aqua;
-        width: 6rem;
-        height: 3.5rem;
-    }
-
-    .toggle-submit-container .toggle-switch {
-        position: relative;
-        cursor: pointer;
-        width: 4rem;
-        height: 1.5rem;
-        background-color: blue;
-        border-radius: 1rem;
-        transition: all 0.2s ease;
-    }
-
-    .toggle-switch::before {
-        position: absolute;
-        content: "";
-        height: 0.6rem;
-        top: 50%;
-        left: 5%;
-        transform: translateY(-50%);
-        aspect-ratio: 1;
-        background-color: #f8e534;
-        border: 5px solid #7a96c5;
-        transition: 0.3s;
-        border-radius: 50%;
-    }
-
-    .toggle-submit-container input:checked+.toggle-switch {
-        background-color: #0b9907;
-        transition: all 0.2s ease;
-    }
-
-    .toggle-submit-container input:checked+.toggle-switch::before {
-        top: 50%;
-        right: 5%;
-        transform: translate(2.2rem, -50%);
-        transition: all 0.2s ease;
-    }
-
-    #toggleButton {
-        display: none;
-    }
-
-    #submit-add-post-form {
-        position: relative;
-        margin-top: 0.5rem;
-        cursor: pointer;
-    }
-</style>
-
-<body>
-
-    <h2>Toggle Button Example</h2>
-
-    <!-- Toggle Button -->
-    <label class="toggle-submit-container">
-        <input type="checkbox" class="toggle-checkbox" id="toggleButton">
-        <span class="toggle-switch"></span>
-        <input type="submit" name="submit" id="submit-add-post-form">
-    </label>
     <script>
-        const toggleButton = document.getElementById('toggleButton');
-        const statusText = document.getElementById('submit-add-post-form');
-        statusText.value = 'Draft Post !';
-        toggleButton.addEventListener('change', function () {
-            if (toggleButton.checked) {
-                statusText.value = 'Publish Now !';
-            } else {
-                statusText.value = 'Draft Post !';
-            }
-        });
-    </script>
+        function filter() {
+            const filterButton = document.getElementById('filter-button');
 
-</body>
->>>>>>> 1f15b53f7e1cbf036114ac50af19f1159cb1a553
+            filterButton.addEventListener('click', function () {
+                // Get the input date value in YYYY-MM-DD format
+                const filterDateInput = document.getElementById('filter-date').value;
+                
+                if (!filterDateInput) return; // Exit if no date is selected
+
+                const table = document.getElementById('sorted-table').querySelector('tbody');
+                const rows = table.getElementsByTagName('tr');
+                
+                // Create a Date object from the filter date input
+                const filterDateObj = new Date(filterDateInput);
+
+                // Format the filter date to match the format in table cells
+                const formattedFilterDate = `${filterDateObj.getDate()} ${filterDateObj.toLocaleString('default', { month: 'long' })}, ${filterDateObj.getFullYear()}`;
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const dateCell = rows[i].getElementsByTagName('td')[6]; // The date is in the 7th cell (index 6)
+                    
+                    if (dateCell) {
+                        const rowDateText = dateCell.textContent.trim();
+                        
+                        // Compare the formatted row date with the filter date
+                        if (rowDateText === formattedFilterDate) {
+                            rows[i].style.display = ""; // Show row
+                        } else {
+                            rows[i].style.display = "none"; // Hide row
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', filter);
+    </script>
 
 </body>
 </html>

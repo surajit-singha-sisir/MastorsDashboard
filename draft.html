@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD DESIGN</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="addNews.css">
+    <link rel="stylesheet" href="draft.css">
+    <link rel="stylesheet" href="dashboard-text-editor.css">
+    <!-- k2d font -->
+    <link href='https://fonts.googleapis.com/css?family=K2D' rel='stylesheet'>
+    <script src="dashboard-mastors.js"></script>
+    <script src="dashboard-addNews.js"></script>
+    <script src="navMenu.js"></script>
+    <script src="draft.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+
+</head>
+
+<body class="dashboard-body">
+
+
+    <div class="dashboard-sticky border-bottom">
+        <div class="inner-dashboard">
+            <!-- LEFT SIDE ICONS -->
+            <div class="deshboard-left-icons">
+                <!-- HAMBURGER -->
+                <div class="hamburger icon-size">
+                    <img src="icons/hamburger.svg" alt="">
+                </div>
+                <!-- LOGO -->
+                <a href="#" class="dashboard-logo">
+                    <img src="icons/deshboard-logo.svg" alt="">
+                </a>
+            </div>
+            <!-- SEARCH BAR -->
+            <div class="dashboard-search-bar K2D">
+                <input type="text" placeholder="@User | #Post | %Date | Text">
+                <input type="submit" value="Search">
+            </div>
+            <!-- RIGHT SIDE ICONS -->
+            <div class="deshboard-right-icons">
+                <!-- HELP ICON -->
+                <div id="help-icon" class="icon-size">
+                    <img src="icons/help-icon.svg" alt="">
+                </div>
+                <!-- PLUS ICON -->
+                <div id="plus-icon" class="icon-size">
+                    <img src="icons/plus-icon.svg" alt="">
+                </div>
+                <!-- USER ICON -->
+                <div id="user-icon" class="icon-size">
+                    <img src="icons/user-icon.svg" alt="">
+                </div>
+
+                <!-- HELP ICON POPUP -->
+                <section id="help-icon-popup" class="popupContext hide">
+                    <a href="#">HTML form can be greatly</a>
+                    <a href="#">Styling Input Fields</a>
+                    <a href="#">The example above applies</a>
+                </section>
+                <!-- PLUS ICON POPUP -->
+                <section id="plus-icon-popup" class="popupContext hide">
+                    <a href="#">Bordered Inputs</a>
+                    <a href="#">If you only want a bottom border</a>
+                    <a href="#">Colored Inputs</a>
+                </section>
+                <!-- USER ICON POPUP -->
+                <section id="user-icon-popup" class="popupContext hide">
+                    <a href="#">LEARN HOW TO POST</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <!----------------------------------
+            DASHBOARD LEFT NAVBAR START
+        ----------------------------------->
+        <div class="dashboard-sticky-navbar">
+            <nav class="main-navbar">
+
+                <!-- YOUR LOGO -->
+                <a href="#" class="your-dashboard-logo">
+                    <img src="https://kehem.com/static/kehem.webp" alt="">
+                    <h1>KEHEMIT</h1>
+                </a>
+                <span class="border-bottom"></span>
+
+                <!-- NAV ITEMS -->
+                <nav class="dashboard-navItems">
+                    <a class="flexNav flexNavHover flexNavZippedHover" href="#">
+                        <img class="setNavIcon" src="icons/posts.svg" alt="">
+                        <p class="right-shift">Posts</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/front-end-editior.svg" alt="">
+                        <p class="right-shift">Front-end</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/pages.svg" alt="">
+                        <p class="right-shift">Pages</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/users.svg" alt="">
+                        <p class="right-shift">Users</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/settings.svg" alt="">
+                        <p class="right-shift">Settings</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/plans.svg" alt="">
+                        <p class="right-shift">Plans</p>
+                    </a>
+                </nav>
+
+
+            </nav>
+            <!----------------------------------
+            DASHBOARD LEFT NAVBAR END
+        ----------------------------------->
+        </div>
+
+        <!----------------------------------
+                DASHBOARD MAIN START
+        ----------------------------------->
+        <div class="dashboard-main">
+
+            <!-- TOP BOTTOM SPACE COVER -->
+            <div class="adjust-space"></div>
+
+            <!-- DRAFT POST -->
+            <!-- NAV NAME -->
+            <div class="overview-naming draft-div-bg">
+                <span><img class="imgSetHeightAuto" src="icons/overview.svg" alt=""></span>
+                <h3>draft posts</h3>
+            </div>
+
+            <!-- TOP BOTTOM SPACE COVER -->
+            <div class="adjust-space"></div>
+
+            <div class="total-draft">
+                <p>Total Draft</p>
+                <p>(12)</p>
+            </div>
+            <!-- TOP BOTTOM SPACE COVER -->
+            <div class="adjust-small-space"></div>
+
+            <!-- FILTER POST -->
+            <div class="draft-filter reporterSection flexDisplay-draft">
+                <!-- TWO COLUMN VIEW -->
+                <div class="left-data">
+
+                    <!-- DATE -->
+                    <div class="custom-date-input">
+                        <label for="filter-date">Select Date:</label>
+                        <input type="date" id="filter-date" title="Input the Schedule Date">
+                    </div>
+
+                    <!-- WRITER  -->
+                    <select title="writer-filter" class="draft-select-container" id="writer-filter">
+                        <option value="" selected>-- Select Writer --</option>
+                        <option value="Surajit Singha Sisir">Surajit Singha Sisir</option>
+                        <option value="Alexandra Greene">Alexandra Greene</option>
+                        <option value="Michael Tanner">Michael Tanner</option>
+                        <option value="David Wong">David Wong</option>
+                        <option value="Fatima Ahmed">Fatima Ahmed</option>
+                        <option value="Lucas White">Lucas White</option>
+                        <option value="Emily Jones">Emily Jones</option>
+                        <option value="Sarah Khan">Sarah Khan</option>
+                        <option value="James Lee">James Lee</option>
+                        <option value="Ana Rodriguez">Ana Rodriguez</option>
+                        <option value="Isabella Martinez">Isabella Martinez</option>
+                        <option value="Robert Smith">Robert Smith</option>
+                    </select>
+
+                    <!-- CATEGORY -->
+                    <select title="category-filter" class="draft-select-container" id="category-filter">
+                        <option value="" selected>-- Select Category --</option>
+                        <option value="Environment">Environment</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Business">Business</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Science">Science</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Health">Health</option>
+                        <option value="Culture">Culture</option>
+                        <option value="Economy">Economy</option>
+                        <option value="International">International</option>
+                    </select>
+
+                    <!-- FILTER BUTTON -->
+                    <div class="custom-filter-input">
+                        <input type="submit" id="filter-button" title="Filter by Date" value="Filter">
+                    </div>
+                </div>
+
+                <!-- search button -->
+                <div class="right-data filter-search">
+                    <input type="text" id="search-input" placeholder="Type here">
+                    <input type="submit" id="search-button" value="Search">
+                </div>
+
+            </div>
+
+
+
+
+            <!-- TABLE -->
+            <div class="adjust-space"></div>
+
+
+
+            <div class="draft-table-container">
+
+
+
+                <table class="draft-table" id="sorted-table">
+                    <thead>
+                        <tr class="draft-tr">
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>SL</p>
+                                    <span>
+                                        <img src="icons/draft/order.svg" alt="">
+                                        <img src="icons/draft/order.svg" alt="">
+                                    </span>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Thumbnail</p>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Post Title</p>
+                                    <span>
+                                        <img src="icons/draft/order.svg" alt="">
+                                        <img src="icons/draft/order.svg" alt="">
+                                    </span>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Tags</p>
+                                    <span>
+                                        <img src="icons/draft/order.svg" alt="">
+                                        <img src="icons/draft/order.svg" alt="">
+                                    </span>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Category</p>
+                                    <span>
+                                        <img src="icons/draft/order.svg" alt="">
+                                        <img src="icons/draft/order.svg" alt="">
+                                    </span>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Author</p>
+                                    <span>
+                                        <img src="icons/draft/order.svg" alt="">
+                                        <img src="icons/draft/order.svg" alt="">
+                                    </span>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Date</p>
+                                    <span>
+                                        <img src="icons/draft/order.svg" alt="">
+                                        <img src="icons/draft/order.svg" alt="">
+                                    </span>
+                                </span>
+                            </th>
+                            <th data-sort="asc">
+                                <span class="ace-dec-order">
+                                    <p>Action</p>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                                    alt=""></td>
+                            <td>Pes its incursion into Russia changes outcome of war</td>
+                            <td class="draft-tags">
+                                <button>Ukraine</button>
+                                <button>Rusia</button>
+                                <button>War</button>
+                                <button>Human-Revolution</button>
+                            </td>
+                            <td>International</td>
+                            <td>Surajit Singha Sisir</td>
+                            <td>15 August, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/4c82/live/645e7c80-3cbb-11ee-a8d1-c9e3fb992b8a.jpg.webp"
+                                    alt=""></td>
+                            <td>Climate Change: Urgent Actions Needed Globally</td>
+                            <td class="draft-tags">
+                                <button>Climate</button>
+                                <button>Environment</button>
+                                <button>Global Warming</button>
+                                <button>Policy</button>
+                            </td>
+                            <td>Environment</td>
+                            <td>Alexandra Greene</td>
+                            <td>20 August, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9123/live/4721b8d0-4b4b-11ee-b30a-9be123ef0ab7.jpg.webp"
+                                    alt=""></td>
+                            <td>Breakthrough in AI: Revolutionizing Healthcare</td>
+                            <td class="draft-tags">
+                                <button>AI</button>
+                                <button>Technology</button>
+                                <button>Healthcare</button>
+                                <button>Innovation</button>
+                            </td>
+                            <td>Technology</td>
+                            <td>Michael Tanner</td>
+                            <td>15 August, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/8c4e/live/8345bc70-2d4f-11ee-95c8-5b57b5d4a9e6.jpg.webp"
+                                    alt=""></td>
+                            <td>Economic Turmoil: Markets Brace for Recession</td>
+                            <td class="draft-tags">
+                                <button>Economy</button>
+                                <button>Finance</button>
+                                <button>Recession</button>
+                                <button>Global Markets</button>
+                            </td>
+                            <td>Business</td>
+                            <td>David Wong</td>
+                            <td>10 September, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/6e73/live/7d45c370-3a2f-11ee-9635-759d99cc82c2.jpg.webp"
+                                    alt=""></td>
+                            <td>Breakthrough in Renewable Energy Technologies</td>
+                            <td class="draft-tags">
+                                <button>Energy</button>
+                                <button>Renewables</button>
+                                <button>Technology</button>
+                                <button>Innovation</button>
+                            </td>
+                            <td>Energy</td>
+                            <td>Fatima Ahmed</td>
+                            <td>05 September, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/2931/live/937b9d60-11ee-b9a3-5f84c7c202aa.jpg.webp"
+                                    alt=""></td>
+                            <td>Space Exploration: Mars Mission Delayed Again</td>
+                            <td class="draft-tags">
+                                <button>Space</button>
+                                <button>Exploration</button>
+                                <button>NASA</button>
+                                <button>Technology</button>
+                            </td>
+                            <td>Science</td>
+                            <td>Lucas White</td>
+                            <td>12 September, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/1234/live/1d60b930-3ee3-11ee-8567-56c1f7f732e3.jpg.webp"
+                                    alt=""></td>
+                            <td>Global Sports: The Rise of eSports</td>
+                            <td class="draft-tags">
+                                <button>Sports</button>
+                                <button>eSports</button>
+                                <button>Gaming</button>
+                                <button>Technology</button>
+                            </td>
+                            <td>Sports</td>
+                            <td>Emily Jones</td>
+                            <td>30 August, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/6a58/live/b06b80b0-4e6f-11ee-965a-d9e1ad6c82a4.jpg.webp"
+                                    alt=""></td>
+                            <td>Political Unrest: Tensions Rise in Middle East</td>
+                            <td class="draft-tags">
+                                <button>Politics</button>
+                                <button>Middle East</button>
+                                <button>Unrest</button>
+                                <button>International</button>
+                            </td>
+                            <td>Politics</td>
+                            <td>Sarah Khan</td>
+                            <td>22 August, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/2a11/live/a85d71e0-4b4e-11ee-8e12-87c2fc949cc3.jpg.webp"
+                                    alt=""></td>
+                            <td>Technological Advances: AI Transforming Industries</td>
+                            <td class="draft-tags">
+                                <button>AI</button>
+                                <button>Industry</button>
+                                <button>Technology</button>
+                                <button>Innovation</button>
+                            </td>
+                            <td>Technology</td>
+                            <td>James Lee</td>
+                            <td>18 August, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><img class="draft-thumb-preview"
+                                    src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/4b58/live/c82c90b0-3fbb-11ee-b0d7-a9c13d2339c1.jpg.webp"
+                                    alt=""></td>
+                            <td>Healthcare Innovations: New Vaccines Developed</td>
+                            <td class="draft-tags">
+                                <button>Healthcare</button>
+                                <button>Vaccines</button>
+                                <button>Science</button>
+                                <button>Innovation</button>
+                            </td>
+                            <td>Health</td>
+                            <td>Ana Rodriguez</td>
+                            <td>14 September, 2024</td>
+                            <td class="draft-action">
+                                <span><img src="icons/draft/write.svg" alt=""></span>
+                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <img src=" icons/draft/order-active.svg" alt="" id="sort-active-icon" class="hide">
+                    <img src="icons/draft/order.svg" alt="" id="sort-hide-icon" class="hide">
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="dashboard-mastors.js"></script>
+<script src="dashboard-addNews.js"></script>
+<script src="navMenu.js"></script>
+<script src="draft.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+<script>
+
+
+</script>
+
+</html>
