@@ -3,59 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Filter by Date</title>
+    <title>Table with Modals</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .custom-date-input, .custom-filter-input {
-            margin-bottom: 10px;
-        }
-        .custom-date-input input, .custom-filter-input input {
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
-            padding: 10px;
+        table, th, td {
             border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
             text-align: left;
         }
         th {
             background-color: #f4f4f4;
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .draft-thumb-preview {
+            width: 100px;
+            height: auto;
         }
-        .draft-action img {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
+        .modal-full-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content, .modal-content-2 {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+        }
+        .modal-content-2 {
+            max-width: 400px;
+        }
+        .closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
+            font-size: 20px;
+        }
+        .modal-confirmation {
+            text-align: center;
+        }
+        .modal-confirmation button {
+            margin: 0 10px;
+            padding: 10px 20px;
+        }
+        .hide {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- DATE -->
-    <div class="custom-date-input">
-        <label for="filter-date">Select Date:</label>
-        <input type="date" id="filter-date" title="Input the Schedule Date">
-    </div>
-
-    <!-- FILTER BUTTON -->
-    <div class="custom-filter-input">
-        <input type="submit" id="filter-button" title="Filter by Date" value="Filter">
-    </div>
-
-    <!-- Table Structure -->
-    <table id="sorted-table" class="draft-table">
+    <table>
         <thead>
             <tr>
                 <th>#</th>
@@ -63,15 +72,18 @@
                 <th>Title</th>
                 <th>Tags</th>
                 <th>Category</th>
-                <th>Writer</th>
+                <th>Author</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <!-- Row 1 -->
+            <tr id="row1">
                 <td>1</td>
-                <td><img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt="Thumbnail" class="draft-thumb-preview"></td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                        alt="Thumbnail"></td>
                 <td>Pes its incursion into Russia changes outcome of war</td>
                 <td class="draft-tags">
                     <button>Ukraine</button>
@@ -81,72 +93,162 @@
                 </td>
                 <td>International</td>
                 <td>Surajit Singha Sisir</td>
-                <td>19 September, 2024</td>
+                <td>15 August, 2024</td>
                 <td class="draft-action">
-                    <span><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span><img src="icons/draft/delete.svg" alt="Delete"></span>
+                    <span data-modal="modal1" data-row="row1"><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span data-modal="modal2" data-row="row1"><img src="icons/draft/delete.svg" alt="Delete"></span>
                 </td>
             </tr>
-            <!-- Additional rows as per previous data -->
-            <tr>
+
+            <!-- Row 2 -->
+            <tr id="row2">
                 <td>2</td>
-                <td><img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/abcd/live/f86b1230-5d8e-11ee-a721-5d65d2c4b6d4.jpg.webp" alt="Thumbnail" class="draft-thumb-preview"></td>
-                <td>New Developments in Space Exploration</td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                        alt="Thumbnail"></td>
+                <td>New advancements in renewable energy technologies</td>
                 <td class="draft-tags">
-                    <button>Space</button>
-                    <button>Science</button>
-                    <button>Exploration</button>
                     <button>Technology</button>
+                    <button>Renewable Energy</button>
+                    <button>Environment</button>
                 </td>
                 <td>Science</td>
-                <td>Alexandra Greene</td>
-                <td>12 August, 2024</td>
+                <td>Jane Doe</td>
+                <td>16 August, 2024</td>
                 <td class="draft-action">
-                    <span><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span><img src="icons/draft/delete.svg" alt="Delete"></span>
+                    <span data-modal="modal1" data-row="row2"><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span data-modal="modal2" data-row="row2"><img src="icons/draft/delete.svg" alt="Delete"></span>
                 </td>
             </tr>
-            <!-- More rows can be added similarly -->
+
+            <!-- Row 3 -->
+            <tr id="row3">
+                <td>3</td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                        alt="Thumbnail"></td>
+                <td>The impact of AI on modern business</td>
+                <td class="draft-tags">
+                    <button>AI</button>
+                    <button>Business</button>
+                    <button>Innovation</button>
+                </td>
+                <td>Business</td>
+                <td>John Smith</td>
+                <td>17 August, 2024</td>
+                <td class="draft-action">
+                    <span data-modal="modal1" data-row="row3"><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span data-modal="modal2" data-row="row3"><img src="icons/draft/delete.svg" alt="Delete"></span>
+                </td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr id="row4">
+                <td>4</td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                        alt="Thumbnail"></td>
+                <td>Exploring the depths of the ocean</td>
+                <td class="draft-tags">
+                    <button>Ocean</button>
+                    <button>Exploration</button>
+                    <button>Science</button>
+                </td>
+                <td>Nature</td>
+                <td>Emily Davis</td>
+                <td>18 August, 2024</td>
+                <td class="draft-action">
+                    <span data-modal="modal1" data-row="row4"><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span data-modal="modal2" data-row="row4"><img src="icons/draft/delete.svg" alt="Delete"></span>
+                </td>
+            </tr>
+
+            <!-- Row 5 -->
+            <tr id="row5">
+                <td>5</td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                        alt="Thumbnail"></td>
+                <td>Latest trends in digital marketing</td>
+                <td class="draft-tags">
+                    <button>Marketing</button>
+                    <button>Digital</button>
+                    <button>Trends</button>
+                </td>
+                <td>Marketing</td>
+                <td>Alice Johnson</td>
+                <td>19 August, 2024</td>
+                <td class="draft-action">
+                    <span data-modal="modal1" data-row="row5"><img src="icons/draft/write.svg" alt="Edit"></span>
+                    <span data-modal="modal2" data-row="row5"><img src="icons/draft/delete.svg" alt="Delete"></span>
+                </td>
+            </tr>
         </tbody>
     </table>
 
+    <!-- EDIT Modal -->
+    <div id="modal1" class="modal-full-screen">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h1>Edit Modal</h1>
+            <p>Here you can edit the content.</p>
+        </div>
+    </div>
+
+    <!-- DELETE Modal -->
+    <div id="modal2" class="modal-full-screen">
+        <div class="modal-content-2">
+            <span class="closeBtn">&times;</span>
+            <h2>Are you sure?</h2>
+            <section class="modal-confirmation">
+                <button class="modal-confirm">Yes</button>
+                <button class="modal-deny">No</button>
+            </section>
+        </div>
+    </div>
+
     <script>
-        function filter() {
-            const filterButton = document.getElementById('filter-button');
-
-            filterButton.addEventListener('click', function () {
-                // Get the input date value in YYYY-MM-DD format
-                const filterDateInput = document.getElementById('filter-date').value;
-                
-                if (!filterDateInput) return; // Exit if no date is selected
-
-                const table = document.getElementById('sorted-table').querySelector('tbody');
-                const rows = table.getElementsByTagName('tr');
-                
-                // Create a Date object from the filter date input
-                const filterDateObj = new Date(filterDateInput);
-
-                // Format the filter date to match the format in table cells
-                const formattedFilterDate = `${filterDateObj.getDate()} ${filterDateObj.toLocaleString('default', { month: 'long' })}, ${filterDateObj.getFullYear()}`;
-                
-                for (let i = 0; i < rows.length; i++) {
-                    const dateCell = rows[i].getElementsByTagName('td')[6]; // The date is in the 7th cell (index 6)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all the 'Yes' buttons
+            const confirmButtons = document.querySelectorAll('.modal-confirm');
+            
+            // Add click event listeners to each 'Yes' button
+            confirmButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get the associated row
+                    const rowId = button.closest('.modal-content-2').previousElementSibling.dataset.row;
+                    const row = document.getElementById(rowId);
                     
-                    if (dateCell) {
-                        const rowDateText = dateCell.textContent.trim();
-                        
-                        // Compare the formatted row date with the filter date
-                        if (rowDateText === formattedFilterDate) {
-                            rows[i].style.display = ""; // Show row
-                        } else {
-                            rows[i].style.display = "none"; // Hide row
-                        }
+                    // Hide the row
+                    if (row) {
+                        row.classList.add('hide');
                     }
-                }
+                    
+                    // Close the modal
+                    button.closest('.modal-full-screen').style.display = 'none';
+                });
             });
-        }
 
-        document.addEventListener('DOMContentLoaded', filter);
+            // Handle close button in modals
+            const closeButtons = document.querySelectorAll('.closeBtn');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Close the modal
+                    button.closest('.modal-full-screen').style.display = 'none';
+                });
+            });
+
+            // Show modals when the action buttons are clicked
+            document.querySelectorAll('.draft-action span').forEach(span => {
+                span.addEventListener('click', function() {
+                    const modalId = this.dataset.modal;
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+        });
     </script>
 
 </body>

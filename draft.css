@@ -123,6 +123,7 @@
     border-radius: 2rem 0 0 2rem;
     text-align: center;
     font-style: italic;
+    cursor: text;
 }
 
 .filter-search input:last-child {
@@ -239,8 +240,6 @@
     min-width: 8rem;
 }
 
-.th.sort-asc {}
-
 /* DRAFT ACTION */
 .draft-table .draft-action {
     position: relative;
@@ -356,6 +355,111 @@
     overflow: auto;
 }
 
+
+/* MODAL BOX */
+/* 1 */
+.modal-full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 6;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-full-screen.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    width: 90vw;
+    height: 90vh;
+    background: var(--background-color);
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: auto;
+    transition: transform 0.3s ease;
+    transform: scale(0.9);
+    border: 1px solid var(--border-color);
+}
+
+.modal-full-screen.show .modal-content {
+    transform: scale(1);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    color: red;
+}
+
+.button-container {
+    margin: 20px;
+}
+
+/* MODAL CONTENT - 2 */
+.modal-content-2 {
+    width: 50vw;
+    height: 20vh;
+    background: var(--sub-div-color);
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: auto;
+    transition: transform 0.3s ease;
+    transform: scale(0.9);
+    border: 1px solid var(--border-color);
+}
+
+.modal-content-2 h2 {
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.modal-confirmation .modal-confirm,
+.modal-confirmation .modal-deny {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: var(--semi-normal-font);
+    cursor: pointer;
+}
+
+.modal-confirmation .modal-confirm:hover {
+    background-color: var(--red);
+}
+
+.modal-confirmation .modal-deny:hover {
+    background-color: var(--green);
+}
+
+/* END */
 
 @media screen and (max-width:1080px) {
 

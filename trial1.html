@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style>
+        /* Basic styling for modals */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .closeBtn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .closeBtn:hover,
+        .closeBtn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table class="draft-table" id="sorted-table">
+        <thead>
+            <tr class="draft-tr">
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>SL</p>
+                        <span>
+                            <img src="icons/draft/order.svg" alt="">
+                            <img src="icons/draft/order.svg" alt="">
+                        </span>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Thumbnail</p>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Post Title</p>
+                        <span>
+                            <img src="icons/draft/order.svg" alt="">
+                            <img src="icons/draft/order.svg" alt="">
+                        </span>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Tags</p>
+                        <span>
+                            <img src="icons/draft/order.svg" alt="">
+                            <img src="icons/draft/order.svg" alt="">
+                        </span>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Category</p>
+                        <span>
+                            <img src="icons/draft/order.svg" alt="">
+                            <img src="icons/draft/order.svg" alt="">
+                        </span>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Author</p>
+                        <span>
+                            <img src="icons/draft/order.svg" alt="">
+                            <img src="icons/draft/order.svg" alt="">
+                        </span>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Date</p>
+                        <span>
+                            <img src="icons/draft/order.svg" alt="">
+                            <img src="icons/draft/order.svg" alt="">
+                        </span>
+                    </span>
+                </th>
+                <th data-sort="asc">
+                    <span class="ace-dec-order">
+                        <p>Action</p>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
+                        alt=""></td>
+                <td>Pes its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Rusia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>15 August, 2024</td>
+                <td class="draft-action">
+                    <!-- Trigger buttons with data attributes -->
+                    <button class="open-modal" data-modal="modal1" data-content="This is data for Modal 1" data-row="1">Open Modal 1</button>
+                    <button class="open-modal" data-modal="modal2" data-content="This is data for Modal 2" data-row="1">Open Modal 2</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><img class="draft-thumb-preview"
+                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/4c82/live/645e7c80-3cbb-11ee-a8d1-c9e3fb992b8a.jpg.webp"
+                        alt=""></td>
+                <td>Climate Change: Urgent Actions Needed Globally</td>
+                <td class="draft-tags">
+                    <button>Climate</button>
+                    <button>Environment</button>
+                    <button>Global Warming</button>
+                    <button>Policy</button>
+                </td>
+                <td>Environment</td>
+                <td>Alexandra Greene</td>
+                <td>20 August, 2024</td>
+                <td class="draft-action">
+                    <!-- Trigger buttons with data attributes -->
+                    <button class="open-modal" data-modal="modal1" data-content="This is data for Modal 3" data-row="2">Open Modal 1</button>
+                    <button class="open-modal" data-modal="modal2" data-content="This is data for Modal 4" data-row="2">Open Modal 2</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn" data-modal="modal1">&times;</span>
+            <p class="modal-text"></p>
+            <input type="submit" value="submit" class="submit-btn">
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn" data-modal="modal2">&times;</span>
+            <p class="modal-text"></p>
+            <input type="submit" value="submit" class="submit-btn">
+        </div>
+    </div>
+
+    <script>
+        // Function to open a modal and set its content
+function openModal(modalId, content, rowId) {
+    const modal = document.getElementById(modalId);
+    const textElement = modal.querySelector('.modal-text');
+    textElement.textContent = content; // Set the content
+    modal.style.display = 'block';
+    
+    // Store the rowId for later use
+    modal.setAttribute('data-row', rowId);
+}
+
+// Function to close a modal
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+// Add event listeners to open modals
+document.querySelectorAll('.open-modal').forEach(button => {
+    button.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        const content = this.getAttribute('data-content');
+        const rowId = this.closest('tr').rowIndex; // Use the rowIndex to get the current row number
+        openModal(modalId, content, rowId);
+    });
+});
+
+// Add event listeners to close modals
+document.querySelectorAll('.closeBtn').forEach(button => {
+    button.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        closeModal(modalId);
+    });
+});
+
+// Close modals when clicking outside of the modal content
+window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+        closeModal(event.target.id);
+    }
+});
+
+// Add event listeners to submit buttons in modals
+document.querySelectorAll('.submit-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const modal = this.closest('.modal');
+        const rowId = modal.getAttribute('data-row');
+        if (rowId) {
+            const row = document.querySelector(`.draft-table tbody tr:nth-child(${rowId})`);
+            if (row) {
+                row.remove();
+                updateRowIdentifiers();
+            } else {
+                console.error(`Row ${rowId} not found.`);
+            }
+            closeModal(modal.id);
+        }
+    });
+});
+
+// Function to update row identifiers after deletion
+function updateRowIdentifiers() {
+    document.querySelectorAll('.draft-table tbody tr').forEach((row, index) => {
+        const rowId = index + 1; // Row IDs should be 1-based
+        row.querySelectorAll('.open-modal').forEach(button => {
+            button.setAttribute('data-row', rowId);
+        });
+    });
+}
+
+    </script>
+</body>
+</html>

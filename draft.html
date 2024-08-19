@@ -166,7 +166,6 @@
 
                     <!-- DATE -->
                     <div class="custom-date-input">
-                        <label for="filter-date">Select Date:</label>
                         <input type="date" id="filter-date" title="Input the Schedule Date">
                     </div>
 
@@ -207,6 +206,7 @@
                     <div class="custom-filter-input">
                         <input type="submit" id="filter-button" title="Filter by Date" value="Filter">
                     </div>
+
                 </div>
 
                 <!-- search button -->
@@ -214,6 +214,7 @@
                     <input type="text" id="search-input" placeholder="Type here">
                     <input type="submit" id="search-button" value="Search">
                 </div>
+
 
             </div>
 
@@ -226,8 +227,6 @@
 
 
             <div class="draft-table-container">
-
-
 
                 <table class="draft-table" id="sorted-table">
                     <thead>
@@ -298,7 +297,6 @@
                             </th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr>
                             <td>1</td>
@@ -316,8 +314,14 @@
                             <td>Surajit Singha Sisir</td>
                             <td>15 August, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <!-- <button class="open-modal" data-modal="modal1"
+                                    data-row="1"><img src="icons/draft/write.svg" alt=""></button>
+                                <button class="open-modal" data-modal="modal2"
+                                    data-row="1"><img src="icons/draft/delete.svg" alt=""></button> -->
+                                <span class="open-modal" data-row="1" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="1" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -336,8 +340,10 @@
                             <td>Alexandra Greene</td>
                             <td>20 August, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal"data-row="2" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="2" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -356,8 +362,10 @@
                             <td>Michael Tanner</td>
                             <td>15 August, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="3" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="3" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -376,8 +384,10 @@
                             <td>David Wong</td>
                             <td>10 September, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="4" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="4" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -396,8 +406,10 @@
                             <td>Fatima Ahmed</td>
                             <td>05 September, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="5" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="5" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -416,8 +428,10 @@
                             <td>Lucas White</td>
                             <td>12 September, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="6" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="6" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -436,8 +450,10 @@
                             <td>Emily Jones</td>
                             <td>30 August, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="7" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="7" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -456,8 +472,10 @@
                             <td>Sarah Khan</td>
                             <td>22 August, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="8" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="8" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -476,8 +494,10 @@
                             <td>James Lee</td>
                             <td>18 August, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="9" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="9" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                         <tr>
@@ -496,18 +516,64 @@
                             <td>Ana Rodriguez</td>
                             <td>14 September, 2024</td>
                             <td class="draft-action">
-                                <span><img src="icons/draft/write.svg" alt=""></span>
-                                <span><img src="icons/draft/delete.svg" alt=""></span>
+                                <span class="open-modal" data-row="10" data-modal="modal1"><img src="icons/draft/write.svg"
+                                        alt=""></span>
+                                <span class="open-modal" data-row="10" data-modal="modal2"><img src="icons/draft/delete.svg"
+                                        alt=""></span>
                             </td>
                         </tr>
                     </tbody>
                     <img src=" icons/draft/order-active.svg" alt="" id="sort-active-icon" class="hide">
                     <img src="icons/draft/order.svg" alt="" id="sort-hide-icon" class="hide">
                 </table>
+
+
+                <div id="modal1" class="modal-full-screen modal">
+                    <div class="modal-content">
+                        <span class="closeBtn">&times;</span>
+                        <div id="demo">
+                            <h1>Modal Data</h1>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal2" class="modal-full-screen modal modalUnique">
+                    <div class="modal-content-2">
+                        <span class="closeBtn">&times;</span>
+                        <h2>Are you sure?</h2>
+                        <section class="modal-confirmation">
+                            <input type="submit" value="Yes" class="submit-btn modal-confirm ">
+                            <input type="submit" value="No" class="modal-deny no-btn">
+                        </section>
+                    </div>
+                </div>
+
+                <!-- EDIT Structure -->
+                <!-- <div id="modal1" class="modal-full-screen modal">
+                    <div class="modal-content">
+                        <span class="closeBtn">&times;</span>
+                        <div id="demo">
+                            <h1>Modal Data</h1>
+                            <p class="modal-text"></p>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- DELETE Structure -->
+                <!-- <div id="modal2" class="modal-full-screen modal">
+                    <div class="modal-content-2">
+                        <span class="closeBtn">&times;</span>
+                        <h2>Are you sure?</h2>
+                        <p class="modal-text"></p>
+                        <section class="modal-confirmation">
+                            <input type="submit" value="submit" class="submit-btn">
+                        </section>
+                    </div>
+                </div> -->
             </div>
 
         </div>
     </div>
+
+
 </body>
 <script src="dashboard-mastors.js"></script>
 <script src="dashboard-addNews.js"></script>
@@ -515,6 +581,7 @@
 <script src="draft.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 <script>
+
 
 
 </script>

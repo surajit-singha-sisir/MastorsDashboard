@@ -2,6 +2,9 @@ print = console.log;
 
 window.onload = function () {
   sort();
+  filterMastors();
+  initializeModals();
+  action();
 };
 
 document.addEventListener("DOMContentLoaded", function () {
