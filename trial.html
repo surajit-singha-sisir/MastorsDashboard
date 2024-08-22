@@ -3,253 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table with Modals</title>
+    <title>Vertical Tabs with Swipe Transition</title>
     <style>
-        table {
+        .tabs-container {
+            display: flex;
             width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        .draft-thumb-preview {
-            width: 100px;
             height: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .modal-full-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
+
+        .tabs {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            background-color: #f1f1f1;
+            border-right: 1px solid #ddd;
         }
-        .modal-content, .modal-content-2 {
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
+
+        .tab {
+            padding: 1rem;
+            cursor: pointer;
+            text-align: center;
+            background-color: #ddd;
+            border-bottom: 1px solid #bbb;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #ccc;
+        }
+
+        .contents {
+            width: 80%;
+            overflow: hidden;
             position: relative;
         }
-        .modal-content-2 {
-            max-width: 400px;
-        }
-        .closeBtn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-        .modal-confirmation {
-            text-align: center;
-        }
-        .modal-confirmation button {
-            margin: 0 10px;
-            padding: 10px 20px;
-        }
-        .hide {
+
+        .content {
             display: none;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            background-color: #fafafa;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            transition: left 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+            left: 0;
         }
     </style>
 </head>
 <body>
 
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Tags</th>
-                <th>Category</th>
-                <th>Author</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Row 1 -->
-            <tr id="row1">
-                <td>1</td>
-                <td><img class="draft-thumb-preview"
-                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
-                        alt="Thumbnail"></td>
-                <td>Pes its incursion into Russia changes outcome of war</td>
-                <td class="draft-tags">
-                    <button>Ukraine</button>
-                    <button>Russia</button>
-                    <button>War</button>
-                    <button>Human-Revolution</button>
-                </td>
-                <td>International</td>
-                <td>Surajit Singha Sisir</td>
-                <td>15 August, 2024</td>
-                <td class="draft-action">
-                    <span data-modal="modal1" data-row="row1"><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span data-modal="modal2" data-row="row1"><img src="icons/draft/delete.svg" alt="Delete"></span>
-                </td>
-            </tr>
-
-            <!-- Row 2 -->
-            <tr id="row2">
-                <td>2</td>
-                <td><img class="draft-thumb-preview"
-                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
-                        alt="Thumbnail"></td>
-                <td>New advancements in renewable energy technologies</td>
-                <td class="draft-tags">
-                    <button>Technology</button>
-                    <button>Renewable Energy</button>
-                    <button>Environment</button>
-                </td>
-                <td>Science</td>
-                <td>Jane Doe</td>
-                <td>16 August, 2024</td>
-                <td class="draft-action">
-                    <span data-modal="modal1" data-row="row2"><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span data-modal="modal2" data-row="row2"><img src="icons/draft/delete.svg" alt="Delete"></span>
-                </td>
-            </tr>
-
-            <!-- Row 3 -->
-            <tr id="row3">
-                <td>3</td>
-                <td><img class="draft-thumb-preview"
-                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
-                        alt="Thumbnail"></td>
-                <td>The impact of AI on modern business</td>
-                <td class="draft-tags">
-                    <button>AI</button>
-                    <button>Business</button>
-                    <button>Innovation</button>
-                </td>
-                <td>Business</td>
-                <td>John Smith</td>
-                <td>17 August, 2024</td>
-                <td class="draft-action">
-                    <span data-modal="modal1" data-row="row3"><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span data-modal="modal2" data-row="row3"><img src="icons/draft/delete.svg" alt="Delete"></span>
-                </td>
-            </tr>
-
-            <!-- Row 4 -->
-            <tr id="row4">
-                <td>4</td>
-                <td><img class="draft-thumb-preview"
-                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
-                        alt="Thumbnail"></td>
-                <td>Exploring the depths of the ocean</td>
-                <td class="draft-tags">
-                    <button>Ocean</button>
-                    <button>Exploration</button>
-                    <button>Science</button>
-                </td>
-                <td>Nature</td>
-                <td>Emily Davis</td>
-                <td>18 August, 2024</td>
-                <td class="draft-action">
-                    <span data-modal="modal1" data-row="row4"><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span data-modal="modal2" data-row="row4"><img src="icons/draft/delete.svg" alt="Delete"></span>
-                </td>
-            </tr>
-
-            <!-- Row 5 -->
-            <tr id="row5">
-                <td>5</td>
-                <td><img class="draft-thumb-preview"
-                        src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp"
-                        alt="Thumbnail"></td>
-                <td>Latest trends in digital marketing</td>
-                <td class="draft-tags">
-                    <button>Marketing</button>
-                    <button>Digital</button>
-                    <button>Trends</button>
-                </td>
-                <td>Marketing</td>
-                <td>Alice Johnson</td>
-                <td>19 August, 2024</td>
-                <td class="draft-action">
-                    <span data-modal="modal1" data-row="row5"><img src="icons/draft/write.svg" alt="Edit"></span>
-                    <span data-modal="modal2" data-row="row5"><img src="icons/draft/delete.svg" alt="Delete"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- EDIT Modal -->
-    <div id="modal1" class="modal-full-screen">
-        <div class="modal-content">
-            <span class="closeBtn">&times;</span>
-            <h1>Edit Modal</h1>
-            <p>Here you can edit the content.</p>
-        </div>
+<div class="tabs-container">
+    <div class="tabs">
+        <div class="tab">Tab 1</div>
+        <div class="tab">Tab 2</div>
+        <div class="tab">Tab 3</div>
+        <div class="tab">Tab 4</div>
+        <div class="tab">Tab 5</div>
     </div>
-
-    <!-- DELETE Modal -->
-    <div id="modal2" class="modal-full-screen">
-        <div class="modal-content-2">
-            <span class="closeBtn">&times;</span>
-            <h2>Are you sure?</h2>
-            <section class="modal-confirmation">
-                <button class="modal-confirm">Yes</button>
-                <button class="modal-deny">No</button>
-            </section>
-        </div>
+    <div class="contents">
+        <div class="content">Content for Tab 1</div>
+        <div class="content">Content for Tab 2</div>
+        <div class="content">Content for Tab 3</div>
+        <div class="content">Content for Tab 4</div>
+        <div class="content">Content for Tab 5</div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all the 'Yes' buttons
-            const confirmButtons = document.querySelectorAll('.modal-confirm');
-            
-            // Add click event listeners to each 'Yes' button
-            confirmButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Get the associated row
-                    const rowId = button.closest('.modal-content-2').previousElementSibling.dataset.row;
-                    const row = document.getElementById(rowId);
-                    
-                    // Hide the row
-                    if (row) {
-                        row.classList.add('hide');
-                    }
-                    
-                    // Close the modal
-                    button.closest('.modal-full-screen').style.display = 'none';
-                });
-            });
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tabs .tab');
+        const contents = document.querySelectorAll('.contents .content');
+        let currentIndex = 0;
 
-            // Handle close button in modals
-            const closeButtons = document.querySelectorAll('.closeBtn');
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Close the modal
-                    button.closest('.modal-full-screen').style.display = 'none';
-                });
-            });
+        function showContent(index) {
+            const currentContent = contents[currentIndex];
+            const nextContent = contents[index];
 
-            // Show modals when the action buttons are clicked
-            document.querySelectorAll('.draft-action span').forEach(span => {
-                span.addEventListener('click', function() {
-                    const modalId = this.dataset.modal;
-                    const modal = document.getElementById(modalId);
-                    if (modal) {
-                        modal.style.display = 'flex';
-                    }
-                });
-            });
+            if (index === currentIndex) return;
+
+            if (index > currentIndex) {
+                nextContent.style.left = '100%';  // Slide in from the right
+            } else {
+                nextContent.style.left = '-100%'; // Slide in from the left
+            }
+
+            nextContent.classList.add('active');
+
+            setTimeout(() => {
+                nextContent.style.left = '0';
+                currentContent.style.left = (index > currentIndex) ? '-100%' : '100%'; // Slide out to left or right
+                currentContent.classList.remove('active');
+            }, 50);  // Small delay to allow transition to happen
+
+            currentIndex = index;
+        }
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => showContent(index));
         });
-    </script>
+
+        // Initialize the first tab as active
+        contents[0].classList.add('active');
+    });
+</script>
 
 </body>
 </html>

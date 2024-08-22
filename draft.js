@@ -182,12 +182,11 @@ function initializeModals() {
       const modal2 = document.querySelector(".modalUnique");
       if (modal2) {
         modal2.classList.remove("show");
-        modal2.style = '';
+        modal2.style = "";
       }
     }
   });
 }
-
 
 function edit_data(key) {
   var xhttp = new XMLHttpRequest();
@@ -203,49 +202,6 @@ function edit_data(key) {
   );
   xhttp.send();
 }
-
-// function action() {
-//   document.querySelectorAll('.modal-confirm').forEach(confirmButton => {
-//     confirmButton.addEventListener("click", function (event) {
-//       // Log the clicked element
-//       console.log('Clicked:', this);
-
-//       // Find the closest <tr> ancestor of the clicked button
-//       const parentRow = this.closest('tr');
-//       console.log('Parent Row:', parentRow);
-
-//       if (parentRow) {
-//         // Find the corresponding modal within the same row
-//         const modal2 = parentRow.querySelector('.modal-full-screen[data-modal="modal2"]');
-//         if (modal2) {
-//           parentRow.classList.add("hide");
-//           modal2.style.display = "none";
-//         }
-//       }
-//     });
-//   });
-
-//   document.querySelectorAll('.modal-deny').forEach(denyButton => {
-//     denyButton.addEventListener("click", function (event) {
-//       // Log the clicked element
-//       console.log('Clicked:', this);
-
-//       // Find the closest <tr> ancestor of the clicked button
-//       const parentRow = this.closest('tr');
-//       console.log('Parent Row:', parentRow);
-
-//       if (parentRow) {
-//         // Find the corresponding modal within the same row
-//         const modal2 = parentRow.querySelector('.modal-full-screen[data-modal="modal2"]');
-//         if (modal2) {
-//           modal2.style.display = "none";
-//         }
-//       }
-//     });
-//   });
-// }
-
-// action();
 
 // Function to open a modal and set its content
 function openModal(modalId, content, rowId) {
@@ -309,6 +265,11 @@ document.querySelectorAll(".submit-btn").forEach((button) => {
         );
         if (row) {
           row.remove();
+          // send xml request
+          const newsid = row.querySelector("#newsid").textContent;
+          console.log("News ID:", newsid);
+          delete_News(newsid);
+          // delete_News();
           updateRowIdentifiers();
         } else {
           console.error(`Row ${rowId} not found.`);
@@ -316,8 +277,6 @@ document.querySelectorAll(".submit-btn").forEach((button) => {
       } else {
         console.error(`No data-row attribute found on the modal.`);
       }
-      console.log(modal.id);
-      closeModal(modal.id);
     } else {
       console.error(`Modal not found.`);
     }
@@ -329,6 +288,51 @@ document.querySelectorAll(".submit-btn").forEach((button) => {
     //   : modal2.classList.remove("hide");
   });
 });
+
+function getCSRFToken() {
+  // Get the CSRF token from the cookies
+  const csrfToken = document.cookie
+    .split(";")
+    .find((cookie) => cookie.trim().startsWith("csrftoken="));
+  return csrfToken ? csrfToken.split("=")[1] : null;
+}
+
+function delete_News(newsid) {
+  const xhr = new XMLHttpRequest();
+  const url = "https://kehem.com/news/delete_news/key";
+  const csrfToken = getCSRFToken();
+
+  if (!csrfToken) {
+    console.error("CSRF token not found.");
+    return;
+  }
+
+  // Create a new POST request
+  xhr.open("POST", url, true);
+
+  // Set the request headers
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.setRequestHeader("X-CSRFToken", csrfToken); // Add CSRF token to the request headers
+
+  // Define what happens on successful data submission
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      console.log(`News item with ID: ${newsid} deleted successfully.`);
+    } else {
+      console.error(
+        `Failed to delete news item with ID: ${newsid}. Status: ${xhr.status}`
+      );
+    }
+  };
+
+  // Define what happens in case of an error
+  xhr.onerror = function () {
+    console.error(`Request error while deleting news item with ID: ${newsid}.`);
+  };
+
+  // Send the request with the newsid as the POST data
+  xhr.send(`newsid=${encodeURIComponent(newsid)}`);
+}
 
 // Function to update row identifiers after deletion
 function updateRowIdentifiers() {

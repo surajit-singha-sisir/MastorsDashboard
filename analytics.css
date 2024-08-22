@@ -1,0 +1,514 @@
+:root {
+    --button-gredient: linear-gradient(to bottom, #161B22, #272F3C);
+    --div-gredient-1: radial-gradient(circle, #233B48, #161B22);
+    --div-gredient-2: radial-gradient(circle, #152825, #161B22);
+    --div-gredient-3: linear-gradient(to bottom, #040617, #010409);
+    --percentage-green: #48F844;
+    --percentage-red: #F84464;
+
+
+    /* FONT SIZE */
+    --font-05: 0.5rem;
+    --font-06: 0.6rem;
+    --font-07: 0.7rem;
+    --font-08: 0.8rem;
+    --font-09: 0.9rem;
+    --font-10: 1rem;
+    --font-11: 1.1rem;
+    --font-12: 1.2rem;
+    --font-15: 1.5rem;
+    --font-17: 1.7rem;
+    --font-18: 1.8rem;
+    --font-20: 2rem;
+    --font-22: 2.2rem;
+    --font-24: 2.4rem;
+    --font-25: 2.5rem;
+    --font-26: 2.6rem;
+    --font-28: 2.8rem;
+    --font-30: 3rem;
+}
+
+/* DEFAULT CLASSES START*/
+
+/* DEFAULT CLASSES END*/
+
+/* JS CLASSES START*/
+
+/* JS CLASSES END*/
+
+
+/* JS CLASSES START*/
+
+/* JS CLASSES END*/
+
+
+/* MAIN DESIGN START */
+.today-overview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+}
+
+.quick-overview {
+    display: flex;
+    width: inherit;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.today-div {
+    display: flex;
+    flex-direction: column;
+    background: var(--button-gredient);
+    padding: 0.2rem 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    position: relative;
+    flex: 1;
+    min-width: 10rem;
+}
+
+.today-div p:first-child {
+    font-size: var(--font-12);
+    color: var(--sub-font-color);
+    padding-bottom: 0.3rem;
+}
+
+.today-div p:nth-child(2) {
+    font-size: var(--font-25);
+}
+
+.today-div p:nth-child(3) {
+    font-size: var(--font-10);
+    padding-bottom: 1rem;
+}
+
+.today-div span:last-child {
+    font-size: var(--font-05);
+    color: var(--sub-font-color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.3rem;
+}
+
+#today-engagements {
+    position: relative;
+}
+
+#today-engagements::after {
+    content: 'HOURS';
+    position: absolute;
+    right: 0;
+    font-size: var(--font-05);
+    color: var(--sub-font-color);
+}
+
+/* TRAFFIC SOURCE DATA START */
+.traffic-data {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20rem;
+    /* FIXED SIZE */
+    gap: 1rem;
+}
+
+.traffic-data .traffic {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* flex: 1; */
+    /* MEDIA SCREEN */
+    height: inherit;
+}
+
+.traffic-data .traffic-source {
+    position: relative;
+    width: 40%;
+    height: inherit;
+}
+
+
+/* TITLE BAR */
+.traffic .traffic-bar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.traffic-bar span {
+    height: 1rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: auto;
+    cursor: pointer;
+}
+
+/* DATA PRESENTATION */
+.traffic-source-data {
+    border: 1px solid var(--border-color);
+    background: var(--div-gredient-1);
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap;   MEDIA SCREEN */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+    height: auto;
+    overflow: hidden;
+}
+
+/* PIE CHART */
+.traffic-source-pie-chart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.traffic-source-pie-chart #traffic-source-PieChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* MOST TRAFFIC SOURCE */
+.most-traffic-source {
+    display: flex;
+    flex-direction: column;
+}
+
+.most-traffic-source h4 {
+    color: var(--font-color);
+    padding: 1rem 1rem 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 0.8rem;
+}
+
+.most-traffic-source ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.most-traffic-source ul li {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.most-traffic-source ul li span {
+    display: flex;
+    gap: 0.5rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.most-traffic-source ul li button {
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    cursor: text;
+    color: var(--link-color);
+    min-width: 3rem;
+}
+
+
+
+
+
+
+/* TRAFFIC TRACKER */
+.traffic-tracker {
+    flex: 1;
+}
+
+.traffic-tracker-data {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    background: var(--div-gredient-1);
+}
+
+/* VERTICAL TABS START */
+.vertical-tabs-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.vertical-tabs-container .tabs {
+    width: 12rem;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--div-color);
+}
+
+.vertical-tabs-container .tabs img {
+    height: 1.2rem;
+    aspect-ratio: 1;
+}
+
+.vertical-tabs-container .tab {
+    padding: 1rem;
+    cursor: pointer;
+    text-align: center;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-wrap: nowrap;
+    font-size: var(--normal-font);
+    background-color: var(--div-color);
+    transition: background-color 0.3s;
+}
+
+.vertical-tabs-container .tab:hover {
+    background: var(--sub-div-color);
+}
+
+.vertical-tabs-container .tab.active {
+    background: var(--sub-div-color);
+    border-bottom: 1px solid var(--link-color);
+    color: var(--link-color);
+}
+
+.vertical-tabs-container .tab.active p {
+    color: var(--link-color);
+}
+
+.vertical-tabs-container .contents {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: var(--div-gredient-2);
+}
+
+
+.vertical-tabs-container .content {
+    display: none;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    transition: left 0.5s ease;
+}
+
+.vertical-tabs-container .content.active {
+    display: flex;
+    left: 0;
+}
+
+/* VERTICAL TABS END */
+
+/* OVERVIEW START */
+.traffic-tracker-overview {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+}
+
+.traffic-tracker-overview .col-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.traffic-tracker-overview .col-1 img {
+    height: 100%;
+    width: auto;
+}
+
+.traffic-tracker-overview .col-1 .row-1 {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.traffic-tracker-overview .col-1 .row-2 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.3rem 1rem;
+    background-color: var(--border-color);
+    border: 1px solid var(--sub-font-color);
+}
+
+.traffic-tracker-overview .col-1 .row-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.traffic-tracker-overview .col-1 .row-3 span {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding: 0.3rem 1rem;
+    background-color: transparent;
+    border: 1px solid var(--active-color);
+    border-radius: 1rem;
+}
+
+.traffic-tracker-overview span p:hover {
+    color: var(--link-color);
+}
+
+
+
+.traffic-tracker-overview .col-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 40%;
+    height: 100%;
+}
+
+/* OVERVIEW END */
+
+
+
+
+
+/* TRAFFIC SOURCE DATA END */
+
+
+
+/* MAIN DESIGN END */
+
+
+/* MEDIA QUEARY START */
+/* 1080px */
+@media screen and (max-width:1080px) {
+    .today-div {
+        flex-grow: 0;
+    }
+
+    .traffic-data {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .traffic-data .traffic {
+        width: 100%;
+    }
+
+    .traffic-source-pie-chart {
+        height: 10rem;
+    }
+
+    .traffic-tracker-data {
+        height: 20rem;
+    }
+}
+
+/* 720px */
+@media screen and (max-width:720px) {
+    .today-div {
+        flex-grow: 1;
+    }
+
+    .traffic-source-data {
+        flex-wrap: wrap;
+    }
+
+    #traffic-source-PieChart {
+        height: auto;
+    }
+
+    .traffic-tracker-data {
+        height: 30rem;
+    }
+
+    .traffic-tracker-overview {
+        flex-direction: column-reverse;
+    }
+
+    .traffic-tracker-overview .col-1,
+    .traffic-tracker-overview .col-2 {
+        width: 100%;
+    }
+
+    .traffic-tracker-overview .col-1 .row-1 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .vertical-tabs-container {
+        flex-direction: column;
+    }
+
+    .vertical-tabs-container .tabs {
+        flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+        height: 4rem;
+        justify-content: flex-start;
+    }
+
+
+    .vertical-tabs-container .tab {
+        flex-basis: 100%;
+    }
+
+    .vertical-tabs-container .contents {
+        flex-basis: 100%;
+        width: 100%;
+        flex-direction: row;
+    }
+}
+
+/* 320px */
+@media screen and (max-width:320px) {
+    .traffic-tracker-data {
+        height: 40rem;
+    }
+
+    .traffic-tracker-overview .col-1 .row-1 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+/* MEDIA QUEARY END */
