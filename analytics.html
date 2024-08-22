@@ -338,8 +338,123 @@
                                         <canvas id="traffic-tracker-PieChart"></canvas>
                                     </div>
                                 </div>
-                                <div class="content">Content for Tab 2</div>
-                                <div class="content">Content for Tab 3</div>
+
+
+
+                                <!-- DEVICES -->
+                                <div class="content">
+
+                                    <div class="horizontal-tabs-container">
+                                        <div class="hr-tabs">
+                                            <div class="hr-tab">Graphical Analysis</div>
+                                            <div class="hr-tab">Statistic</div>
+                                        </div>
+                                        <div class="hr-contents">
+                                            <div class="hr-content content-design">
+                                                <!-- CONTENT 1 -->
+                                                <div class="traffic-linechart">
+                                                    <canvas id="traffic-tracker-device"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="hr-content content-design">
+                                                <!-- CONTENT 2 -->
+
+                                                <div class="traffic-devices-list">
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/desktop.svg" alt="">
+                                                        <p>Windows</p>
+                                                        <p id="traffic-tracker-desktop">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/android.svg" alt="">
+                                                        <p>Android</p>
+                                                        <p id="traffic-tracker-android">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/iPhone.svg" alt="">
+                                                        <p>iPhone</p>
+                                                        <p id="traffic-tracker-iPhone">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/mac.svg" alt="">
+                                                        <p>Mac</p>
+                                                        <p id="traffic-tracker-iPhone">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/others.svg" alt="">
+                                                        <p>Others</p>
+                                                        <p id="traffic-tracker-iPhone">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- BROWSER -->
+                                <div class="content traffic-browser-all">
+                                    <div class="browser-col">
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/chrome.svg" alt="">
+                                            <p>Google Chrome</p>
+                                            <p id="traffic-browser-chrome">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/firefox.svg" alt="">
+                                            <p>Mozilla Firefox</p>
+                                            <p id="traffic-browser-firefox">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/edge.svg" alt="">
+                                            <p>Microsoft Edge</p>
+                                            <p id="traffic-browser-edge">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/opera.svg" alt="">
+                                            <p>Opera Browser</p>
+                                            <p id="traffic-browser-opera">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/uc-browser.svg" alt="">
+                                            <p>UC Browser</p>
+                                            <p id="traffic-browser-uc">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/safari.svg" alt="">
+                                            <p>Apple Safari</p>
+                                            <p id="traffic-browser-safari">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/other-browser.svg" alt="">
+                                            <p>Other Browser</p>
+                                            <p id="traffic-browser-other-browsers">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                    </div>
+                                    <div class="browser-col">
+                                        <div class="browser-col">
+                                            <span class="traffic-browser-chart">
+                                                <canvas id="traffic-browser-chart"></canvas>
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+
                                 <div class="content">Content for Tab 4</div>
                             </div>
                         </div>
@@ -347,11 +462,14 @@
                 </div>
             </div>
         </div>
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
 
+        <!-- NOTE SAVER -->
         <div class="inputNoteSaver">
             <span>
                 <p>Keep Note</p>
-                <img src="icons/analytics/minimize.svg" alt="">
+                <img id="inputNoteSaverToggle" src="icons/analytics/minimize-plus.svg" alt="">
             </span>
             <textarea id="noteInput" rows="10" placeholder="Type your note here..."></textarea>
         </div>

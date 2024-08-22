@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Save Note with Cookies</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        textarea {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Horizontal Bar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <h1>Auto-Save Note App</h1>
-    <textarea id="noteInput" rows="10" placeholder="Type your note here..."></textarea>
+    <div class="browser-col">
+        <span class="traffic-browser-chart">
+            <canvas id="traffic-browser-chart"></canvas>
+        </span>
+    </div>
 
     <script>
-        // Function to set a cookie
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+        const ctx = document.getElementById('traffic-browser-chart').getContext('2d');
 
-        // Function to get a cookie by name
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        // Function to save the note automatically
-        function autoSaveNote() {
-            const noteInput = document.getElementById("noteInput");
-            setCookie("userNote", noteInput.value, 7); // Save for 7 days
-        }
-
-        // Function to load the note from the cookie
-        function loadNote() {
-            const noteInput = document.getElementById("noteInput");
-            const savedNote = getCookie("userNote");
-            if (savedNote) {
-                noteInput.value = savedNote;
-            }
-        }
-
-        // Load the note when the page loads
-        window.onload = function() {
-            loadNote();
+        const chartData = {
+            labels: [
+                'Google Chrome',
+                'Mozilla Firefox',
+                'Microsoft Edge',
+                'Opera Browser',
+                'UC Browser',
+                'Apple Safari',
+                'Other Browser'
+            ],
+            datasets: [{
+                label: 'Browser Usage',
+                data: [
+                    Math.floor(Math.random() * 100), // Random value for Google Chrome
+                    Math.floor(Math.random() * 100), // Random value for Mozilla Firefox
+                    Math.floor(Math.random() * 100), // Random value for Microsoft Edge
+                    Math.floor(Math.random() * 100), // Random value for Opera Browser
+                    Math.floor(Math.random() * 100), // Random value for UC Browser
+                    Math.floor(Math.random() * 100), // Random value for Apple Safari
+                    Math.floor(Math.random() * 100)  // Random value for Other Browser
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(201, 203, 207, 1)'
+                ],
+                borderWidth: 1
+            }]
         };
 
-        // Add event listener to auto-save note as user types
-        document.getElementById("noteInput").addEventListener("input", autoSaveNote);
+        const trafficBrowserChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        enabled: true,
+                    },
+                },
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 </body>
+
 </html>
