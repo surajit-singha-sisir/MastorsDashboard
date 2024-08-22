@@ -3,6 +3,8 @@ window.addEventListener('load', function () {
     trafficSourcePie();
     openTab();
     trafficOverview();
+    tooltipRights();
+    saveNote();
 })
 
 
@@ -52,7 +54,7 @@ function openTab() {
 
 // TRAFFIC SOURCE CHART
 function trafficSourcePie() {
-    
+
     const ctx = document.getElementById('traffic-source-PieChart').getContext('2d');
     const myPieChart = new Chart(ctx, {
         type: 'pie',
@@ -99,7 +101,7 @@ function trafficSourcePie() {
 // TRAFFIC OVERVIEW CHART
 function trafficOverview() {
     const ctx = document.getElementById('traffic-tracker-PieChart').getContext('2d');
-const myPieChart = new Chart(ctx, {
+    const myPieChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -138,4 +140,109 @@ const myPieChart = new Chart(ctx, {
         }
     });
 
+}
+
+
+
+function tooltipRights() {
+    const tooltips = document.querySelectorAll('.tooltip-Right');
+
+    tooltips.forEach(tooltip => {
+        const tooltipText = tooltip.querySelector('.tooltiptext');
+
+        let offsetX = 15; // X distance from the cursor
+        let offsetY = 15; // Y distance from the cursor
+
+        tooltip.addEventListener('mousemove', function (e) {
+            // Show tooltip and position it
+            tooltip.classList.add('active');
+
+            // Get cursor position relative to the tooltip container
+            const rect = tooltip.getBoundingClientRect();
+            const cursorX = e.clientX - rect.left;
+            const cursorY = e.clientY - rect.top;
+
+            // Set tooltip position with offsets
+            tooltipText.style.left = `${cursorX + offsetX}px`;
+            tooltipText.style.top = `${cursorY + offsetY}px`;
+
+            // Adjust tooltip position if it goes out of viewport
+            adjustTooltipPosition(tooltipText);
+        });
+
+        tooltip.addEventListener('mouseleave', function () {
+            // Hide tooltip when mouse leaves
+            tooltip.classList.remove('active');
+        });
+
+        // Adjust tooltip position if it goes out of viewport
+        function adjustTooltipPosition(tooltipText) {
+            const tooltipRect = tooltipText.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Check if tooltip is out of bounds and adjust
+            if (tooltipRect.right > viewportWidth) {
+                tooltipText.style.left = `${viewportWidth - tooltipRect.width - 10}px`;
+            }
+            if (tooltipRect.bottom > viewportHeight) {
+                tooltipText.style.top = `${viewportHeight - tooltipRect.height - 10}px`;
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            // Adjust tooltip position on window resize
+            if (tooltip.classList.contains('active')) {
+                adjustTooltipPosition(tooltipText);
+            }
+        });
+    });
+}
+
+function saveNote() {
+    // Function to set a cookie
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    // Function to get a cookie by name
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    // Function to save the note automatically
+    function autoSaveNote() {
+        const noteInput = document.getElementById("noteInput");
+        setCookie("userNote", noteInput.value, 7); // Save for 7 days
+    }
+
+    // Function to load the note from the cookie
+    function loadNote() {
+        const noteInput = document.getElementById("noteInput");
+        const savedNote = getCookie("userNote");
+        if (savedNote) {
+            noteInput.value = savedNote;
+        }
+    }
+
+    // Load the note when the page loads
+    window.onload = function () {
+        
+    };
+
+    // Add event listener to auto-save note as user types
+    document.getElementById("noteInput").addEventListener("input", autoSaveNote);
 }

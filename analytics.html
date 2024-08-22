@@ -305,10 +305,11 @@
                                     <!-- COLUMN 1 -->
                                     <div class="col-1">
                                         <div class="row-1">
-                                            <span>
+                                            <span class="tooltip-Right">
                                                 <img src="icons/analytics/desktop.svg" alt="">
                                                 <p>Desktop</p>
                                                 <p id="traffic-tracker-desktop">20%</p>
+                                                <span class="tooltiptext">Tooltip text</span>
                                             </span>
                                             <span>
                                                 <img src="icons/analytics/android.svg" alt="">
@@ -344,12 +345,16 @@
                         </div>
                     </div>
                 </div>
-
-                <br><br>
             </div>
         </div>
 
-
+        <div class="inputNoteSaver">
+            <span>
+                <p>Keep Note</p>
+                <img src="icons/analytics/minimize.svg" alt="">
+            </span>
+            <textarea id="noteInput" rows="10" placeholder="Type your note here..."></textarea>
+        </div>
 </body>
 <script src="dashboard-mastors.js"></script>
 <script src="dashboard-addNews.js"></script>
