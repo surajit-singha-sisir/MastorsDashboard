@@ -1,89 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizontal Bar Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Visitor Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
-
 <body>
-    <div class="browser-col">
-        <span class="traffic-browser-chart">
-            <canvas id="traffic-browser-chart"></canvas>
-        </span>
-    </div>
+    <div id="map-today"></div>
 
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        const ctx = document.getElementById('traffic-browser-chart').getContext('2d');
+        // Initialize the map
+        var map = L.map('map-today').setView([20, 0], 2); // Centered globally with a zoom level of 2
 
-        const chartData = {
-            labels: [
-                'Google Chrome',
-                'Mozilla Firefox',
-                'Microsoft Edge',
-                'Opera Browser',
-                'UC Browser',
-                'Apple Safari',
-                'Other Browser'
-            ],
-            datasets: [{
-                label: 'Browser Usage',
-                data: [
-                    Math.floor(Math.random() * 100), // Random value for Google Chrome
-                    Math.floor(Math.random() * 100), // Random value for Mozilla Firefox
-                    Math.floor(Math.random() * 100), // Random value for Microsoft Edge
-                    Math.floor(Math.random() * 100), // Random value for Opera Browser
-                    Math.floor(Math.random() * 100), // Random value for UC Browser
-                    Math.floor(Math.random() * 100), // Random value for Apple Safari
-                    Math.floor(Math.random() * 100)  // Random value for Other Browser
-                ],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(201, 203, 207, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
+        // Add a tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-        const trafficBrowserChart = new Chart(ctx, {
-            type: 'bar',
-            data: chartData,
-            options: {
+        // Country visitor data
+        var visitorData = [
+            { country: 'Bangladesh', count: 110 },
+            { country: 'India', count: 510 },
+            { country: 'USA', count: 2123 },
+            { country: 'Russia', count: 5514 },
+            { country: 'Bhutan', count: 210 }
+            // Add more data as needed
+        ];
 
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                },
-                indexAxis: 'y',
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    }
-                }
-            }
+        // Function to get approximate coordinates for countries
+        function getCountryCoordinates(country) {
+            const coordinates = {
+                'Bangladesh': [23.685, 90.3563],
+                'India': [20.5937, 78.9629],
+                'USA': [37.0902, -95.7129],
+                'Russia': [61.5240, 105.3188],
+                'Bhutan': [27.5142, 90.4336]
+                // Add coordinates for more countries as needed
+            };
+            return coordinates[country] || [0, 0]; // Default to [0, 0] if country not found
+        }
+
+        // Add markers to the map with popups
+        visitorData.forEach(function(visitor) {
+            const coords = getCountryCoordinates(visitor.country);
+            L.marker(coords)
+                .bindPopup('<b>Country:</b> ' + visitor.country + '<br><b>Visitor Count:</b> ' + visitor.count)
+                .addTo(map);
         });
     </script>
 </body>
-
 </html>

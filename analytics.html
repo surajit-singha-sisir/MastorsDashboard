@@ -17,8 +17,12 @@
     <script src="navMenu.js"></script>
     <script src="draft.js"></script>
     <script src="analytics.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
+    <!-- <script src="https://d3js.org/topojson.v1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 
 </head>
@@ -445,23 +449,261 @@
                                         </span>
                                     </div>
                                     <div class="browser-col">
-                                        <div class="browser-col">
-                                            <span class="traffic-browser-chart">
-                                                <canvas id="traffic-browser-chart"></canvas>
-                                            </span>
-                                        </div>
-                                        
+                                        <span class="traffic-browser-chart">
+                                            <canvas id="traffic-browser-chart"></canvas>
+                                        </span>
+
                                     </div>
                                 </div>
 
 
-                                <div class="content">Content for Tab 4</div>
+                                <div class="content ipaddress">
+                                    <img src="icons/analytics/lock.svg" alt="">
+                                    <h3>Upgrade to Professional to see IP details.</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+            </div>
+
+            <br>
+            <div class="traffic-loc-act">
+                <div class="location-top-bottom">
+                    <div class="social-title-bar">
+                        <h3>Traffic Location Tracker</h3>
+                        <span>
+                            <img src="icons/analytics/download.svg" alt="">
+                            <img src="icons/analytics/full-screen.svg" alt="">
+                        </span>
+                    </div>
+                    <section class="traffic-loc-tracker traffic-top">
+
+                        <div class="location-tab">
+                            <button class="tablinks">Today</button>
+                            <button class="tablinks">Week</button>
+                            <button class="tablinks">Month</button>
+                            <button class="tablinks">Year</button>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-today"></div>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-week"></div>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-month"></div>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-year"></div>
+                        </div>
+
+                        <hr>
+                        <fieldset>
+                            <legend>Top Countries</legend>
+                            <div class="topCountry-whole-div">
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Bangladesh</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-1"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+
+                                            <p class="percentage-bar-11">60%</p>
+
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-2"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+
+                                            <p class="percentage-bar-12">60%</p>
+
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-3"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+                                            <p class="percentage-bar-13">60%</p>
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-4"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+                                            <p class="percentage-bar-14">60%</p>
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-5"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+
+                                            <p class="percentage-bar-15">60%</p>
+
+                                        </output>
+                                    </div>
+                                </span>
+                            </div>
+
+                        </fieldset>
+
+                    </section>
+                    <section class="traffic-bottom">
+
+                    </section>
+                </div>
+                <div class="activities-top-bottom">
+                    <section class="map-activity">
+                        <!-- TITLE BAR -->
+                        <div class="social-title-bar">
+                            <h3>Activities</h3>
+                            <img src="icons/analytics/download.svg" alt="">
+                        </div>
+                        <div class="act-title">
+                            <p>Social Media Shares</p>
+                            <select name="" id="social-media-options">
+                                <option value="Today">Today</option>
+                                <option value="Week">Week</option>
+                                <option value="Month">Month</option>
+                                <option value="Year">Year</option>
+                            </select>
+                        </div>
+
+                        <section class="social-media-share-chart">
+                            <canvas id="social-share-chart"></canvas>
+                        </section>
+                    </section>
+                    <hr>
+                    <section class="map-activity">
+                        <!-- TITLE BAR -->
+                        <div class="social-title-bar">
+                            <h3>Comment Analysis</h3>
+                            <img src="icons/analytics/download.svg" alt="">
+                        </div>
+
+                        <section class="comment-analysis-chart">
+                            <canvas id="comment-analysis-chart"></canvas>
+                        </section>
+                    </section>
+                </div>
+            </div>
+
+            <div class="periodic-analysis">
+                <!-- TITLE -->
+                <div class="periodic-top-title">
+                    <p>PERIODIC ANALYSIS</p>
+                    <span>
+                        <img src="icons/analytics/download.svg" alt="">
+                        <img src="icons/analytics/full-screen.svg" alt="">
+                    </span>
+                </div>
+
+                <!-- PERIODIC TOP TABS -->
+                <section class="periodic-top-tabs">
+
+                    <div class="periodic-top-tab">
+                        <button class="tablinks">VISITORS</button>
+                        <button class="tablinks">VIEWS</button>
+                        <button class="tablinks">HIT POSTS</button>
+                        <button class="tablinks">ENGAGEMENTS</button>
+                    </div>
+                    <!-- 1ST TAB -->
+                    <div class="periodic-top-tabcontent">
+
+                        <!-- PERIODIC LAST TABS -->
+                        <section class="periodic-last-tabs">
+
+                            <div class="periodic-last-tab">
+                                <button class="tablinks">Last Day</button>
+                                <button class="tablinks">Week</button>
+                                <button class="tablinks">Month</button>
+                                <button class="tablinks">Year</button>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">PREVIOUS DAY</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-last-day-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">WEEK</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-week-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">Month</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-month-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="periodic-top-tabcontent">
+                        <!-- PERIODIC LAST TABS -->
+                        <section class="periodic-last-tabs">
+                            <div class="periodic-last-tab">
+                                <button class="tablinks">Last Day</button>
+                                <button class="tablinks">Week</button>
+                                <button class="tablinks">Month</button>
+                                <button class="tablinks">Year</button>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">PREVIOUS DAY</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-last-day-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">WEEK</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-week-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">Month</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-month-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="periodic-top-tabcontent">
+                    </div>
+                    <div class="periodic-top-tabcontent">
+                    </div>
+
+                </section>
             </div>
         </div>
+
+
         <br><br><br><br><br><br>
         <br><br><br><br><br><br>
 
@@ -473,13 +715,14 @@
             </span>
             <textarea id="noteInput" rows="10" placeholder="Type your note here..."></textarea>
         </div>
+
 </body>
 <script src="dashboard-mastors.js"></script>
 <script src="dashboard-addNews.js"></script>
 <script src="navMenu.js"></script>
 <script src="draft.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
-
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="analytics.js"></script>
 
 </html>
