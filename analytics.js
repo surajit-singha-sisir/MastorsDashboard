@@ -256,7 +256,6 @@ function trafficDevicesTabs() {
   const contents = document.querySelectorAll(
     ".horizontal-tabs-container .hr-content"
   );
-  print(contents);
 
   // Function to deactivate all tabs and contents
   function deactivateAll() {
@@ -457,9 +456,9 @@ function locationTrackerMap() {
       L.marker(coords)
         .bindPopup(
           "<b>Country:</b> " +
-            visitor.country +
-            "<br><b>Visitor Count:</b> " +
-            visitor.count
+          visitor.country +
+          "<br><b>Visitor Count:</b> " +
+          visitor.count
         )
         .addTo(map);
     });
@@ -505,9 +504,9 @@ function locationTrackerMap() {
       L.marker(coords)
         .bindPopup(
           "<b>Country:</b> " +
-            visitor.country +
-            "<br><b>Visitor Count:</b> " +
-            visitor.count
+          visitor.country +
+          "<br><b>Visitor Count:</b> " +
+          visitor.count
         )
         .addTo(map);
     });
@@ -553,9 +552,9 @@ function locationTrackerMap() {
       L.marker(coords)
         .bindPopup(
           "<b>Country:</b> " +
-            visitor.country +
-            "<br><b>Visitor Count:</b> " +
-            visitor.count
+          visitor.country +
+          "<br><b>Visitor Count:</b> " +
+          visitor.count
         )
         .addTo(map);
     });
@@ -601,9 +600,9 @@ function locationTrackerMap() {
       L.marker(coords)
         .bindPopup(
           "<b>Country:</b> " +
-            visitor.country +
-            "<br><b>Visitor Count:</b> " +
-            visitor.count
+          visitor.country +
+          "<br><b>Visitor Count:</b> " +
+          visitor.count
         )
         .addTo(map);
     });
@@ -869,3 +868,21 @@ function periodicAnalysis() {
   }
   periodiVisitorLastDay();
 }
+
+function overviewToday() {
+
+
+  var xml = new XMLHttpRequest();
+  xml.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const data = this.responseText;
+      console.log(data);
+      console.log('asfasf');
+    };
+  };
+
+  xml.open('GET', 'serverdata.txt', true);
+  xml.send();
+
+}
+overviewToday();
