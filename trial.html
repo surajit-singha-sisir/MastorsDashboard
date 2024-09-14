@@ -207,9 +207,9 @@
             var data = JSON.parse(this.responseText);
 
 
-            // localStorage.setItem('draftData', JSON.stringify(data));
-            // const storedData = JSON.parse(localStorage.getItem('draftData'));
-            // print(storedData);
+            localStorage.setItem('draftData', JSON.stringify(data));
+            const storedData = JSON.parse(localStorage.getItem('draftData'));
+            print(storedData);
 
             const tableRow = document.querySelectorAll('.tableRow');
 
