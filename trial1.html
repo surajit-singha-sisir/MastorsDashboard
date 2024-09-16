@@ -3,52 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visitor Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-</head>
-<body>
-    <div id="map-today"></div>
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        // Initialize the map
-        var map = L.map('map-today').setView([20, 0], 2); // Centered globally with a zoom level of 2
-
-        // Add a tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Country visitor data
-        var visitorData = [
-            { country: 'Bangladesh', count: 110 },
-            { country: 'India', count: 510 },
-            { country: 'USA', count: 2123 },
-            { country: 'Russia', count: 5514 },
-            { country: 'Bhutan', count: 210 }
-            // Add more data as needed
-        ];
-
-        // Function to get approximate coordinates for countries
-        function getCountryCoordinates(country) {
-            const coordinates = {
-                'Bangladesh': [23.685, 90.3563],
-                'India': [20.5937, 78.9629],
-                'USA': [37.0902, -95.7129],
-                'Russia': [61.5240, 105.3188],
-                'Bhutan': [27.5142, 90.4336]
-                // Add coordinates for more countries as needed
-            };
-            return coordinates[country] || [0, 0]; // Default to [0, 0] if country not found
+    <title>Advanced Password Input</title>
+    <style>
+        .password-container {
+            margin: 20px 0;
         }
 
-        // Add markers to the map with popups
-        visitorData.forEach(function(visitor) {
-            const coords = getCountryCoordinates(visitor.country);
-            L.marker(coords)
-                .bindPopup('<b>Country:</b> ' + visitor.country + '<br><b>Visitor Count:</b> ' + visitor.count)
-                .addTo(map);
-        });
+        .password-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .password-visibility-toggle {
+            position: relative;
+            display: inline-block;
+        }
+
+        .password-visibility-toggle img {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 20px;
+        }
+
+        /* Password strength indicator */
+        .password-strength {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .password-strength div {
+            width: 30%;
+            height: 5px;
+            background-color: lightgray;
+            transition: background-color 0.3s;
+        }
+
+        .password-strength .weak {
+            background-color: red;
+        }
+
+        .password-strength .medium {
+            background-color: orange;
+        }
+
+        .password-strength .strong {
+            background-color: green;
+        }
+
+        /* Password suggestions */
+        .password-suggestions {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+        }
+
+        .password-suggestions p {
+            cursor: pointer;
+            color: blue;
+            margin: 0;
+        }
+
+        .password-suggestions p:hover {
+            text-decoration: underline;
+        }
+
+        .validation-rules {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .validation-rules span.valid {
+            color: green;
+        }
+
+        .validation-rules span.invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="password-container">
+        <label for="password">Password:</label>
+        <div class="password-visibility-toggle">
+            <input type="password" id="password" placeholder="Enter your password" oninput="checkPasswordStrength()" required>
+            <img id="show-icon" src="icons/eye.svg" alt="Show" onclick="togglePassword()">
+            <img id="hide-icon" class="hide" src="icons/eye-off.svg" alt="Hide" onclick="togglePassword()" style="display: none;">
+        </div>
+
+        <!-- Password Strength Indicator -->
+        <div class="password-strength">
+            <div id="strength-weak"></div>
+            <div id="strength-medium"></div>
+            <div id="strength-strong"></div>
+        </div>
+
+
+        <!-- Password Validation -->
+        <div class="validation-rules">
+            <span id="min-length" class="invalid">At least 8 characters</span><br>
+            <span id="special-char" class="invalid">At least 1 special character</span><br>
+            <span id="uppercase-char" class="invalid">At least 1 uppercase letter</span><br>
+            <span id="number-char" class="invalid">At least 1 number</span>
+        </div>
+    </div>
+
+    <script>
+        // Password visibility toggle
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const showIcon = document.getElementById('show-icon');
+            const hideIcon = document.getElementById('hide-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showIcon.style.display = 'none';
+                hideIcon.style.display = 'inline';
+            } else {
+                passwordInput.type = 'password';
+                showIcon.style.display = 'inline';
+                hideIcon.style.display = 'none';
+            }
+        }
+
+        // Password strength checker
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthWeak = document.getElementById('strength-weak');
+            const strengthMedium = document.getElementById('strength-medium');
+            const strengthStrong = document.getElementById('strength-strong');
+
+            const minLength = document.getElementById('min-length');
+            const specialChar = document.getElementById('special-char');
+            const uppercaseChar = document.getElementById('uppercase-char');
+            const numberChar = document.getElementById('number-char');
+
+            // Reset strength colors
+            strengthWeak.classList.remove('weak', 'medium', 'strong');
+            strengthMedium.classList.remove('medium', 'strong');
+            strengthStrong.classList.remove('strong');
+
+            // Password length validation
+            if (password.length >= 8) {
+                minLength.classList.add('valid');
+                minLength.classList.remove('invalid');
+                strengthWeak.classList.add('weak');
+            } else {
+                minLength.classList.add('invalid');
+                minLength.classList.remove('valid');
+            }
+
+            // Special character validation
+            if (/[!@#$%^&*]/.test(password)) {
+                specialChar.classList.add('valid');
+                specialChar.classList.remove('invalid');
+                strengthMedium.classList.add('medium');
+            } else {
+                specialChar.classList.add('invalid');
+                specialChar.classList.remove('valid');
+            }
+
+            // Uppercase letter validation
+            if (/[A-Z]/.test(password)) {
+                uppercaseChar.classList.add('valid');
+                uppercaseChar.classList.remove('invalid');
+                strengthStrong.classList.add('strong');
+            } else {
+                uppercaseChar.classList.add('invalid');
+                uppercaseChar.classList.remove('valid');
+            }
+
+            // Number validation
+            if (/[0-9]/.test(password)) {
+                numberChar.classList.add('valid');
+                numberChar.classList.remove('invalid');
+            } else {
+                numberChar.classList.add('invalid');
+                numberChar.classList.remove('valid');
+            }
+        }
+
+        // Set password suggestion
+        function setPassword(element) {
+            const passwordInput = document.getElementById('password');
+            passwordInput.value = element.textContent;
+            checkPasswordStrength(); // Recheck the strength when setting a password
+        }
     </script>
 </body>
 </html>
