@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     phoneNumber();
     profilePicture();
     userXHR();
+    userSearch();
+    exportToPDF();
 });
 
 function userSorter() {
@@ -382,6 +384,7 @@ function userXHR() {
         firstName.addEventListener('input', function () {
             toastMessage.textContent = firstName.value + ' ' + 'Added successfully';
         });
+        print(firstName)
 
         function showToast() {
             const toast = document.getElementById('usermenutoast');
@@ -418,29 +421,81 @@ function userXHR() {
             clearInterval(progressInterval);
         }
     }
+}
+
+
+function userSearch() {
+
+
+
+    document.querySelector('.searchBar input').addEventListener('input', function (e) {
+        const searchText = e.target.value.toLowerCase();
+        const tableRows = document.querySelectorAll('.users-table tbody tr');
+
+        tableRows.forEach(function (row) {
+            let rowContainsMatch = false;
+
+            // Loop through each cell (td) in the row
+            Array.from(row.cells).forEach(function (cell) {
+                const cellText = cell.textContent.toLowerCase();
+
+                // Check if the cell contains the search text
+                if (searchText && cellText.includes(searchText)) {
+                    rowContainsMatch = true; // Mark that the row should be shown
+
+                    // Highlight the matching part
+                    const regex = new RegExp(`(${searchText})`, 'gi');
+                    cell.innerHTML = cell.textContent.replace(regex, '<span class="highlight">$1</span>');
+                } else {
+                    // Reset the cell content if it doesn't match
+                    cell.innerHTML = cell.textContent;
+                }
+            });
+
+            // Show the row if input is empty or if there's a match
+            row.style.display = searchText === '' || rowContainsMatch ? '' : 'none';
+        });
+    });
+
 
 
 }
 
+function exportToPDF() {
+    document.getElementById('export-pdf').addEventListener('click', function () {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
+        const table = document.querySelector('.users-table');
 
-// Get the input field and table
-const searchInput = document.getElementById('searchUserInput');
-const table = document.getElementById('usersTable');
+        let tableRows = [];
+        let tableHeadings = [];
 
-// Add event listener for keyup on input
-searchInput.addEventListener('keyup', function () {
-    const searchValue = searchInput.value.toLowerCase();
-    const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+        // Get table headings
+        const headings = table.querySelectorAll('thead th');
+        headings.forEach(function (heading) {
+            tableHeadings.push(heading.textContent);
+        });
 
-    for (let i = 0; i < rows.length; i++) {
-        const row = rows[i];
-        const rowText = row.textContent.toLowerCase();
+        // Get table rows
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(function (row) {
+            let rowData = [];
+            const cells = row.querySelectorAll('td');
+            cells.forEach(function (cell) {
+                rowData.push(cell.textContent);
+            });
+            tableRows.push(rowData);
+        });
 
-        if (rowText.includes(searchValue)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    }
-});
+        // Add the headings and rows to the PDF
+        doc.autoTable({
+            head: [tableHeadings],
+            body: tableRows,
+        });
+
+        // Save the PDF
+        doc.save('users-table.pdf');
+    });
+
+}

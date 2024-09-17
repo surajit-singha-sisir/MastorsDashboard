@@ -591,6 +591,11 @@ form .submitandloading .user-loading-3 {
     transition: width 0.1s linear;
 }
 
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
 @media screen and (min-width: 1920px) {
     .add-user-modal {
         width: 40vw;
