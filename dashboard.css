@@ -326,11 +326,11 @@ body {
     height: 100%;
 }
 
-#dom-content-loader {
+#dom-content-loader, #dom-content-loader-2 {
     width: 100vw;
     height: 100vh;
     background-color: #000000d2;
-    z-index: 5;
+    z-index: 6;
     position: fixed;
 }
 

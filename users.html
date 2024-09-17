@@ -164,16 +164,16 @@
             <div class="add-user-block">
                 <div class="left-side">
                     <!-- ADD USERS -->
-                    <div class="add-users" onclick="usersOpenModal()">
+                    <button class="add-users" onclick="usersOpenModal()">
                         <img src="icons/plus-user.svg" alt="">
                         <p>Add User</p>
-                    </div>
+                    </button>
 
                     <!-- PDF -->
-                    <div class="add-users">
+                    <button class="add-users">
                         <img src="icons/pdf.svg" alt="">
                         <p>Export</p>
-                    </div>
+                    </button>
                 </div>
                 <div class="right-side">
                     <div class="searchBar">
@@ -292,10 +292,10 @@
 
 
 
-
             <!-- Add User Modal Structure -->
             <div id="addUserModalOverlay" class="add-user-modal-overlay">
                 <div id="add-user-modal" class="add-user-modal">
+
                     <section class="add-user-input-data">
                         <h3>
                             <img src="icons/user-icon.svg" alt="">
@@ -303,7 +303,10 @@
                         </h3>
                         <button class="add-user-close-btn" onclick="usersCloseModal()">Close</button>
                     </section>
-                    <form action="#" class="add-user-form">
+
+
+                    <form id="addUserForm" method="post" action="#" class="add-user-form">
+
                         <div class="user-input-label-data full-name">
                             <label class="required" for="fname" title="Required field">First Name:</label>
                             <input type="text" name="fname" placeholder="Your first name" required>
@@ -340,7 +343,34 @@
                             <label class="required" for="phone" title="Required field">Phone Number:</label>
                             <input id="phoneNumber" type="tel" name="phone" placeholder="Your phone number" required>
                         </div>
-                        <input type="submit" name="add-user-submit" id="add-user-submit">
+                        <div class="user-input-label-data user-role">
+                            <label class="required" for="phone" title="Required field">User Role:</label>
+                            <select name="userRole" id="userRole" class="userRole">
+                                <option value="userRole-select" disabled selected>--Select--</option>
+                                <option value="userRole-admin">Admin</option>
+                                <option value="userRole-editor">Editor</option>
+                                <option value="userRole-contributor">Contributor</option>
+                                <option value="userRole-analysts">Analysts</option>
+                                <option value="userRole-subscriber">Subscriber</option>
+                            </select>
+                        </div>
+
+                        <div class="user-input-label-data profile-picture">
+                            <label class="required" for="profilePicture" title="Required field">Profile Picture</label>
+                            <input id="profilePictureNumber" type="file" name="profilePicture"
+                                placeholder="Your Profile Picture" required>
+                            <div class="profile-picture-preview hide">
+                                <img id="profilePicturePreview" src="#" alt="">
+                            </div>
+                        </div>
+
+                        <section class="submitandloading">
+                            <div class="user-loading-3 hide">
+                                <img src="icons/loading-3.svg" alt="">
+                            </div>
+                            <input type="submit" name="add-user-submit" id="add-user-submit">
+                        </section>
+
                     </form>
                 </div>
             </div>
@@ -349,7 +379,14 @@
                 DASHBOARD MAIN END
         ----------------------------------->
     </div>
-
+    <!-- Toast notification with close button and progress bar -->
+    <div id="usermenutoast" class="usermenutoast">
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <span>New User Saved Successfully</span>
+        <button class="close-btn" onclick="hideToast()">&#x2715;</button>
+    </div>
 </body>
 
 

@@ -204,14 +204,31 @@
     left: 50%;
     transform: translate(-50%, -100%);
     width: 70vw;
-    height: auto;
+    height: 30rem;
+    overflow-y: scroll;
     background-color: var(--div-color);
-    padding: 1rem;
+    padding: 0 1rem;
     box-shadow: 0px 5px 15px #0000004d;
     border-radius: 10px;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+/* DRAFT TABLE SCROLLER */
+.add-user-modal::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: var(--sub-div-color);
+}
+
+.add-user-modal::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 2rem;
+}
+
+
+
+
+
 
 .add-user-modal-overlay.active {
     opacity: 1;
@@ -233,13 +250,17 @@
 }
 
 .add-user-input-data {
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: row;
     gap: 1rem;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1rem;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--border-color);
+    background-color: var(--div-color);
+    z-index: 10;
 }
 
 .add-user-input-data h3 {
@@ -261,6 +282,7 @@
     gap: 0.5rem;
     position: relative;
 }
+
 .add-user-form .user-input-label-data .password-tips {
     display: none;
     flex-direction: column;
@@ -275,6 +297,7 @@
     top: -3rem;
     z-index: 5;
 }
+
 .add-user-form .user-input-label-data .password-tips::before {
     content: '';
     position: absolute;
@@ -285,26 +308,30 @@
     clip-path: polygon(100% 0, 0 50%, 100% 100%);
     background-color: var(--border-color);
 }
+
 .add-user-form .user-input-label-data .password-tips::after {
     content: '';
     position: absolute;
     left: -0.9rem;
     top: 45%;
     width: 1rem;
-    height: 1rem;clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    height: 1rem;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
     background-color: var(--sub-div-color);
 }
 
 .add-user-form .user-input-label-data .required {
     position: relative;
 }
-.add-user-form .user-input-label-data .required .user-tooltip{
+
+.add-user-form .user-input-label-data .required .user-tooltip {
     position: absolute;
     left: 5.5rem;
     font-size: 0.6rem;
     cursor: pointer;
 }
-.add-user-form .user-input-label-data .required .user-tooltip::after{
+
+.add-user-form .user-input-label-data .required .user-tooltip::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -316,9 +343,11 @@
     z-index: -1;
     cursor: pointer;
 }
-.add-user-form .user-input-label-data .required:hover .user-tooltip::after{
+
+.add-user-form .user-input-label-data .required:hover .user-tooltip::after {
     background-color: var(--active-color);
 }
+
 .add-user-form .user-input-label-data .required:hover .password-tips {
     display: flex;
 }
@@ -331,7 +360,8 @@
     font-size: 1.2rem;
     color: red;
 }
-.add-user-form .user-input-label-data p:first-child{
+
+.add-user-form .user-input-label-data p:first-child {
     font-weight: bold;
     font-size: var(--small-font);
     position: absolute;
@@ -366,6 +396,7 @@
     background: var(--gredient-strength-active);
     transition: all 0.3s ease;
 }
+
 .passwordStrength-active .animate-line {
     position: absolute;
     bottom: 0;
@@ -374,10 +405,12 @@
     background: radial-gradient(#ffffff, #ffffff00);
     animation: passwordStrength 5s ease infinite;
 }
+
 @keyframes passwordStrength {
     0% {
         left: -200%;
     }
+
     100% {
         left: 200%;
     }
@@ -400,6 +433,7 @@
     height: 0.908rem;
     margin-bottom: -1px;
 }
+
 #add-user-submit {
     background-color: var(--div-color);
     border: 1px solid var(--border-color);
@@ -408,13 +442,166 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 #add-user-submit:hover {
     background-color: var(--active-color);
     transition: all 0.3s ease;
 }
 
+/* ROLES */
+.user-input-label-data .userRole {
+    background-color: var(--div-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
 
+/* PROFILE PICTURE */
+.user-input-label-data.profile-picture {
+    margin: 20px 0;
+    text-align: center;
+}
 
+input[type="file"] {
+    display: none;
+}
+
+.profile-picture-preview {
+    margin-top: 10px;
+}
+
+.profile-picture-preview img {
+    max-width: 150px;
+    max-height: 150px;
+    border: 2px solid var(--border-color);
+}
+
+.profile-picture-drop-zone {
+    width: auto;
+    height: 5rem;
+    border: 1px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+.profile-picture-drop-zone:hover {
+    background-color: #272727;
+}
+
+.profile-picture-drop-zone.dragover {
+    border-color: #02ff52;
+}
+
+.overflow-y {
+    overflow: hidden;
+}
+
+form .submitandloading {
+    position: relative;
+    display: flex;
+}
+
+form .submitandloading .user-loading-3 {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.user-loading-3 img {
+    width: 2rem;
+}
+
+#add-user-submit {
+    width: 100%;
+}
+
+/* TOAST NOTIFICATION */
+/* Toast container */
+.usermenutoast {
+    visibility: hidden;
+    min-width: 300px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    border-radius: 0 0 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.usermenutoast.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Cross button */
+.usermenutoast .close-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #5e53d2;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: -1rem;
+    line-height: 0;
+    align-self: flex-end;
+}
+
+.usermenutoast .close-btn:hover {
+    color: #fb0000;
+}
+
+/* Progress bar */
+.usermenutoast .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.usermenutoast .progress-bar div {
+    height: 100%;
+    background-color: #ff9800;
+    width: 0;
+    transition: width 0.1s linear;
+}
+
+@media screen and (min-width: 1920px) {
+    .add-user-modal {
+        width: 40vw;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .add-user-modal {
+        width: 50vw;
+    }
+}
 
 @media screen and (max-width: 1080px) {
     .add-user-block {
@@ -423,5 +610,9 @@
 
     .right-side {
         width: 100%;
+    }
+
+    .add-user-modal {
+        width: 80vw;
     }
 }

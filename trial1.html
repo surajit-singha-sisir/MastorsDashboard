@@ -1,200 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Password Input</title>
+    <title>Auto Toast with Progress Bar</title>
     <style>
-        .password-container {
-            margin: 20px 0;
-        }
-
-        .password-container input {
-            width: 100%;
-            padding: 10px;
+        /* Toast container */
+        .usermenutoast {
+            visibility: hidden;
+            min-width: 300px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            border-radius: 0 0 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
             font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .password-visibility-toggle {
-            position: relative;
-            display: inline-block;
-        }
-
-        .password-visibility-toggle img {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-            width: 20px;
-        }
-
-        /* Password strength indicator */
-        .password-strength {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.5s ease, visibility 0s linear 0.5s;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .password-strength div {
-            width: 30%;
-            height: 5px;
-            background-color: lightgray;
-            transition: background-color 0.3s;
-        }
-
-        .password-strength .weak {
-            background-color: red;
-        }
-
-        .password-strength .medium {
-            background-color: orange;
-        }
-
-        .password-strength .strong {
-            background-color: green;
-        }
-
-        /* Password suggestions */
-        .password-suggestions {
-            display: flex;
+            align-items: center;
             flex-direction: column;
-            margin-top: 5px;
         }
 
-        .password-suggestions p {
+        .usermenutoast.show {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Cross button */
+        .usermenutoast .close-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #5e53d2;
             cursor: pointer;
-            color: blue;
-            margin: 0;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            top: -1rem;
+            line-height: 0;
+            align-self: flex-end;
         }
 
-        .password-suggestions p:hover {
-            text-decoration: underline;
+        .usermenutoast .close-btn:hover {
+            color: #fb0000;
         }
 
-        .validation-rules {
-            font-size: 12px;
-            color: #999;
+        /* Progress bar */
+        .usermenutoast .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
         }
 
-        .validation-rules span.valid {
-            color: green;
-        }
-
-        .validation-rules span.invalid {
-            color: red;
+        .usermenutoast .progress-bar div {
+            height: 100%;
+            background-color: #ff9800;
+            width: 0;
+            transition: width 0.1s linear;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="password-container">
-        <label for="password">Password:</label>
-        <div class="password-visibility-toggle">
-            <input type="password" id="password" placeholder="Enter your password" oninput="checkPasswordStrength()" required>
-            <img id="show-icon" src="icons/eye.svg" alt="Show" onclick="togglePassword()">
-            <img id="hide-icon" class="hide" src="icons/eye-off.svg" alt="Hide" onclick="togglePassword()" style="display: none;">
+    <!-- Toast notification with close button and progress bar -->
+    <div id="usermenutoast" class="usermenutoast">
+        <div class="progress-bar">
+            <div id="progress"></div>
         </div>
-
-        <!-- Password Strength Indicator -->
-        <div class="password-strength">
-            <div id="strength-weak"></div>
-            <div id="strength-medium"></div>
-            <div id="strength-strong"></div>
-        </div>
-
-
-        <!-- Password Validation -->
-        <div class="validation-rules">
-            <span id="min-length" class="invalid">At least 8 characters</span><br>
-            <span id="special-char" class="invalid">At least 1 special character</span><br>
-            <span id="uppercase-char" class="invalid">At least 1 uppercase letter</span><br>
-            <span id="number-char" class="invalid">At least 1 number</span>
-        </div>
+        <span>This is a colorful toast notification with progress bar</span>
+        <button class="close-btn" onclick="hideToast()">&#x2715;</button>
     </div>
 
     <script>
-        // Password visibility toggle
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const showIcon = document.getElementById('show-icon');
-            const hideIcon = document.getElementById('hide-icon');
+        let toastTimeout;
+        let progressInterval;
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                showIcon.style.display = 'none';
-                hideIcon.style.display = 'inline';
-            } else {
-                passwordInput.type = 'password';
-                showIcon.style.display = 'inline';
-                hideIcon.style.display = 'none';
-            }
+        function showToast() {
+            const toast = document.getElementById('usermenutoast');
+            const progress = document.getElementById('progress');
+
+            // Reset progress bar width
+            progress.style.width = '0%';
+
+            toast.classList.add('show');
+
+            // Gradually increase the progress bar width
+            let width = 0;
+            progressInterval = setInterval(() => {
+                if (width < 100) {
+                    width += 1; // Increase width by 1% per interval
+                    progress.style.width = width + '%';
+                } else {
+                    clearInterval(progressInterval);
+                }
+            }, 50); // Update progress every 50ms (5 seconds in total)
+
+            // Hide the toast after 5 seconds
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 5000);
         }
 
-        // Password strength checker
-        function checkPasswordStrength() {
-            const password = document.getElementById('password').value;
-            const strengthWeak = document.getElementById('strength-weak');
-            const strengthMedium = document.getElementById('strength-medium');
-            const strengthStrong = document.getElementById('strength-strong');
+        function hideToast() {
+            const toast = document.getElementById('usermenutoast');
+            toast.classList.remove('show');
 
-            const minLength = document.getElementById('min-length');
-            const specialChar = document.getElementById('special-char');
-            const uppercaseChar = document.getElementById('uppercase-char');
-            const numberChar = document.getElementById('number-char');
-
-            // Reset strength colors
-            strengthWeak.classList.remove('weak', 'medium', 'strong');
-            strengthMedium.classList.remove('medium', 'strong');
-            strengthStrong.classList.remove('strong');
-
-            // Password length validation
-            if (password.length >= 8) {
-                minLength.classList.add('valid');
-                minLength.classList.remove('invalid');
-                strengthWeak.classList.add('weak');
-            } else {
-                minLength.classList.add('invalid');
-                minLength.classList.remove('valid');
-            }
-
-            // Special character validation
-            if (/[!@#$%^&*]/.test(password)) {
-                specialChar.classList.add('valid');
-                specialChar.classList.remove('invalid');
-                strengthMedium.classList.add('medium');
-            } else {
-                specialChar.classList.add('invalid');
-                specialChar.classList.remove('valid');
-            }
-
-            // Uppercase letter validation
-            if (/[A-Z]/.test(password)) {
-                uppercaseChar.classList.add('valid');
-                uppercaseChar.classList.remove('invalid');
-                strengthStrong.classList.add('strong');
-            } else {
-                uppercaseChar.classList.add('invalid');
-                uppercaseChar.classList.remove('valid');
-            }
-
-            // Number validation
-            if (/[0-9]/.test(password)) {
-                numberChar.classList.add('valid');
-                numberChar.classList.remove('invalid');
-            } else {
-                numberChar.classList.add('invalid');
-                numberChar.classList.remove('valid');
-            }
+            // Clear the timeout and interval when the toast is closed
+            clearTimeout(toastTimeout);
+            clearInterval(progressInterval);
         }
 
-        // Set password suggestion
-        function setPassword(element) {
-            const passwordInput = document.getElementById('password');
-            passwordInput.value = element.textContent;
-            checkPasswordStrength(); // Recheck the strength when setting a password
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            showToast();
+        })
     </script>
+
 </body>
+
 </html>

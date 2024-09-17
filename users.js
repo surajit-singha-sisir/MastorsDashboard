@@ -1,8 +1,11 @@
+print = console.log;
 document.addEventListener("DOMContentLoaded", function () {
     userSorter();
     userAdd();
     passwordStrength();
     phoneNumber();
+    profilePicture();
+    userXHR();
 });
 
 function userSorter() {
@@ -139,9 +142,8 @@ function passwordStrength() {
 
         // Check if password is less than 6 characters
         if (password.length < 6) {
-            event.preventDefault(); // Prevent form submission
-            alert("Password must be at least 6 characters long.");
-            passwordInput.focus(); // Set focus on the password input field
+            event.preventDefault();
+            passwordInput.focus();
         }
     });
 
@@ -151,7 +153,7 @@ function passwordStrength() {
 function phoneNumber() {
     const countryCode = "+880 "; // Bangladesh country code with a space for formatting
 
-    document.getElementById("phoneNumber").addEventListener("focus", function(e) {
+    document.getElementById("phoneNumber").addEventListener("focus", function (e) {
         // Ensure the phone number always starts with +880 when focused
         if (!e.target.value.startsWith(countryCode)) {
             e.target.value = countryCode;
@@ -187,3 +189,258 @@ function phoneNumber() {
         }
     });
 }
+
+function profilePicture() {
+
+    const fileInput = document.getElementById('profilePictureNumber');
+    const dropZone = document.createElement('div');
+    dropZone.classList.add('profile-picture-drop-zone');
+    dropZone.innerHTML = 'Drop Picture Here or Click';
+    dropZone.style.fontSize = '14px';
+    dropZone.style.color = 'gray';
+
+    fileInput.parentNode.insertBefore(dropZone, fileInput.nextSibling);
+
+    // Handle drag and drop events
+    dropZone.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', function () {
+        dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            previewProfilePicture(file);
+            fileInput.files = e.dataTransfer.files; // Assign the file to the input
+        }
+    });
+
+    // Handle click event to trigger file input
+    dropZone.addEventListener('click', function () {
+        fileInput.click();
+    });
+
+    // Listen to file input change
+    fileInput.addEventListener('change', function () {
+        const file = fileInput.files[0];
+        if (file) {
+            previewProfilePicture(file);
+        }
+    });
+
+    function previewProfilePicture(file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const preview = document.getElementById('profilePicturePreview');
+            preview.src = e.target.result;
+            const previewDiv = document.querySelector('.profile-picture-preview');
+            previewDiv.classList.remove('hide');
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+
+function userXHR() {
+
+    // Get the elements
+    const submitButton = document.getElementById('add-user-submit');
+    const loadingIcon = document.querySelector('.user-loading-3');
+    submitButton.addEventListener('click', function (event) {
+        // Show loading icon
+        loadingIcon.classList.remove('hide');
+
+        // Disable submit button to prevent multiple submissions
+        // submitButton.disabled = true;
+        submitButton.value = 'Submitting';
+    });
+
+    const form = document.getElementById('addUserForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Get input values
+        const fname = document.querySelector('input[name="fname"]').value;
+        const lname = document.querySelector('input[name="lname"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="Password"]').value;
+        let phone = document.querySelector('input[name="phone"]').value;
+        const userRole = document.querySelector('select[name="userRole"]').value;
+        const profilePictureInput = document.getElementById('profilePictureNumber');
+
+        // Remove spaces and dashes from phone number
+        phone = phone.replace(/\s|-/g, "");
+
+        // Convert profile picture to base64
+        let profilePictureBase64 = "";
+        const file = profilePictureInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                profilePictureBase64 = reader.result; // Get base64 string
+
+                // After image is converted, send the form data
+                sendData({
+                    fname,
+                    lname,
+                    email,
+                    password,
+                    phone,
+                    userRole,
+                    profilePicture: profilePictureBase64 // Send base64 string for profile picture
+                });
+            };
+            reader.readAsDataURL(file); // Read file as base64 string
+        } else {
+            // If no file is uploaded, send the rest of the form data
+            sendData({
+                fname,
+                lname,
+                email,
+                password,
+                phone,
+                userRole,
+                profilePicture: profilePictureBase64 // Empty if no file
+            });
+        }
+    });
+
+    // Function to send the data via XHR
+    function sendData(formData) {
+        const modal = document.getElementById('addUserModalOverlay');
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://kehem.com//news/MD_user_add', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+
+                    const data = JSON.parse(xhr.responseText);
+
+
+                    if (data.message === "success") {
+                        loadingIcon.classList.add('hide');
+                        submitButton.value = 'Submit';
+                        function usersCloseModal() {
+                            const modalOverlay = document.getElementById('addUserModalOverlay');
+                            const modal = document.getElementById('add-user-modal');
+
+                            // Remove 'active' class to hide modal with transition
+                            modalOverlay.classList.remove('active');
+                            modal.classList.remove('active');
+                        }
+                        usersCloseModal();
+
+                        function clearInputs() {
+                            const inputs = modal.querySelectorAll('input');
+
+                            inputs.forEach((input) => {
+                                if (input.type !== 'submit') {
+                                    input.value = "";
+                                }
+                            });
+                            const profilePicture = modal.querySelector('.profile-picture-preview');
+                            profilePicture.querySelector('#profilePicturePreview').src = "";
+                            profilePicture.classList.add('hide');
+                        }
+                        clearInputs();
+                        toastNotficationUser();
+                    }
+                } else {
+                    console.log('Error submitting form:', xhr.status);
+                }
+            }
+        };
+
+        // Send the form data as JSON
+        xhr.send(JSON.stringify(formData));
+    }
+
+    // Function to get CSRF token from cookies
+    function getCSRFToken() {
+        const csrfToken = document.cookie
+            .split(";")
+            .find((cookie) => cookie.trim().startsWith("csrftoken="));
+        return csrfToken ? csrfToken.split("=")[1] : null;
+    }
+
+    function toastNotficationUser() {
+        let toastTimeout;
+        let progressInterval;
+        const firstName = document.querySelector('input[name="fname"]');
+        const toastMessage = document.querySelector('.usermenutoast span');
+        firstName.addEventListener('input', function () {
+            toastMessage.textContent = firstName.value + ' ' + 'Added successfully';
+        });
+
+        function showToast() {
+            const toast = document.getElementById('usermenutoast');
+            const progress = document.getElementById('progress');
+
+            // Reset progress bar width
+            progress.style.width = '0%';
+
+            toast.classList.add('show');
+
+            let width = 0;
+            progressInterval = setInterval(() => {
+                if (width < 100) {
+                    width += 1; // Increase width by 1% per interval
+                    progress.style.width = width + '%';
+                } else {
+                    clearInterval(progressInterval);
+                }
+            }, 50); // Update progress every 50ms (5 seconds in total)
+
+            // Hide the toast after 5 seconds
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 5000);
+        }
+        showToast();
+
+        function hideToast() {
+            const toast = document.getElementById('usermenutoast');
+            toast.classList.remove('show');
+
+            // Clear the timeout and interval when the toast is closed
+            clearTimeout(toastTimeout);
+            clearInterval(progressInterval);
+        }
+    }
+
+
+}
+
+
+
+// Get the input field and table
+const searchInput = document.getElementById('searchUserInput');
+const table = document.getElementById('usersTable');
+
+// Add event listener for keyup on input
+searchInput.addEventListener('keyup', function () {
+    const searchValue = searchInput.value.toLowerCase();
+    const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const rowText = row.textContent.toLowerCase();
+
+        if (rowText.includes(searchValue)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    }
+});
