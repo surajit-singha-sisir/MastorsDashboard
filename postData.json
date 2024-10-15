@@ -1,0 +1,26 @@
+[
+    {
+        "news_id": "AB",
+        "title": "Sample News 1",
+        "description": "This is a sample news item 1.",
+        "date": "2022-01-01",
+        "author": "John Doe",
+        "image_url": "https://example.com/image1.jpg"
+    },
+    {
+        "news_id": "BC",
+        "title": "Sample News 2",
+        "description": "This is a sample news item 2.",
+        "date": "2022-02-01",
+        "author": "Jane Smith",
+        "image_url": "https://example.com/image2.jpg"
+    },
+    {
+        "news_id": "CD",
+        "title": "Sample News 3",
+        "description": "This is a sample news item 3.",
+        "date": "2022-03-01",
+        "author": "Michael Johnson",
+        "image_url": "https://example.com/image3.jpg"
+    }
+]

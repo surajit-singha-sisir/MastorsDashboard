@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Toast with Progress Bar</title>
+    <style>
+        /* Toast container */
+        .usermenutoast {
+            visibility: hidden;
+            min-width: 300px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            border-radius: 0 0 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 16px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .usermenutoast.show {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Cross button */
+        .usermenutoast .close-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #5e53d2;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            top: -1rem;
+            line-height: 0;
+            align-self: flex-end;
+        }
+
+        .usermenutoast .close-btn:hover {
+            color: #fb0000;
+        }
+
+        /* Progress bar */
+        .usermenutoast .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        .usermenutoast .progress-bar div {
+            height: 100%;
+            background-color: #ff9800;
+            width: 0;
+            transition: width 0.1s linear;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toast notification with close button and progress bar -->
+    <div id="usermenutoast" class="usermenutoast">
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <span>This is a colorful toast notification with progress bar</span>
+        <button class="close-btn" onclick="hideToast()">&#x2715;</button>
+    </div>
+
+    <script>
+        let toastTimeout;
+        let progressInterval;
+
+        function showToast() {
+            const toast = document.getElementById('usermenutoast');
+            const progress = document.getElementById('progress');
+
+            // Reset progress bar width
+            progress.style.width = '0%';
+
+            toast.classList.add('show');
+
+            // Gradually increase the progress bar width
+            let width = 0;
+            progressInterval = setInterval(() => {
+                if (width < 100) {
+                    width += 1; // Increase width by 1% per interval
+                    progress.style.width = width + '%';
+                } else {
+                    clearInterval(progressInterval);
+                }
+            }, 50); // Update progress every 50ms (5 seconds in total)
+
+            // Hide the toast after 5 seconds
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('usermenutoast');
+            toast.classList.remove('show');
+
+            // Clear the timeout and interval when the toast is closed
+            clearTimeout(toastTimeout);
+            clearInterval(progressInterval);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            showToast();
+        })
+    </script>
+
+</body>
+
+</html>

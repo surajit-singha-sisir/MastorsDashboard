@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD DESIGN</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="addNews.css">
+    <link rel="stylesheet" href="dashboard-text-editor.css">
+    <link rel="stylesheet" href="reports.css">
+    <!-- k2d font -->
+    <link href='https://fonts.googleapis.com/css?family=K2D' rel='stylesheet'>
+    <script src="dashboard-mastors.js"></script>
+    <script src="navMenu.js"></script>
+    <script src="reports.js"></script>
+
+</head>
+
+<body class="dashboard-body">
+
+
+    <div class="dashboard-sticky border-bottom">
+        <div class="inner-dashboard">
+            <!-- LEFT SIDE ICONS -->
+            <div class="deshboard-left-icons">
+                <!-- HAMBURGER -->
+                <div class="hamburger icon-size">
+                    <img src="icons/hamburger.svg" alt="">
+                </div>
+                <!-- LOGO -->
+                <a href="#" class="dashboard-logo">
+                    <img src="icons/deshboard-logo.svg" alt="">
+                </a>
+            </div>
+            <!-- SEARCH BAR -->
+            <div class="dashboard-search-bar K2D">
+                <input type="text" placeholder="@User | #Post | %Date | Text">
+                <input type="submit" value="Search">
+            </div>
+            <!-- RIGHT SIDE ICONS -->
+            <div class="deshboard-right-icons">
+                <!-- HELP ICON -->
+                <div id="help-icon" class="icon-size">
+                    <img src="icons/help-icon.svg" alt="">
+                </div>
+                <!-- PLUS ICON -->
+                <div id="plus-icon" class="icon-size">
+                    <img src="icons/plus-icon.svg" alt="">
+                </div>
+                <!-- USER ICON -->
+                <div id="user-icon" class="icon-size">
+                    <img src="icons/user-icon.svg" alt="">
+                </div>
+
+                <!-- HELP ICON POPUP -->
+                <section id="help-icon-popup" class="popupContext hide">
+                    <a href="#">HTML form can be greatly</a>
+                    <a href="#">Styling Input Fields</a>
+                    <a href="#">The example above applies</a>
+                </section>
+                <!-- PLUS ICON POPUP -->
+                <section id="plus-icon-popup" class="popupContext hide">
+                    <a href="#">Bordered Inputs</a>
+                    <a href="#">If you only want a bottom border</a>
+                    <a href="#">Colored Inputs</a>
+                </section>
+                <!-- USER ICON POPUP -->
+                <section id="user-icon-popup" class="popupContext hide">
+                    <a href="#">LEARN HOW TO POST</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <!----------------------------------
+            DASHBOARD LEFT NAVBAR START
+        ----------------------------------->
+        <div class="dashboard-sticky-navbar">
+            <nav class="main-navbar">
+
+                <!-- YOUR LOGO -->
+                <a href="#" class="your-dashboard-logo">
+                    <img src="https://kehem.com/static/kehem.webp" alt="">
+                    <h1>KEHEMIT</h1>
+                </a>
+                <span class="border-bottom"></span>
+
+                <!-- NAV ITEMS -->
+                <nav class="dashboard-navItems">
+                    <a class="flexNav flexNavHover flexNavZippedHover" href="#">
+                        <img class="setNavIcon" src="icons/posts.svg" alt="">
+                        <p class="right-shift">Posts</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/front-end-editior.svg" alt="">
+                        <p class="right-shift">Front-end</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/pages.svg" alt="">
+                        <p class="right-shift">Pages</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/users.svg" alt="">
+                        <p class="right-shift">Users</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/settings.svg" alt="">
+                        <p class="right-shift">Settings</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/plans.svg" alt="">
+                        <p class="right-shift">Plans</p>
+                    </a>
+                </nav>
+
+
+            </nav>
+            <!----------------------------------
+            DASHBOARD LEFT NAVBAR END
+        ----------------------------------->
+        </div>
+
+        <!----------------------------------
+                DASHBOARD MAIN START
+        ----------------------------------->
+        <section class="dashboard-main">
+            <!-- 1ST ROW -->
+            <div class="r-tabs">
+                <button class="r-tab-button">Daily Reports</button>
+                <button class="r-tab-button">Weekly Reports</button>
+                <button class="r-tab-button">Monthly Reports</button>
+            </div>
+
+            <!-- 2ND ROW -->
+            <div class="r-tab-contents">
+                <div class="report-loader">
+                    <img src="icons/loading.gif" alt="">
+                </div>
+                <!-- DAILY REPORT -->
+                <div class="r-tab-content hide">
+                    <!-- VISITORS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr visitor-vr"></div>
+                            <span class="r-vr-ball visitor-vr-active">
+                                <p>Grade C+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Total Visitors</h3>
+                            <p class="counterX visitor-counterX">5,678</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Tomorrow</p>
+                                <p class="percent visitor-percent">+10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade visitor-grade">C</p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- HIT POSTS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr hit-vr"></div>
+                            <span class="r-vr-ball hit-vr-active">
+                                <p>Grade A+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Hit Posts</h3>
+                            <p class="counterX hit-counterX">5</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Tomorrow</p>
+                                <p class="percent hit-percent">-10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade hit-grade">D+</p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- TOTAL POSTS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr posts-vr"></div>
+                            <span class="r-vr-ball posts-vr-active">
+                                <p>Grade A+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Total Posts</h3>
+                            <p class="counterX posts-counterX">5</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Tomorrow</p>
+                                <p class="percent posts-percent">-10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade posts-grade">D+</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WEEKLY REPORT -->
+                <div class="r-tab-content hide">
+                    <!-- VISITORS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr visitor-vr"></div>
+                            <span class="r-vr-ball visitor-vr-active">
+                                <p>Grade C+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Total Visitors</h3>
+                            <p class="counterX visitor-counterX">5,678</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Last Week</p>
+                                <p class="percent visitor-percent">+10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade visitor-grade">C</p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- HIT POSTS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr hit-vr"></div>
+                            <span class="r-vr-ball hit-vr-active">
+                                <p>Grade A+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Hit Posts</h3>
+                            <p class="counterX hit-counterX">5</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Last Week</p>
+                                <p class="percent hit-percent">-10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade hit-grade">D+</p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- TOTAL POSTS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr posts-vr"></div>
+                            <span class="r-vr-ball posts-vr-active">
+                                <p>Grade A+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Total Posts</h3>
+                            <p class="counterX posts-counterX">5</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Last Week</p>
+                                <p class="percent posts-percent">-10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade posts-grade">D+</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MONTHLY REPORT -->
+                <div class="r-tab-content">
+                    <!-- VISITORS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr visitor-vr"></div>
+                            <span class="r-vr-ball visitor-vr-active">
+                                <p>Grade C+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Total Visitors</h3>
+                            <p class="counterX visitor-counterX">5,678</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Last Month</p>
+                                <p class="percent visitor-percent">+10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade visitor-grade">C</p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- HIT POSTS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr hit-vr"></div>
+                            <span class="r-vr-ball hit-vr-active">
+                                <p>Grade A+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Hit Posts</h3>
+                            <p class="counterX hit-counterX">5</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Last Month</p>
+                                <p class="percent hit-percent">-10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade hit-grade">D+</p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- TOTAL POSTS -->
+                    <div class="r-container">
+                        <section class="r-bar">
+                            <div class="r-vr posts-vr"></div>
+                            <span class="r-vr-ball posts-vr-active">
+                                <p>Grade A+</p>
+                            </span>
+                        </section>
+                        <div class="r-container-text">
+                            <h3>Total Posts</h3>
+                            <p class="counterX posts-counterX">5</p>
+                            <span class="r-compared-tomorrow">
+                                <p>Compared Last Month</p>
+                                <p class="percent posts-percent">-10%</p>
+                            </span>
+                            <span class="r-upgrade-grade">
+                                <p>Upgrade Grade</p>
+                                <p class="grade posts-grade">D+</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3RD ROW -->
+            <div class="writer-month">
+                <!-- ROW1 -->
+                <div class="writer-div">
+                    WRITER OF THE MONTH
+                </div>
+                <!-- ROW2 -->
+                <div class="all-writer-container">
+                    <!-- WINNER -->
+                    <div class="winner-writer">
+                        <div class="winner-img">
+                            <img src="hitofficer.jpg" alt="Surajit Singha Sisir">
+                            <img src="icons/5stars.svg" alt="">
+                        </div>
+                        <div class="winner-details">
+                            <div class="w-name">
+                                <img src="icons/kingcrown.svg" alt="">
+                                <p>Surajit Singha Sisir</p>
+                            </div>
+                            <table class="w-post-statistics">
+                                <tr>
+                                    <td>Articles</td>
+                                    <td>:</td>
+                                    <td id="winner-total-article">68</td>
+                                </tr>
+                                <tr>
+                                    <td>Views</td>
+                                    <td>:</td>
+                                    <td id="winner-total-views">68</td>
+                                </tr>
+                                <tr>
+                                    <td>Score</td>
+                                    <td>:</td>
+                                    <td id="winner-total-score">68</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- BAR -->
+                    <span class="vertical-bar"></span>
+
+
+                    <!-- OTHERS WRITER SCORE -->
+                    <div class="others-writer">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 4TH ROW -->
+            <div class="top-5-articles">
+                <!-- CATEGORI NAME -->
+                <div class="cate-div">
+                    WRITER OF THE MONTH
+                </div>
+                <table class="top-articles-table">
+                    <thead>
+                        <tr>
+                            <td>SL</td>
+                            <td>Thumbnail</td>
+                            <td>Title</td>
+                            <td>Writer</td>
+                            <td>Category</td>
+                            <td>Published</td>
+                            <td>Views</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="hitofficer.jpg" alt=""></td>
+                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis corrupti placeat
+                                impedit possimus itaque aut inventore porro eaque, nisi optio esse!</td>
+                            <td>Surajit Singha Sisir</td>
+                            <td>National</td>
+                            <td>5 December, 2023</td>
+                            <td>23,313</td>
+                            <td><a href="#" title="Click to Show Public Link" target="_blank"><img src="icons/eye.svg"
+                                        alt="Show Link"></a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="hitofficer.jpg" alt=""></td>
+                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis corrupti placeat
+                                impedit possimus itaque aut inventore porro eaque, nisi optio esse!</td>
+                            <td>Surajit Singha Sisir</td>
+                            <td>National</td>
+                            <td>5 December, 2023</td>
+                            <td>23,313</td>
+                            <td><a href="#" title="Click to Show Public Link" target="_blank"><img src="icons/eye.svg"
+                                        alt="Show Link"></a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="hitofficer.jpg" alt=""></td>
+                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis corrupti placeat
+                                impedit possimus itaque aut inventore porro eaque, nisi optio esse!</td>
+                            <td>Surajit Singha Sisir</td>
+                            <td>National</td>
+                            <td>5 December, 2023</td>
+                            <td>23,313</td>
+                            <td><a href="#" title="Click to Show Public Link" target="_blank"><img src="icons/eye.svg"
+                                        alt="Show Link"></a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="hitofficer.jpg" alt=""></td>
+                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis corrupti placeat
+                                impedit possimus itaque aut inventore porro eaque, nisi optio esse!</td>
+                            <td>Surajit Singha Sisir</td>
+                            <td>National</td>
+                            <td>5 December, 2023</td>
+                            <td>23,313</td>
+                            <td><a href="#" title="Click to Show Public Link" target="_blank"><img src="icons/eye.svg"
+                                        alt="Show Link"></a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img src="hitofficer.jpg" alt=""></td>
+                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis corrupti placeat
+                                impedit possimus itaque aut inventore porro eaque, nisi optio esse!</td>
+                            <td>Surajit Singha Sisir</td>
+                            <td>National</td>
+                            <td>5 December, 2023</td>
+                            <td>23,313</td>
+                            <td><a href="#" title="Click to Show Public Link" target="_blank"><img src="icons/eye.svg"
+                                        alt="Show Link"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </section>
+    </div>
+</body>
+
+</html>

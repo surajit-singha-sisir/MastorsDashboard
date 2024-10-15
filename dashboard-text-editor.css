@@ -90,6 +90,7 @@ img {
 .input-language option {
     color: var(--background-color);
 }
+
 .cursor-hover samp {
     color: var(--sub-font-color);
     font-size: var(--semi-normal-font);
@@ -587,6 +588,7 @@ img {
     flex-wrap: wrap;
     gap: 0.1rem;
 }
+
 .text-bg-class {
     width: 80% !important;
 }

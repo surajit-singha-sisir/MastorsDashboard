@@ -264,6 +264,10 @@ li {
     margin: 1rem 0;
 }
 
+.adjust-small-space {
+    margin: 0.5rem 0;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -322,11 +326,19 @@ body {
     height: 100%;
 }
 
+<<<<<<< HEAD
 #dom-content-loader {
     width: 100vw;
     height: 100vh;
     background-color: #000000d2;
     z-index: 5;
+=======
+#dom-content-loader, #dom-content-loader-2 {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000d2;
+    z-index: 6;
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82
     position: fixed;
 }
 
@@ -1047,7 +1059,7 @@ fieldset .legend-field button:hover {
 }
 
 .dash-sticky-table th,
-td {
+.dash-sticky-table td {
     text-align: center;
     border: 1px solid var(--border-color);
 }
@@ -1134,6 +1146,31 @@ td {
     border-radius: 1rem;
 }
 
+/* TOOLTIPS RIGHT SIDE */
+.tooltip-Right {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-Right .tooltiptext {
+            position: absolute;
+            background-color: black;
+            color: #fff;
+            display: flex;
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 6px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none; /* Prevent tooltip from blocking pointer events */
+        }
+
+        .tooltip-Right.active .tooltiptext {
+            opacity: 1;
+            z-index: 10;
+        }
 
 /* SCREENSHOT PREVIEW */
 

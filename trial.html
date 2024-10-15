@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOMContentLoaded Example</title>
@@ -16,8 +17,257 @@
       // Code to run when the DOM is fully loaded
       const contentDiv = document.getElementById('content');
       contentDiv.innerHTML = '<p>The DOM is fully loaded!</p>';
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnFocus Example</title>
+</head>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        height: 20rem;
+        overflow-y: scroll;
+    }
+
+    table th,
+    table td {
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    }
+
+    table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    input[type="text"] {
+        width: 200px;
+        padding: 5px;
+    }
+
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black background with opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        /* Could be more or less, depending on screen size */
+        max-width: 600px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Close button (x) */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <table style="border: 1px solid; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>news_id</th>
+                <th>title</th>
+                <th>description</th>
+                <th>date</th>
+                <th>author</th>
+                <th>image_url</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border: 1px solid black;" class="tableRow" itemid="AB">
+                <td name="news_id" class="news_id">AB</td>
+                <td name="title" class="title">Lorem ipsum dolor sit amet consectetur adipisicing.</td>
+                <td name="description" class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatum saepe at id
+                    aperiam similique dolores aspernatur, velit iusto ullam quae laboriosam!</td>
+                <td name="date" class="date">21-08-2024</td>
+                <td name="author" class="author">John Doe</td>
+                <td id="openModal" name="image_url" class="image_url"><img src="icons/deshboard-logo.svg" alt=""></td>
+            </tr>
+            <tr style="border: 1px solid black;" class="tableRow" itemid="BC">
+                <td name="news_id" class="news_id">BC</td>
+                <td name="title" class="title">Lorem ipsum dolor sit amet consectetur adipisicing.</td>
+                <td name="description" class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatum saepe at id
+                    aperiam similique dolores aspernatur, velit iusto ullam quae laboriosam!</td>
+                <td name="date" class="date">21-08-2024</td>
+                <td name="author" class="author">John Doe</td>
+                <td id="openModal" name="image_url" class="image_url"><img src="icons/deshboard-logo.svg" alt=""></td>
+            </tr>
+            <tr style="border: 1px solid black;" class="tableRow" itemid="CD">
+                <td name="news_id" class="news_id">CA</td>
+                <td name="title" class="title">Lorem ipsum dolor sit amet consectetur adipisicing.</td>
+                <td name="description" class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatum saepe at id
+                    aperiam similique dolores aspernatur, velit iusto ullam quae laboriosam!</td>
+                <td name="date" class="date">21-08-2024</td>
+                <td name="author" class="author">John Doe</td>
+                <td id="openModal" name="image_url" class="image_url"><img src="icons/deshboard-logo.svg" alt=""></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Modal Header</h2>
+
+            <form action="#" style="padding: 2rem;"></form>
+            <div class="d-title">
+                <label>Title</label>
+                <input type="text" name="title" id="d-title">
+            </div>
+            <!-- description -->
+            <div class="d-description"></div>
+            <label>Description</label>
+            <input type="text" name="description" id="d-description">
+        </div>
+        <!-- author -->
+        <div class="d-author">
+            <label>Author</label>
+            <input type="text" name="author" id="d-author">
+        </div>
+        <!-- date -->
+        <div class="d-date">
+            <label>Date</label>
+            <input type="date" name="date" id="d-date">
+        </div>
+        <input type="submit" value="Submit">
+        </form>
+    </div>
+    </div>
+
+
+</body>
+
+<script>
+    print = console.log;
+
+    // MODAL BOX
+    // Get modal element
+    var modal = document.getElementById("myModal");
+
+    // Get button that opens the modal
+    var btns = document.querySelectorAll("#openModal");
+
+    // Get the <span> element that closes the modal
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btns.forEach(btn => {
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82
     });
   </script>
 
+<<<<<<< HEAD
 </body>
 </html>
+=======
+    // When the user clicks on <span> (x), close the modal
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // MODAL BOX
+
+
+    const tableRow = document.querySelectorAll('.tableRow');
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+
+
+            localStorage.setItem('draftData', JSON.stringify(data));
+            const storedData = JSON.parse(localStorage.getItem('draftData'));
+            print(storedData);
+
+            const tableRow = document.querySelectorAll('.tableRow');
+
+            const imgs = document.querySelectorAll('.image_url');
+            tableRow.forEach((tr, i) => {
+                imgs[i].addEventListener('click', function () {
+                    const trItemId = tr.getAttribute('itemId');
+                    // print(trItemId)
+                    const xhrData = data[i];
+                    if (xhrData.news_id === trItemId) {
+                        // print(trItemId);
+                        document.getElementById('d-title').value = xhrData.title;
+                        document.getElementById('d-description').value = xhrData.description;
+                        document.getElementById('d-author').value = xhrData.author;
+                        document.getElementById('d-date').value = xhrData.date;
+                    }
+                    else {
+                        print("Invalid " + xhrData);
+                    }
+                })
+            });
+
+
+
+
+
+
+        }
+
+
+    }
+    xhr.open('GET', 'postData.json', true);
+    xhr.send();
+
+
+</script>
+
+</html>
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82

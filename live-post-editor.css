@@ -8,11 +8,24 @@
 
 .res-col-2 .res-col:nth-child(1) {
     flex-grow: 1;
+<<<<<<< HEAD
+=======
+    flex-basis: 60%;
+    height: calc(100vh - 4rem);
+    overflow-y: scroll;
+    padding-right: 0.5rem;
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82
 }
 
 .res-col-2 .res-col:nth-child(2) {
     flex-basis: 40%;
     flex-grow: 1;
+<<<<<<< HEAD
+=======
+    height: calc(100vh - 4rem);
+    overflow-y: scroll;
+    padding-right: 0.5rem;
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82
 }
 
 
@@ -86,6 +99,7 @@
     width: 100%;
 }
 
+<<<<<<< HEAD
 .iframe-container h4 {
     text-align: center;
 }
@@ -93,6 +107,26 @@
 .iframe-container iframe {
     width: inherit;
     height: 35rem;
+=======
+.iframe-height-1 {
+    height: 60vh;
+}
+
+.iframe-height-2 {
+    height: 78vh;
+}
+
+.iframe-container h4 {
+    text-align: center;
+}
+.iframe-container dd {
+    width: inherit;
+    height: inherit;
+}
+.iframe-container iframe {
+    width: inherit;
+    height: inherit;
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82
     border: 1px solid var(--border-color);
     background-color: white;
     border-radius: 0.5rem;
@@ -136,5 +170,29 @@
 
 .thumb-preview,
 .thumb-caption {
+<<<<<<< HEAD
   display: none; /* Initially hide the preview and caption sections */
+=======
+    display: none;
+}
+
+
+/* SCROLL BAR DESIGN */
+.res-col-2 .res-col::-webkit-scrollbar,
+.iframe-container dd::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.res-col-2 .res-col::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+/* WEBSITE IFRAME SCROLLBAR */
+.iframe-container dd::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+>>>>>>> 94e9b03e96f9d891fb7c01b0f33acab98b28ab82
 }

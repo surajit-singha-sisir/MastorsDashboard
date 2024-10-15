@@ -1,0 +1,68 @@
+[
+    {
+        "visitors": 3142,
+        "visitors_compare": "+48%",
+        "visitors_grade": "A",
+        "visitors_scale": "70%",
+        "hitPost": 40,
+        "hitPost_compare": "-15%",
+        "hitPost_grade": "B",
+        "hitPost_scale": "60%",
+        "posts": 150,
+        "posts_compare": "+32%",
+        "posts_grade": "C+",
+        "posts_scale": "55%"
+    },
+    {
+        "visitors": 3524,
+        "visitors_compare": "+28%",
+        "visitors_grade": "B",
+        "visitors_scale": "35%",
+        "hitPost": 13,
+        "hitPost_compare": "+20%",
+        "hitPost_grade": "F",
+        "hitPost_scale": "65%",
+        "posts": 18,
+        "posts_compare": "+25%",
+        "posts_grade": "B+",
+        "posts_scale": "75%"
+    },
+    {
+        "visitors": 4000,
+        "visitors_compare": "-12%",
+        "visitors_grade": "A",
+        "visitors_scale": "75%",
+        "hitPost": 6,
+        "hitPost_compare": "-10%",
+        "hitPost_grade": "A-",
+        "hitPost_scale": "95%",
+        "posts": 21,
+        "posts_compare": "18%",
+        "posts_grade": "A+",
+        "posts_scale": "100%"
+    },
+    [
+        {
+            "winner_name": "Sanjana Rahman",
+            "winner_articles": 453,
+            "winner_views": 43312,
+            "winner_score": "43%"
+        },
+        {
+            "other_writer": "Salauddin Azam",
+            "score": "30%"
+        },
+        {
+            "other_writer": "Zamila Khatun",
+            "score": "25%"
+        },
+        {
+            "other_writer": "Rashid Karim",
+            "score": "16%"
+        },
+        {
+            "other_writer": "Simla Jannat Karim",
+            "score": "08%"
+        }
+    ]
+]

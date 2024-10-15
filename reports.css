@@ -1,0 +1,454 @@
+:root {
+    --vr-bg: #838120;
+    --vr-active: #e9e63d;
+    --vr-ball: #e9e63d;
+    --counter-color: #FFC960;
+    --percent-color: #ff3f3f;
+    --grade-color: #55f55d;
+
+    --r-title: 1.5rem;
+    --counter: 2.5rem;
+}
+
+.r-tabs {
+    width: 100%;
+    position: relative;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.r-tab-button {
+    display: flex;
+    padding: 0.5rem 1rem;
+    background-color: var(--div-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.r-tab-button.active {
+    background-color: var(--active-color);
+}
+
+/* TAB CONTENTS */
+.r-tab-contents {
+    position: relative;
+}
+
+.r-tab-contents .report-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000e4;
+    z-index: 4;
+}
+
+.r-tab-contents .report-loader img {
+    width: 5rem;
+    height: 5rem;
+    aspect-ratio: 1;
+}
+
+.r-tab-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: max-content;
+    padding: 1rem;
+    background-color: var(--div-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+    gap: 2rem;
+}
+
+/* R - CONTAINER */
+.r-container {
+    min-width: 15rem;
+    height: inherit;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* BALL */
+.r-bar {
+    width: 2px;
+    height: 100%;
+    background-color: var(--vr-bg);
+    position: absolute;
+    left: 5px;
+}
+
+.r-bar .r-vr {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    height: 60%;
+    /* JS */
+    background-color: var(--vr-active);
+}
+
+.r-bar .r-vr-ball {
+    position: absolute;
+    left: -0.35rem;
+    bottom: 60%;
+    /* JS */
+    width: 0.8rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--vr-ball);
+    cursor: pointer;
+}
+
+.r-bar p {
+    opacity: 0;
+    font-size: var(--small-font);
+    padding: 0.5rem;
+    text-align: center;
+    position: absolute;
+    left: -5rem;
+    top: -0.6rem;
+    background-color: var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.r-bar p::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    aspect-ratio: 1;
+    background-color: var(--border-color);
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+    ;
+
+}
+
+.r-bar .r-vr-ball:hover p {
+    opacity: 1;
+}
+
+
+
+
+.r-container .r-container-text {
+    padding: 1rem;
+    margin-left: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--sub-div-color);
+}
+
+.r-container-text h3 {
+    font-size: var(--r-title);
+    font-weight: 300;
+    padding-bottom: 0.3rem;
+}
+
+.r-container-text .counterX {
+    font-size: var(--counter);
+    color: var(--counter-color);
+}
+
+.r-container-text .r-compared-tomorrow {
+    font-size: var(--small-font);
+    color: var(--sub-font-color);
+    display: flex;
+    padding-top: 1rem;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.r-container-text .r-upgrade-grade {
+    font-size: var(--small-font);
+    color: var(--sub-font-color);
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.r-compared-tomorrow .percent {
+    color: var(--percent-color);
+}
+
+.r-upgrade-grade .grade {
+    color: var(--grade-color);
+}
+
+
+/* WRITE OF THE MONTH */
+.writer-month {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.writer-month .writer-div {
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--div-color);
+}
+
+.all-writer-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    max-height: 10.7rem;
+}
+
+.winner-writer {
+    display: flex;
+    gap: 1rem;
+}
+
+.winner-writer .winner-img {
+    width: 10rem;
+    height: 10rem;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.winner-img img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.winner-img img:last-child {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 70%;
+}
+
+
+.winner-writer .winner-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.winner-details .w-name {
+    display: flex;
+    flex-direction: row;
+    max-height: 1.5rem;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.w-name img:first-child {
+    max-height: 1rem;
+    width: auto;
+}
+
+.w-name p {
+    font-size: var(--semi-normal-font);
+    text-wrap: nowrap;
+}
+
+/* TABLE */
+.w-post-statistics {
+    position: relative;
+    float: left;
+}
+
+.w-post-statistics tr,
+td {
+    padding: 0.2rem 1rem;
+}
+
+/* BAR */
+.all-writer-container .vertical-bar {
+    width: 2px;
+    background-color: var(--border-color);
+    height: inherit;
+
+}
+
+
+/* OTHERS WRITER */
+.others-writer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.others-writer .r-writer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--sub-div-color);
+    padding: 0.8rem;
+    justify-content: center;
+}
+
+.others-writer .r-writer:hover {
+    background-color: var(--div-color);
+}
+
+.r-writer .writer-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    height: 1rem;
+}
+
+.r-writer .writer-name img {
+    height: 1rem;
+    width: 1rem;
+}
+
+.r-writer .writer-name p {
+    font-size: var(--semi-normal-font);
+    text-wrap: nowrap;
+}
+
+.r-writer .writer-scores {
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+/* TABLE */
+.top-5-articles {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+.top-5-articles .cate-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--div-color);
+}
+
+/* TABLE */
+.top-articles-table {
+    width: 100%;
+    height: inherit;
+    border-collapse: collapse;
+}
+
+.top-articles-table thead td {
+    text-align: center;
+    padding-bottom: 0.8rem;
+}
+
+.top-articles-table thead td:not(thead td:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+
+
+.top-articles-table th,
+.top-articles-table td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.top-articles-table tbody tr {
+    background-color: var(--sub-div-color);
+    transition: background-color 0.3s ease;
+}
+
+.top-articles-table tbody tr:hover {
+    background-color: var(--div-color);
+    transition: background-color 0.1s ease;
+}
+
+.top-articles-table tbody tr td:not(.top-articles-table tbody tr td:nth-child(3)) {
+    text-align: center;
+}
+
+.top-articles-table tbody tr td:nth-child(2) {
+    height: 7rem;
+    aspect-ratio: 1;
+}
+
+.top-5-articles tbody tr td:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.top-articles-table tbody tr td:nth-child(8) {
+    height: 1.5rem;
+    aspect-ratio: 1;
+}
+
+.top-5-articles tbody tr td:nth-child(8) img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+@media screen and (max-width: 1080px) {
+    .r-container {
+        flex: 1;
+    }
+
+    .all-writer-container {
+        flex-wrap: wrap;
+        max-height: max-content;
+        justify-content: center;
+    }
+
+    .all-writer-container .winner-writer {
+        flex: 1;
+    }
+
+    .all-writer-container .others-writer {
+        flex: 1;
+    }
+
+    .all-writer-container .r-writer .writer-name,
+    .all-writer-container .r-writer .writer-scores {
+        justify-content: center;
+    }
+
+    .top-5-articles {
+        overflow-x: scroll;
+    }
+
+}

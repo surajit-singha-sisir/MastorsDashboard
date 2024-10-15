@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable Table</title>
+    <style>
+        /* General table styling */
+.draft-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.draft-tr th, .draft-tr td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.draft-tr th {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
+.draft-tr th .ace-dec-order {
+    display: flex;
+    align-items: center;
+}
+
+.draft-tr th .svg-icon, .draft-tr th .svg-icon-rotated {
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    margin-left: 5px;
+    display: none;
+}
+
+.draft-tr th .svg-icon {
+    /* Add your sort icon URL here */
+    background-image: url('icons/sort-asc.svg');
+}
+
+.draft-tr th .svg-icon-rotated {
+    /* Add your rotated sort icon URL here */
+    background-image: url('icons/sort-desc.svg');
+    display: none;
+}
+
+.draft-thumb-preview {
+    width: 100px;
+}
+
+.draft-tags button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.draft-action span {
+    margin-right: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <table class="draft-table" id="sorted-table">
+        <thead>
+            <tr class="draft-tr">
+                <th onclick="sortTable(0)">
+                    <span class="ace-dec-order">
+                        <p>SL</p>
+                        <span>
+                            <div class="svg-icon" id="sort-icon-0"></div>
+                            <div class="svg-icon svg-icon-rotated" id="sort-icon-rotated-0"></div>
+                        </span>
+                    </span>
+                </th>
+                <th>
+                    <span class="ace-dec-order">
+                        <p>Thumbnail</p>
+                    </span>
+                </th>
+                <th onclick="sortTable(1)">
+                    <span class="ace-dec-order">
+                        <p>Post Title</p>
+                        <span>
+                            <div class="svg-icon" id="sort-icon-1"></div>
+                            <div class="svg-icon svg-icon-rotated" id="sort-icon-rotated-1"></div>
+                        </span>
+                    </span>
+                </th>
+                <th onclick="sortTable(2)">
+                    <span class="ace-dec-order">
+                        <p>Tags</p>
+                        <span>
+                            <div class="svg-icon" id="sort-icon-2"></div>
+                            <div class="svg-icon svg-icon-rotated" id="sort-icon-rotated-2"></div>
+                        </span>
+                    </span>
+                </th>
+                <th onclick="sortTable(3)">
+                    <span class="ace-dec-order">
+                        <p>Category</p>
+                        <span>
+                            <div class="svg-icon" id="sort-icon-3"></div>
+                            <div class="svg-icon svg-icon-rotated" id="sort-icon-rotated-3"></div>
+                        </span>
+                    </span>
+                </th>
+                <th>
+                    <span class="ace-dec-order">
+                        <p>Author</p>
+                        <span>
+                            <div class="svg-icon" id="sort-icon-4"></div>
+                            <div class="svg-icon svg-icon-rotated" id="sort-icon-rotated-4"></div>
+                        </span>
+                    </span>
+                </th>
+                <th onclick="sortTable(5)">
+                    <span class="ace-dec-order">
+                        <p>Date</p>
+                        <span>
+                            <div class="svg-icon" id="sort-icon-5"></div>
+                            <div class="svg-icon svg-icon-rotated" id="sort-icon-rotated-5"></div>
+                        </span>
+                    </span>
+                </th>
+                <th onclick="sortTable(6)">
+                    <span class="ace-dec-order">
+                        <p>Action</p>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><img class="draft-thumb-preview" src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt=""></td>
+                <td>apes its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Rusia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>19 September, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt=""></span>
+                    <span><img src="icons/draft/delete.svg" alt=""></span>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><img class="draft-thumb-preview" src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt=""></td>
+                <td>apes its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Rusia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>19 September, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt=""></span>
+                    <span><img src="icons/draft/delete.svg" alt=""></span>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><img class="draft-thumb-preview" src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt=""></td>
+                <td>apes its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Rusia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>19 September, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt=""></span>
+                    <span><img src="icons/draft/delete.svg" alt=""></span>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><img class="draft-thumb-preview" src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt=""></td>
+                <td>sdfsfapes its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Rusia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>19 September, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt=""></span>
+                    <span><img src="icons/draft/delete.svg" alt=""></span>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><img class="draft-thumb-preview" src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/9bea/live/e85cb970-5c98-11ef-8c32-f3c2bc7494c6.jpg.webp" alt=""></td>
+                <td>fgdds its incursion into Russia changes outcome of war</td>
+                <td class="draft-tags">
+                    <button>Ukraine</button>
+                    <button>Rusia</button>
+                    <button>War</button>
+                    <button>Human-Revolution</button>
+                </td>
+                <td>International</td>
+                <td>Surajit Singha Sisir</td>
+                <td>19 September, 2024</td>
+                <td class="draft-action">
+                    <span><img src="icons/draft/write.svg" alt=""></span>
+                    <span><img src="icons/draft/delete.svg" alt=""></span>
+                </td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script> 
+        let sortDirection = {}; // To track sort direction for each column
+
+function sortTable(columnIndex) {
+    const table = document.getElementById('sorted-table');
+    const rows = Array.from(table.getElementsByTagName('tbody')[0].getElementsByTagName('tr'));
+    const currentDirection = sortDirection[columnIndex] || 'asc';
+    
+    // Toggle sort direction
+    sortDirection[columnIndex] = currentDirection === 'asc' ? 'desc' : 'asc';
+
+    rows.sort((a, b) => {
+        const aText = a.getElementsByTagName('td')[columnIndex].innerText.trim();
+        const bText = b.getElementsByTagName('td')[columnIndex].innerText.trim();
+        
+        let comparison = 0;
+        if (aText > bText) {
+            comparison = 1;
+        } else if (aText < bText) {
+            comparison = -1;
+        }
+        
+        return currentDirection === 'asc' ? comparison : -comparison;
+    });
+    
+    const tbody = table.getElementsByTagName('tbody')[0];
+    rows.forEach(row => tbody.appendChild(row));
+    
+    // Update sort icons
+    updateSortIcons(columnIndex, currentDirection);
+}
+
+function updateSortIcons(columnIndex, direction) {
+    const headers = document.querySelectorAll('#sorted-table th .svg-icon');
+    const rotatedHeaders = document.querySelectorAll('#sorted-table th .svg-icon-rotated');
+    
+    headers.forEach(icon => icon.style.display = 'none');
+    rotatedHeaders.forEach(icon => icon.style.display = 'none');
+    
+    const sortIcon = document.getElementById(`sort-icon-${columnIndex}`);
+    const sortIconRotated = document.getElementById(`sort-icon-rotated-${columnIndex}`);
+    
+    if (direction === 'asc') {
+        sortIcon.style.display = 'inline-block';
+    } else {
+        sortIconRotated.style.display = 'inline-block';
+    }
+}
+
+// Attach event listeners to table headers
+document.querySelectorAll('#sorted-table th').forEach((th, index) => {
+    if (th.hasAttribute('onclick')) {
+        th.addEventListener('click', () => sortTable(index));
+    }
+});
+
+    </script>
+</body>
+</html>

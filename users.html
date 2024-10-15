@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD DESIGN</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- k2d font -->
+    <link href='https://fonts.googleapis.com/css?family=K2D' rel='stylesheet'>
+    <script src="dashboard-mastors.js"></script>
+    <script src="navMenu.js"></script>
+    <link rel="stylesheet" href="users.css">
+    <script src="users.js"></script>
+    <!-- Include CountUp.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body class="dashboard-body">
+
+    <div id="dom-content-loader">
+        <img src="icons/loading.gif" alt="">
+    </div>
+    <div class="dashboard-sticky border-bottom">
+        <div class="inner-dashboard">
+            <!-- LEFT SIDE ICONS -->
+            <div class="deshboard-left-icons">
+                <!-- LOGO -->
+                <a href="#" class="dashboard-logo">
+                    <img src="icons/deshboard-logo.svg" alt="">
+                </a>
+            </div>
+            <!-- SEARCH BAR -->
+            <div class="dashboard-search-bar K2D">
+                <input type="text" placeholder="@User | #Post | %Date | Text">
+                <input type="submit" value="Search">
+            </div>
+            <!-- RIGHT SIDE ICONS -->
+            <div class="deshboard-right-icons">
+                <!-- HELP ICON -->
+                <div id="help-icon" class="icon-size">
+                    <img src="icons/help-icon.svg" alt="">
+                </div>
+                <!-- PLUS ICON -->
+                <div id="plus-icon" class="icon-size">
+                    <img src="icons/plus-icon.svg" alt="">
+                </div>
+                <!-- USER ICON -->
+                <div id="user-icon" class="icon-size">
+                    <img src="icons/user-icon.svg" alt="">
+                </div>
+
+                <!-- HELP ICON POPUP -->
+                <section id="help-icon-popup" class="popupContext hide">
+                    <a href="#">HTML form can be greatly</a>
+                    <a href="#">Styling Input Fields</a>
+                    <a href="#">The example above applies</a>
+                </section>
+                <!-- PLUS ICON POPUP -->
+                <section id="plus-icon-popup" class="popupContext hide">
+                    <a href="#">Bordered Inputs</a>
+                    <a href="#">If you only want a bottom border</a>
+                    <a href="#">Colored Inputs</a>
+                </section>
+                <!-- USER ICON POPUP -->
+                <section id="user-icon-popup" class="popupContext hide">
+                    <a href="#">LEARN HOW TO POST</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <!----------------------------------
+            DASHBOARD LEFT NAVBAR START
+        ----------------------------------->
+        <div class="dashboard-sticky-navbar">
+            <nav class="main-navbar">
+
+                <!-- YOUR LOGO -->
+                <a href="#" class="your-dashboard-logo">
+                    <img src="https://kehem.com/static/kehem.webp" alt="">
+                    <h1>KEHEMIT</h1>
+                </a>
+                <span class="border-bottom"></span>
+
+                <!-- NAV ITEMS -->
+                <nav class="dashboard-navItems">
+                    <a class="flexNav flexNavHover flexNavZippedHover" href="#">
+                        <img class="setNavIcon" src="icons/posts.svg" alt="">
+                        <p class="right-shift">Posts</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/front-end-editior.svg" alt="">
+                        <p class="right-shift">Front-end</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/pages.svg" alt="">
+                        <p class="right-shift">Pages</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/users.svg" alt="">
+                        <p class="right-shift">Users</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/settings.svg" alt="">
+                        <p class="right-shift">Settings</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/plans.svg" alt="">
+                        <p class="right-shift">Plans</p>
+                    </a>
+                </nav>
+
+
+            </nav>
+            <!----------------------------------
+            DASHBOARD LEFT NAVBAR END
+        ----------------------------------->
+        </div>
+
+        <!----------------------------------
+                DASHBOARD MAIN START
+        ----------------------------------->
+        <div class="dashboard-main">
+            <!-- TITLE -->
+            <div class="users-title">TEAM</div>
+
+            <!-- ALL INFORMATION -->
+            <div class="users-all">
+                <span>
+                    <p>All</p>
+                    <p>(8)</p>
+                </span>
+                <p>|</p>
+                <span>
+                    <p>Admin</p>
+                    <p>(2)</p>
+                </span>
+                <p>|</p>
+                <span>
+                    <p>Editors</p>
+                    <p>(2)</p>
+                </span>
+                <p>|</p>
+                <span>
+                    <p>Analysts</p>
+                    <p>(3)</p>
+                </span>
+            </div>
+
+            <div class="add-user-block">
+                <div class="left-side">
+                    <!-- ADD USERS -->
+                    <button class="add-users" onclick="usersOpenModal()">
+                        <img src="icons/plus-user.svg" alt="">
+                        <p>Add User</p>
+                    </button>
+
+                    <!-- PDF -->
+                    <button class="add-users">
+                        <img src="icons/pdf.svg" alt="">
+                        <p>Export</p>
+                    </button>
+                </div>
+                <div class="right-side">
+                    <div class="searchBar">
+                        <img src="icons/search-icon.svg" alt="">
+                        <input type="text" placeholder="Search User">
+                    </div>
+                </div>
+            </div>
+
+            <div class="users-table-info">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>
+                                <div class="user-role-order" title="Click to Sort">
+                                    <p>Role</p>
+                                    <div class="users-ase-desc-sort">
+                                        <span class="hide">&#9650;</span>
+                                        <span class="">&#9660;</span>
+                                    </div>
+
+                                </div>
+                            </th>
+                            <th>
+                                <div class="user-role-order" title="Click to Sort">
+                                    <p>Total Posts</p>
+                                    <div class="users-ase-desc-sort">
+                                        <span class="hide">&#9650;</span>
+                                        <span class="">&#9660;</span>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>Change Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sazzadur Rahaman</td>
+                            <td>sazzad01@gmail.com</td>
+                            <td>Admin</td>
+                            <td>1250</td>
+                            <td>
+                                <div class="user-role-changer-div">
+                                    <button class="user-role-changer">Change !</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Mahmudul Hassan</td>
+                            <td>mahmud02@gmail.com</td>
+                            <td>Editor</td>
+                            <td>1100</td>
+                            <td>
+                                <div class="user-role-changer-div">
+                                    <button class="user-role-changer">Change !</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sarah Karim</td>
+                            <td>sarah03@yahoo.com</td>
+                            <td>Contributor</td>
+                            <td>950</td>
+                            <td>
+                                <div class="user-role-changer-div">
+                                    <button class="user-role-changer">Change !</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Rajib Ahmed</td>
+                            <td>rajib04@hotmail.com</td>
+                            <td>Subscriber</td>
+                            <td>800</td>
+                            <td>
+                                <div class="user-role-changer-div">
+                                    <button class="user-role-changer">Change !</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Fatima Begum</td>
+                            <td>fatima05@gmail.com</td>
+                            <td>Admin</td>
+                            <td>1300</td>
+                            <td>
+                                <div class="user-role-changer-div">
+                                    <button class="user-role-changer">Change !</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Rashed Khan</td>
+                            <td>rashed06@outlook.com</td>
+                            <td>Editor</td>
+                            <td>1150</td>
+                            <td>
+                                <div class="user-role-changer-div">
+                                    <button class="user-role-changer">Change !</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <!-- Add User Modal Structure -->
+            <div id="addUserModalOverlay" class="add-user-modal-overlay">
+                <div id="add-user-modal" class="add-user-modal">
+
+                    <section class="add-user-input-data">
+                        <h3>
+                            <img src="icons/user-icon.svg" alt="">
+                            <p>Add User</p>
+                        </h3>
+                        <button class="add-user-close-btn" onclick="usersCloseModal()">Close</button>
+                    </section>
+
+
+                    <form id="addUserForm" method="post" action="#" class="add-user-form">
+
+                        <div class="user-input-label-data full-name">
+                            <label class="required" for="fname" title="Required field">First Name:</label>
+                            <input type="text" name="fname" placeholder="Your first name" required>
+                            <label class="required" for="lname" title="Required field">Last Name:</label>
+                            <input type="text" name="lname" placeholder="Your Last name" required>
+                        </div>
+                        <div class="user-input-label-data email-address">
+                            <label class="required" for="email" title="Required field">Email Address:</label>
+                            <input type="text" name="email" placeholder="Your email address" required>
+                        </div>
+                        <div class="user-input-label-data Password">
+                            <p></p>
+                            <label class="required" for="Password" title="Required field">Password:
+                                <span class="user-tooltip">?</span>
+                                <div class="password-tips">
+                                    <b style="color: aqua;">Strong Password Suggestion</b>
+                                    1. At least 8 characters<br>
+                                    2. At least one uppercase<br>
+                                    3. At least one lowercase<br>
+                                    4. At least one number<br>
+                                </div>
+                            </label>
+                            <input type="password" name="Password" placeholder="Your Password" required>
+                            <div class="passwordStrength"></div>
+                            <div class="passwordStrength-active" style="width:0;">
+                                <div class="animate-line"></div>
+                            </div>
+                            <span class="eyeVisibility">
+                                <img class="" src="icons/eye.svg" alt="">
+                                <img class="hide" src="icons/eye-off.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="user-input-label-data phone-number">
+                            <label class="required" for="phone" title="Required field">Phone Number:</label>
+                            <input id="phoneNumber" type="tel" name="phone" placeholder="Your phone number" required>
+                        </div>
+                        <div class="user-input-label-data user-role">
+                            <label class="required" for="phone" title="Required field">User Role:</label>
+                            <select name="userRole" id="userRole" class="userRole">
+                                <option value="userRole-select" disabled selected>--Select--</option>
+                                <option value="userRole-admin">Admin</option>
+                                <option value="userRole-editor">Editor</option>
+                                <option value="userRole-contributor">Contributor</option>
+                                <option value="userRole-analysts">Analysts</option>
+                                <option value="userRole-subscriber">Subscriber</option>
+                            </select>
+                        </div>
+
+                        <div class="user-input-label-data profile-picture">
+                            <label class="required" for="profilePicture" title="Required field">Profile Picture</label>
+                            <input id="profilePictureNumber" type="file" name="profilePicture"
+                                placeholder="Your Profile Picture" required>
+                            <div class="profile-picture-preview hide">
+                                <img id="profilePicturePreview" src="#" alt="">
+                            </div>
+                        </div>
+
+                        <section class="submitandloading">
+                            <div class="user-loading-3 hide">
+                                <img src="icons/loading-3.svg" alt="">
+                            </div>
+                            <input type="submit" name="add-user-submit" id="add-user-submit">
+                        </section>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------
+                DASHBOARD MAIN END
+        ----------------------------------->
+    </div>
+    <!-- Toast notification with close button and progress bar -->
+    <div id="usermenutoast" class="usermenutoast">
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <span>New User Saved Successfully</span>
+        <button class="close-btn" onclick="hideToast()">&#x2715;</button>
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD DESIGN</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="addNews.css">
+    <link rel="stylesheet" href="draft.css">
+    <link rel="stylesheet" href="dashboard-text-editor.css">
+    <link rel="stylesheet" href="analytics.css">
+    <!-- k2d font -->
+    <link href='https://fonts.googleapis.com/css?family=K2D' rel='stylesheet'>
+    <script src="dashboard-mastors.js"></script>
+    <script src="dashboard-addNews.js"></script>
+    <script src="navMenu.js"></script>
+    <script src="draft.js"></script>
+    <script src="analytics.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
+    <!-- <script src="https://d3js.org/topojson.v1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+</head>
+
+<body class="dashboard-body">
+
+
+    <div class="dashboard-sticky border-bottom">
+        <div class="inner-dashboard">
+            <!-- LEFT SIDE ICONS -->
+            <div class="deshboard-left-icons">
+                <!-- HAMBURGER -->
+                <div class="hamburger icon-size">
+                    <img src="icons/hamburger.svg" alt="">
+                </div>
+                <!-- LOGO -->
+                <a href="#" class="dashboard-logo">
+                    <img src="icons/deshboard-logo.svg" alt="">
+                </a>
+            </div>
+            <!-- SEARCH BAR -->
+            <div class="dashboard-search-bar K2D">
+                <input type="text" placeholder="@User | #Post | %Date | Text">
+                <input type="submit" value="Search">
+            </div>
+            <!-- RIGHT SIDE ICONS -->
+            <div class="deshboard-right-icons">
+                <!-- HELP ICON -->
+                <div id="help-icon" class="icon-size">
+                    <img src="icons/help-icon.svg" alt="">
+                </div>
+                <!-- PLUS ICON -->
+                <div id="plus-icon" class="icon-size">
+                    <img src="icons/plus-icon.svg" alt="">
+                </div>
+                <!-- USER ICON -->
+                <div id="user-icon" class="icon-size">
+                    <img src="icons/user-icon.svg" alt="">
+                </div>
+
+                <!-- HELP ICON POPUP -->
+                <section id="help-icon-popup" class="popupContext hide">
+                    <a href="#">HTML form can be greatly</a>
+                    <a href="#">Styling Input Fields</a>
+                    <a href="#">The example above applies</a>
+                </section>
+                <!-- PLUS ICON POPUP -->
+                <section id="plus-icon-popup" class="popupContext hide">
+                    <a href="#">Bordered Inputs</a>
+                    <a href="#">If you only want a bottom border</a>
+                    <a href="#">Colored Inputs</a>
+                </section>
+                <!-- USER ICON POPUP -->
+                <section id="user-icon-popup" class="popupContext hide">
+                    <a href="#">LEARN HOW TO POST</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <!----------------------------------
+            DASHBOARD LEFT NAVBAR START
+        ----------------------------------->
+        <div class="dashboard-sticky-navbar">
+            <nav class="main-navbar">
+
+                <!-- YOUR LOGO -->
+                <a href="#" class="your-dashboard-logo">
+                    <img src="https://kehem.com/static/kehem.webp" alt="">
+                    <h1>KEHEMIT</h1>
+                </a>
+                <span class="border-bottom"></span>
+
+                <!-- NAV ITEMS -->
+                <nav class="dashboard-navItems">
+                    <a class="flexNav flexNavHover flexNavZippedHover" href="#">
+                        <img class="setNavIcon" src="icons/posts.svg" alt="">
+                        <p class="right-shift">Posts</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/front-end-editior.svg" alt="">
+                        <p class="right-shift">Front-end</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/pages.svg" alt="">
+                        <p class="right-shift">Pages</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/users.svg" alt="">
+                        <p class="right-shift">Users</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/settings.svg" alt="">
+                        <p class="right-shift">Settings</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/plans.svg" alt="">
+                        <p class="right-shift">Plans</p>
+                    </a>
+                </nav>
+
+
+            </nav>
+            <!----------------------------------
+            DASHBOARD LEFT NAVBAR END
+        ----------------------------------->
+        </div>
+
+        <!----------------------------------
+                DASHBOARD MAIN START
+        ----------------------------------->
+        <div class="dashboard-main">
+
+            <!-- TOP BOTTOM SPACE COVER -->
+            <br>
+
+            <div class="today-overview">
+                <h3>Today's Overview</h3>
+
+                <!-- INFORMATION -->
+                <div class="quick-overview">
+
+
+                    <!-- VISITORS -->
+                    <div class="today-div">
+                        <p>Visitors</p>
+                        <p id="today-visitors">21,356</p>
+                        <p id="today-visitors-percentage">10.2%</p>
+                        <span>compared yesterday</span>
+                    </div>
+                    <!-- Views -->
+                    <div class="today-div">
+                        <p>Views</p>
+                        <p id="today-views">1,21,356</p>
+                        <p id="today-views-percentage">40.2%</p>
+                        <span>compared yesterday</span>
+                    </div>
+                    <!-- Hit Posts -->
+                    <div class="today-div">
+                        <p>Hit Posts</p>
+                        <p id="today-posts">16</p>
+                        <p id="today-posts-percentage">82.2%</p>
+                        <span>compared yesterday</span>
+                    </div>
+                    <!-- Engagements -->
+                    <div class="today-div">
+                        <p>Engagements</p>
+                        <p id="today-engagements">2,565</p>
+                        <p id="today-engagements-percentage">10.2%</p>
+                        <span>compared yesterday</span>
+                    </div>
+                    <!-- Shares -->
+                    <div class="today-div">
+                        <p>Shares</p>
+                        <p id="today-shares">256</p>
+                        <p id="today-shares-percentage">10.2%</p>
+                        <span>compared yesterday</span>
+                    </div>
+                    <!-- VISITORS -->
+                    <div class="today-div">
+                        <p>Ads</p>
+                        <p id="today-ads">5</p>
+                        <p id="today-ads-percentage">0%</p>
+                        <span>compared yesterday</span>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <!-- TRAFFIC SOURCE AND TRACKER -->
+            <div class="traffic-data">
+
+                <!-- TRAFFIC SOURCE -->
+                <div class="traffic-source traffic">
+
+                    <!-- TITLE BAR -->
+                    <div class="traffic-bar">
+                        <h3>Traffic Source</h3>
+                        <span><img src="icons/analytics/download.svg" alt=""></span>
+                    </div>
+
+                    <!-- DATA PRESENTATION -->
+                    <div class="traffic-source-data">
+                        <!-- PIE CHART -->
+                        <div class="traffic-source-pie-chart">
+                            <canvas id="traffic-source-PieChart"></canvas>
+                        </div>
+                        <!-- TEXT DATA VIEW -->
+                        <div class="most-traffic-source">
+                            <h4>Most Traffic Source</h4>
+                            <ul>
+                                <li>
+                                    <span>
+                                        <img src="icons/analytics/up-arrow.svg" alt="">
+                                        <p>Facebook</p>
+                                    </span>
+                                    <button type="button">1998</button>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="icons/analytics/up-arrow.svg" alt="">
+                                        <p>Google</p>
+                                    </span>
+                                    <button type="button">1440</button>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="icons/analytics/up-arrow.svg" alt="">
+                                        <p>Bing</p>
+                                    </span>
+                                    <button type="button">471</button>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="icons/analytics/up-arrow.svg" alt="">
+                                        <p>Yahoo</p>
+                                    </span>
+                                    <button type="button">15</button>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="icons/analytics/up-arrow.svg" alt="">
+                                        <p>Linkedin</p>
+                                    </span>
+                                    <button type="button">114</button>
+                                </li>
+                                <li>
+                                    <span>
+                                        <img src="icons/analytics/up-arrow.svg" alt="">
+                                        <p>Direct</p>
+                                    </span>
+                                    <button type="button">54</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- TRAFFIC TRACKER -->
+                <div class="traffic-tracker traffic">
+                    <!-- TITLE BAR -->
+                    <div class="traffic-bar">
+                        <h3>Traffic Tracker</h3>
+                        <span><img src="icons/analytics/download.svg" alt=""></span>
+                    </div>
+                    <!-- DATA PRESENTATION -->
+                    <div class="traffic-tracker-data">
+
+                        <div class="vertical-tabs-container">
+                            <div class="tabs">
+                                <div class="tab">Overview</div>
+                                <div class="tab">Devices</div>
+                                <div class="tab">Browsers</div>
+                                <div class="tab">
+                                    <img src="icons/analytics/lock.svg" alt="">
+                                    <p>IP Addresses</p>
+                                </div>
+                            </div>
+                            <div class="contents">
+                                <!-- OVERVIEW -->
+                                <div class="content traffic-tracker-overview">
+                                    <!-- COLUMN 1 -->
+                                    <div class="col-1">
+                                        <div class="row-1">
+                                            <span class="tooltip-Right">
+                                                <img src="icons/analytics/desktop.svg" alt="">
+                                                <p>Desktop</p>
+                                                <p id="traffic-tracker-desktop">20%</p>
+                                                <span class="tooltiptext">Tooltip text</span>
+                                            </span>
+                                            <span>
+                                                <img src="icons/analytics/android.svg" alt="">
+                                                <p>Android</p>
+                                                <p id="traffic-tracker-android">20%</p>
+                                            </span>
+                                            <span>
+                                                <img src="icons/analytics/iPhone.svg" alt="">
+                                                <p>iPhone</p>
+                                                <p id="traffic-tracker-iPhone">20%</p>
+                                            </span>
+                                        </div>
+                                        <div class="row-2">
+                                            <img src="icons/analytics/browser-icon.svg" alt="">
+                                            <p>Top Browsers</p>
+                                        </div>
+                                        <div class="row-3">
+                                            <span>
+                                                <img src="icons/analytics/chrome.svg" alt="">
+                                                <p>Google Chrome</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- COLUMN 2 -->
+                                    <div class="col-2">
+                                        <canvas id="traffic-tracker-PieChart"></canvas>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- DEVICES -->
+                                <div class="content">
+
+                                    <div class="horizontal-tabs-container">
+                                        <div class="hr-tabs">
+                                            <div class="hr-tab">Graphical Analysis</div>
+                                            <div class="hr-tab">Statistic</div>
+                                        </div>
+                                        <div class="hr-contents">
+                                            <div class="hr-content content-design">
+                                                <!-- CONTENT 1 -->
+                                                <div class="traffic-linechart">
+                                                    <canvas id="traffic-tracker-device"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="hr-content content-design">
+                                                <!-- CONTENT 2 -->
+
+                                                <div class="traffic-devices-list">
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/desktop.svg" alt="">
+                                                        <p>Windows</p>
+                                                        <p id="traffic-tracker-desktop">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/android.svg" alt="">
+                                                        <p>Android</p>
+                                                        <p id="traffic-tracker-android">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/iPhone.svg" alt="">
+                                                        <p>iPhone</p>
+                                                        <p id="traffic-tracker-iPhone">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/mac.svg" alt="">
+                                                        <p>Mac</p>
+                                                        <p id="traffic-tracker-iPhone">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                    <span class="tooltip-Right">
+                                                        <img src="icons/analytics/others.svg" alt="">
+                                                        <p>Others</p>
+                                                        <p id="traffic-tracker-iPhone">20%</p>
+                                                        <span class="tooltiptext">Tooltip text</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- BROWSER -->
+                                <div class="content traffic-browser-all">
+                                    <div class="browser-col">
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/chrome.svg" alt="">
+                                            <p>Google Chrome</p>
+                                            <p id="traffic-browser-chrome">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/firefox.svg" alt="">
+                                            <p>Mozilla Firefox</p>
+                                            <p id="traffic-browser-firefox">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/edge.svg" alt="">
+                                            <p>Microsoft Edge</p>
+                                            <p id="traffic-browser-edge">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/opera.svg" alt="">
+                                            <p>Opera Browser</p>
+                                            <p id="traffic-browser-opera">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/uc-browser.svg" alt="">
+                                            <p>UC Browser</p>
+                                            <p id="traffic-browser-uc">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/safari.svg" alt="">
+                                            <p>Apple Safari</p>
+                                            <p id="traffic-browser-safari">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                        <span class="traffice-browser tooltip-Right">
+                                            <img src="icons/analytics/other-browser.svg" alt="">
+                                            <p>Other Browser</p>
+                                            <p id="traffic-browser-other-browsers">20%</p>
+                                            <span class="tooltiptext">Tooltip text</span>
+                                        </span>
+                                    </div>
+                                    <div class="browser-col">
+                                        <span class="traffic-browser-chart">
+                                            <canvas id="traffic-browser-chart"></canvas>
+                                        </span>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="content ipaddress">
+                                    <img src="icons/analytics/lock.svg" alt="">
+                                    <h3>Upgrade to Professional to see IP details.</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <br>
+            <div class="traffic-loc-act">
+                <div class="location-top-bottom">
+                    <div class="social-title-bar">
+                        <h3>Traffic Location Tracker</h3>
+                        <span>
+                            <img src="icons/analytics/download.svg" alt="">
+                            <img src="icons/analytics/full-screen.svg" alt="">
+                        </span>
+                    </div>
+                    <section class="traffic-loc-tracker traffic-top">
+
+                        <div class="location-tab">
+                            <button class="tablinks">Today</button>
+                            <button class="tablinks">Week</button>
+                            <button class="tablinks">Month</button>
+                            <button class="tablinks">Year</button>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-today"></div>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-week"></div>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-month"></div>
+                        </div>
+                        <div class="location-tabcontent">
+                            <div id="map-year"></div>
+                        </div>
+
+                        <hr>
+                        <fieldset>
+                            <legend>Top Countries</legend>
+                            <div class="topCountry-whole-div">
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Bangladesh</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-1"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+
+                                            <p class="percentage-bar-11">60%</p>
+
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-2"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+
+                                            <p class="percentage-bar-12">60%</p>
+
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-3"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+                                            <p class="percentage-bar-13">60%</p>
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-4"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+                                            <p class="percentage-bar-14">60%</p>
+                                        </output>
+                                    </div>
+                                </span>
+                                <span class="topCountry-bar">
+                                    <div class="topCountry-bar-Country">Republic of Afganistan</div>
+                                    <div class="topCountry-bar-percentage">
+                                        <div id="percentage-bar-5"></div>
+                                        <output>
+                                            <p>Bangladesh</p>
+
+                                            <p class="percentage-bar-15">60%</p>
+
+                                        </output>
+                                    </div>
+                                </span>
+                            </div>
+
+                        </fieldset>
+
+                    </section>
+                    <section class="traffic-bottom">
+
+                    </section>
+                </div>
+                <div class="activities-top-bottom">
+                    <section class="map-activity">
+                        <!-- TITLE BAR -->
+                        <div class="social-title-bar">
+                            <h3>Activities</h3>
+                            <img src="icons/analytics/download.svg" alt="">
+                        </div>
+                        <div class="act-title">
+                            <p>Social Media Shares</p>
+                            <select name="" id="social-media-options">
+                                <option value="Today">Today</option>
+                                <option value="Week">Week</option>
+                                <option value="Month">Month</option>
+                                <option value="Year">Year</option>
+                            </select>
+                        </div>
+
+                        <section class="social-media-share-chart">
+                            <canvas id="social-share-chart"></canvas>
+                        </section>
+                    </section>
+                    <hr>
+                    <section class="map-activity">
+                        <!-- TITLE BAR -->
+                        <div class="social-title-bar">
+                            <h3>Comment Analysis</h3>
+                            <img src="icons/analytics/download.svg" alt="">
+                        </div>
+
+                        <section class="comment-analysis-chart">
+                            <canvas id="comment-analysis-chart"></canvas>
+                        </section>
+                    </section>
+                </div>
+            </div>
+
+            <div class="periodic-analysis">
+                <!-- TITLE -->
+                <div class="periodic-top-title">
+                    <p>PERIODIC ANALYSIS</p>
+                    <span>
+                        <img src="icons/analytics/download.svg" alt="">
+                        <img src="icons/analytics/full-screen.svg" alt="">
+                    </span>
+                </div>
+
+                <!-- PERIODIC TOP TABS -->
+                <section class="periodic-top-tabs">
+
+                    <div class="periodic-top-tab">
+                        <button class="tablinks">VISITORS</button>
+                        <button class="tablinks">VIEWS</button>
+                        <button class="tablinks">HIT POSTS</button>
+                        <button class="tablinks">ENGAGEMENTS</button>
+                    </div>
+                    <!-- 1ST TAB -->
+                    <div class="periodic-top-tabcontent">
+
+                        <!-- PERIODIC LAST TABS -->
+                        <section class="periodic-last-tabs">
+
+                            <div class="periodic-last-tab">
+                                <button class="tablinks">Last Day</button>
+                                <button class="tablinks">Week</button>
+                                <button class="tablinks">Month</button>
+                                <button class="tablinks">Year</button>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">PREVIOUS DAY</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-last-day-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">WEEK</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-week-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">Month</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-month-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="periodic-top-tabcontent">
+                        <!-- PERIODIC LAST TABS -->
+                        <section class="periodic-last-tabs">
+                            <div class="periodic-last-tab">
+                                <button class="tablinks">Last Day</button>
+                                <button class="tablinks">Week</button>
+                                <button class="tablinks">Month</button>
+                                <button class="tablinks">Year</button>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">PREVIOUS DAY</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-last-day-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">WEEK</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-week-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                                <p class="periodic-last-tab-naming">Month</p>
+                                <div class="periodic-last-tabcontent-data">
+                                    <canvas id="periodic-visitor-month-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="periodic-last-tabcontent">
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="periodic-top-tabcontent">
+                    </div>
+                    <div class="periodic-top-tabcontent">
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+
+        <!-- NOTE SAVER -->
+        <div class="inputNoteSaver">
+            <span>
+                <p>Keep Note</p>
+                <img id="inputNoteSaverToggle" src="icons/analytics/minimize-plus.svg" alt="">
+            </span>
+            <textarea id="noteInput" rows="10" placeholder="Type your note here..."></textarea>
+        </div>
+
+</body>
+<script src="dashboard-mastors.js"></script>
+<script src="dashboard-addNews.js"></script>
+<script src="navMenu.js"></script>
+<script src="draft.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="analytics.js"></script>
+
+</html>
