@@ -1,11 +1,9 @@
 print = console.log;
 window.onload = function () {
   popupForIcon();
-  navMenu();
   negPosRating();
   autoCounter();
   dotContext();
-  // chart();
   loadXMLDoc();
   screenshot();
 };
@@ -52,41 +50,6 @@ function popupForIcon() {
       });
     };
   }
-}
-
-// NAV MENU
-function navMenu() {
-  const navItemTexts = document.querySelectorAll(
-    ".dashboard-navItems .flexNav p"
-  );
-
-  const hamburger = document.querySelector(".hamburger");
-  const navbar = document.querySelector(".dashboard-body .dashboard-grid");
-  const iconicDeshboard = document.querySelector(".iconic-dashboard-grid");
-  const logoH1 = document.querySelector(".your-dashboard-logo h1");
-  const icons = document.querySelectorAll(".flexNav .setNavIcon");
-
-  hamburger.onclick = () => {
-    navItemTexts.forEach((p) => {
-      p.classList.contains("right-shift")
-        ? p.classList.remove("right-shift") &
-          p.classList.toggle("left-shift") &
-          navbar.classList.remove("dashboard-grid") &
-          navbar.classList.add("iconic-dashboard-grid") &
-          logoH1.classList.add("hide") &
-          icons.forEach((icon) => {
-            icon.style.transform = "scale(1.5)  translateX(80%)";
-          })
-        : p.classList.add("right-shift") &
-          p.classList.remove("left-shift") &
-          navbar.classList.add("dashboard-grid") &
-          navbar.classList.remove("iconic-dashboard-grid") &
-          logoH1.classList.remove("hide") &
-          icons.forEach((icon) => {
-            icon.style.transform = "scale(1)";
-          });
-    });
-  };
 }
 
 // OVERVIEW RATING COLOR ADDING

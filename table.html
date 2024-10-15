@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengali Table Sorting</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Table Sorting Example in Bengali</h2>
+
+<table id="myTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">নাম</th>
+            <th onclick="sortTable(1)">বয়স</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Anirban</td>
+            <td>২৫</td>
+        </tr>
+        <tr>
+            <td> zজেন স্মিথ</td>
+            <td>৩০</td>
+        </tr>
+        <tr>
+            <td>এমিলি জনসন</td>
+            <td>২২</td>
+        </tr>
+        <tr>
+            <td>মাইকেল ব্রাউন</td>
+            <td>২৯</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+function sortTable(n) {
+    const table = document.getElementById("myTable");
+    let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    switching = true;
+    dir = "asc"; // Set the sorting direction to ascending initially
+
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+
+            if (dir === "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir === "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+</script>
+
+</body>
+</html>

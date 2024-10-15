@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD DESIGN</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="addNews.css">
+    <link rel="stylesheet" href="dashboard-text-editor.css">
+    <link rel="stylesheet" href="live-post-editor.css">
+    <!-- k2d font -->
+    <link href='https://fonts.googleapis.com/css?family=K2D' rel='stylesheet'>
+    <script src="dashboard-mastors.js"></script>
+    <script src="dashboard-addNews.js"></script>
+    <script src="live-post-editor.js"></script>
+    <script src="navMenu.js"></script>
+</head>
+
+<body class="dashboard-body">
+
+
+    <div class="dashboard-sticky border-bottom">
+        <div class="inner-dashboard">
+            <!-- LEFT SIDE ICONS -->
+            <div class="deshboard-left-icons">
+                <!-- HAMBURGER -->
+                <div class="hamburger icon-size">
+                    <img src="icons/hamburger.svg" alt="">
+                </div>
+                <!-- LOGO -->
+                <a href="#" class="dashboard-logo">
+                    <img src="icons/deshboard-logo.svg" alt="">
+                </a>
+            </div>
+            <!-- SEARCH BAR -->
+            <div class="dashboard-search-bar K2D">
+                <input type="text" placeholder="@User | #Post | %Date | Text">
+                <input type="submit" value="Search">
+            </div>
+            <!-- RIGHT SIDE ICONS -->
+            <div class="deshboard-right-icons">
+                <!-- HELP ICON -->
+                <div id="help-icon" class="icon-size">
+                    <img src="icons/help-icon.svg" alt="">
+                </div>
+                <!-- PLUS ICON -->
+                <div id="plus-icon" class="icon-size">
+                    <img src="icons/plus-icon.svg" alt="">
+                </div>
+                <!-- USER ICON -->
+                <div id="user-icon" class="icon-size">
+                    <img src="icons/user-icon.svg" alt="">
+                </div>
+
+                <!-- HELP ICON POPUP -->
+                <section id="help-icon-popup" class="popupContext hide">
+                    <a href="#">HTML form can be greatly</a>
+                    <a href="#">Styling Input Fields</a>
+                    <a href="#">The example above applies</a>
+                </section>
+                <!-- PLUS ICON POPUP -->
+                <section id="plus-icon-popup" class="popupContext hide">
+                    <a href="#">Bordered Inputs</a>
+                    <a href="#">If you only want a bottom border</a>
+                    <a href="#">Colored Inputs</a>
+                </section>
+                <!-- USER ICON POPUP -->
+                <section id="user-icon-popup" class="popupContext hide">
+                    <a href="#">LEARN HOW TO POST</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <!----------------------------------
+            DASHBOARD LEFT NAVBAR START
+        ----------------------------------->
+        <div class="dashboard-sticky-navbar">
+            <nav class="main-navbar">
+
+                <!-- YOUR LOGO -->
+                <a href="#" class="your-dashboard-logo">
+                    <img src="https://kehem.com/static/kehem.webp" alt="">
+                    <h1>KEHEMIT</h1>
+                </a>
+                <span class="border-bottom"></span>
+
+                <!-- NAV ITEMS -->
+                <nav class="dashboard-navItems">
+                    <a class="flexNav flexNavHover flexNavZippedHover" href="#">
+                        <img class="setNavIcon" src="icons/posts.svg" alt="">
+                        <p class="right-shift">Posts</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/front-end-editior.svg" alt="">
+                        <p class="right-shift">Front-end</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/pages.svg" alt="">
+                        <p class="right-shift">Pages</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/users.svg" alt="">
+                        <p class="right-shift">Users</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/settings.svg" alt="">
+                        <p class="right-shift">Settings</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/plans.svg" alt="">
+                        <p class="right-shift">Plans</p>
+                    </a>
+                </nav>
+
+
+            </nav>
+            <!----------------------------------
+            DASHBOARD LEFT NAVBAR END
+        ----------------------------------->
+        </div>
+
+        <!----------------------------------
+                DASHBOARD MAIN START
+        ----------------------------------->
+        <!----------------------------------
+                        POST LEFT START
+                ----------------------------------->
+        <div class="res-col-2">
+            <!-- iframe or news library box  -->
+            <section class="res-col">
+                <!-- TOP BOTTOM SPACE COVER -->
+                <div class="adjust-space"></div>
+
+                <!-- WEBSITE TABS -->
+                <div class="live-post-tabs">
+                    <div class="tab-item active" data-tab="tab1">Bangladesh</div>
+                    <div class="tab-item" data-tab="tab2">International</div>
+                    <div class="tab-item" data-tab="tab3">Science</div>
+                    <div class="tab-item" data-tab="tab4">IT</div>
+                    <div class="tab-item" data-tab="tab5">Sports</div>
+                </div>
+
+                <!-- tab-1 -->
+                <div id="tab1" class="tab-content active live-post-tab-content">
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>National</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex semi-small-font">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Dhaka</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Chattagram</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Rajshahi</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Rangpur</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Barishal</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Sylhet</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- DROP DOWN LIST -->
+                    <div class="select-category">
+                        <div class="dash-flex">
+                            <span class="single-item">
+                                <img src="icons/live-post/link-icon.svg" alt="">
+                            </span>
+                            <p>Maymansingh</p>
+                        </div>
+                        <div class="add-post-select-container">
+                            <select id="add-post-category">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="https://www.prothomalo.com/">Prothom Alo</option>
+                                <option value="https://www.thedailystar.net/">The Daily Star</option>
+                                <option value="https://www.bdnews24.com/">BDnews24</option>
+                                <option value="https://www.dailysun.com/">Daily Sun</option>
+                                <option value="https://www.newagebd.net/">New Age</option>
+                                <option value="https://www.observerbd.com/">The Daily Observer</option>
+                                <option value="https://www.jugantor.com/">Jugantor</option>
+                                <option value="https://www.kalerkantho.com/">Kaler Kantho</option>
+                                <option value="https://www.ittefaq.com.bd/">Daily Ittefaq</option>
+                                <option value="https://www.manabzamin.com/">Manab Zamin</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- tab-2 -->
+                <div id="tab2" class="tab-content">
+                    <h2>Content for Tab 2</h2>
+                    <p>This is the content for Tab 2.</p>
+                </div>
+                <div id="tab3" class="tab-content">
+                    <h2>Content for Tab 3</h2>
+                    <p>This is the content for Tab 3.</p>
+                </div>
+                <div id="tab4" class="tab-content">
+                    <h2>Content for Tab 4</h2>
+                    <p>This is the content for Tab 4.</p>
+                </div>
+                <div id="tab5" class="tab-content">
+                    <h2>Content for Tab 5</h2>
+                    <p>This is the content for Tab 5.</p>
+                </div>
+
+
+                <!-- LIVE PREVIEW -->
+                <div class="iframe-container">
+                    <h4 id="website-name">Prothom-alo</h4>
+                    <iframe id="website-iframe" src="https://www.prothomalo.com/collection/latest"
+                        frameborder="0"></iframe>
+                </div>
+            </section>
+            <!-- add post box  -->
+            <section class="res-col">
+                <!-- TOP BOTTOM SPACE COVER -->
+                <div class="adjust-space"></div>
+                <form action="#" method="post" class="">
+                    <!-- FOR BACK-END -->
+                    <input type="text" name="csrftoken" id="csrftoken" hidden>
+
+                    <div class="add-post-2-col">
+                        <!----------------------------------
+                                POST LEFT START
+                        ----------------------------------->
+                        <!-- 2 box 1st box start  -->
+                        <div class="add-post-col-1">
+                            <div class="dashboard-col">
+                                <div class="overview-naming">
+                                    <span><img class="imgSetHeightAuto" src="icons/overview.svg" alt=""></span>
+                                    <h3>Add Post</h3>
+                                </div>
+                            </div>
+                            <!-- TOP BOTTOM SPACE COVER -->
+                            <div class="adjust-space"></div>
+
+                            <!-- TITLE -->
+                            <div class="flex-col add-post-title add-post-input-style semi-small-font">
+                                <p>Post Title</p>
+                                <input type="text" placeholder="Type the title of the post">
+                            </div>
+
+                            <!-- TOP BOTTOM SPACE COVER -->
+                            <div class="adjust-space"></div>
+                            <div class="flex-3col">
+                                <!-- COLUMN 1 -->
+                                <div class="add-post-input-style add-post-caption semi-small-font">
+                                    <p>Caption</p>
+                                    <div class="add-post-caption-counter">
+                                        <input type="text" placeholder="Type the title of the post" maxlength="15">
+                                        <span class="input-counter">15</span>
+                                    </div>
+                                </div>
+                                <!-- COLUMN 2 -->
+                                <div class="select-category">
+                                    <div class="dash-flex semi-small-font">
+                                        <p>Category</p>
+                                    </div>
+                                    <div class="add-post-select-container">
+                                        <select id="add-post-category">
+                                            <option value="" disabled selected>-- Select --</option>
+                                            <option value="Sylhet">Sylhet</option>
+                                            <option value="Dhaka">Dhaka</option>
+                                            <option value="International">International</option>
+                                            <option value="National">National</option>
+                                            <option value="Religion">Religion</option>
+                                            <option value="Special">Special</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="Portfolio">Portfolio</option>
+                                            <option value="Quote">Quote</option>
+                                            <option value="Sylhet">Sylhet</option>
+                                            <option value="Dhaka">Dhaka</option>
+                                            <option value="International">International</option>
+                                            <option value="National">National</option>
+                                            <option value="Religion">Religion</option>
+                                            <option value="Special">Special</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="Portfolio">Portfolio</option>
+                                            <option value="Quote">Quote</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <!-- COLUMN 3 -->
+                                <div class="select-sub-category">
+                                    <div class="dash-flex  semi-small-font">
+                                        <p>Sub Category</p>
+                                    </div>
+                                    <select name="add-post-category" id="add-post-category">
+                                        <option value="" disabled selected>-- Select --</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="International">International</option>
+                                        <option value="National">National</option>
+                                        <option value="Religion">Religion</option>
+                                        <option value="Special">Special</option>
+                                        <option value="Sports">Sports</option>
+                                        <option value="Portfolio">Portfolio</option>
+                                        <option value="Quote">Quote</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- TOP BOTTOM SPACE COVER -->
+                            <div class="adjust-space"></div>
+
+
+                            <!-- DASHBOARD TEXT EDITOR START -->
+                            <div class="dashboard-text-editor">
+                                <input type="text" name="" id="">
+                            </div>
+
+
+
+
+                            <!-- DASHBOARD TEXT EDITOR END -->
+
+                            <!-- TOP BOTTOM SPACE COVER -->
+                            <div class="adjust-space"></div>
+                            <!-- TAGS -->
+                            <div class="outer-tags semi-small-font">
+                                <p>Tags</p>
+                                <div class="tags">
+                                    <div class="added-tag">
+                                    </div>
+                                    <div class="input-tag">
+                                        <input type="text" name="input-tag" id="input-tag" placeholder="Type post Tag">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- LATEST TAG -->
+                            <div class="latest-tag-list semi-small-font">
+                                <p>Latest Tag List</p>
+                                <div class="latest-tags">
+                                    <section>Abroad</section>
+                                    <section>Popular</section>
+                                    <section>Social</section>
+                                    <section>National</section>
+                                    <section>Prime Minister</section>
+                                    <section>Nevi</section>
+                                    <section>Economia</section>
+                                </div>
+                            </div>
+
+
+
+                            <!-- TOP BOTTOM SPACE COVER -->
+                            <div class="adjust-space"></div>
+                            <!-- VIDEO POST -->
+                            <fieldset class="add-post-input-style add-post-caption add-videos" id="showOnVideoClick">
+                                <legend>Video Link</legend>
+                                <div class="add-video">
+                                    <input type="text" id="videoLinkInput" placeholder="Paste your video link"
+                                        maxlength="300">
+                                </div>
+
+                                <!-- Preview -->
+                                <div class="preview-video">
+                                    <iframe id="videoPreview" src="" max-width="340" height="auto" allow="autoplay"
+                                        allowfullscreen="true"></iframe>
+                                </div>
+
+                            </fieldset>
+
+                            <!-- TOP BOTTOM SPACE COVER -->
+                            <div class="adjust-space"></div>
+                            <!-- REPORTER POST -->
+                            <fieldset class="add-post-input-style set-border-color" id="showOnVideoClick">
+                                <legend>Reporter</legend>
+                                <div class="reporterSection">
+                                    <div class="add-post-select-container">
+                                        <select id="add-post-category">
+                                            <option value="" disabled selected>-- Select --</option>
+                                            <option value="Sylhet">Sylhet</option>
+                                            <option value="Dhaka">Dhaka</option>
+                                            <option value="International">International</option>
+                                            <option value="National">National</option>
+                                            <option value="Religion">Religion</option>
+                                            <option value="Special">Special</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="Portfolio">Portfolio</option>
+                                            <option value="Quote">Quote</option>
+                                            <option value="Sylhet">Sylhet</option>
+                                            <option value="Dhaka">Dhaka</option>
+                                            <option value="International">International</option>
+                                            <option value="National">National</option>
+                                            <option value="Religion">Religion</option>
+                                            <option value="Special">Special</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="Portfolio">Portfolio</option>
+                                            <option value="Quote">Quote</option>
+                                        </select>
+
+                                    </div>
+                                    <input type="text" id="videoLinkInput" placeholder="Paste your video link"
+                                        maxlength="300">
+                                </div>
+                            </fieldset>
+
+                            <!-- POST SOURCE -->
+                            <fieldset class="add-post-input-style set-border-color" id="showOnVideoClick">
+                                <legend>Source</legend>
+                                <div class="reporterSection">
+                                    <input type="text" placeholder="Post Source" maxlength="300">
+                                    <input type="text" placeholder="Post Source URL" maxlength="300">
+                                </div>
+                            </fieldset>
+
+                            <!-- SCHEDULE POST -->
+                            <fieldset class="add-post-input-style set-border-color" id="showOnVideoClick">
+                                <legend>Scheduler</legend>
+                                <div class="reporterSection">
+                                    <div class="custom-date-input">
+                                        <input type="date" title="Input the Schedule Date">
+                                    </div>
+
+                                    <div class="custom-date-input">
+                                        <input type="time" title="Input the Schedule Time">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+
+
+
+
+                        </div>
+                        <!----------------------------------
+                                    POST LEFT END
+                        ----------------------------------->
+                        <!-- 2 box 2nd box start  -->
+                        <!----------------------------------
+                                    2nd Column START
+                        ----------------------------------->
+                        <div class="add-post-col-2">
+                            <!-- POSITION -->
+                            <div class="option-bar-col-2">
+                                <div class="add-post-name-container toggleButton">
+                                    <input type="button" value="POSITION">
+                                    <span class="single-item">
+                                        <img src="icons/addPost/chevron-down.svg" alt="" class="arrowStable">
+                                    </span>
+                                </div>
+                                <div class="option-list animate-y-axis" title="POSITION">
+                                    <label for="option1" class="option">
+                                        <input type="radio" name="option1" id="option1" value="Regular" checked> Regular
+                                    </label>
+                                    <label for="option2" class="option">
+                                        <input type="radio" name="option1" id="option2" value="Lead"> Lead
+                                    </label>
+                                    <label for="option3" class="option">
+                                        <input type="radio" name="option1" id="option3" value="Top"> Top
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- FORMAT -->
+                            <div class="option-bar-col2">
+                                <div class="add-post-name-container toggleButton">
+                                    <input type="button" value="FORMAT">
+                                    <span class="single-item">
+                                        <img src="icons/addPost/chevron-down.svg" alt="" class="arrowStable">
+                                    </span>
+                                </div>
+                                <div class="option-list animate-y-axis" title="POSITION">
+                                    <label for="op-1" class="option">
+                                        <input type="radio" name="op" id="op-1" value="Standard" checked> Standard
+                                    </label>
+                                    <label for="op-2" class="option">
+                                        <input type="radio" name="op" id="op-2" value="Gallery"> Gallery
+                                    </label>
+                                    <label for="op-3" class="option" id="showOnVideo">
+                                        <input type="radio" name="op" id="op-3" value="Video"> Video
+                                    </label>
+                                    <label for="op-4" class="option">
+                                        <input type="radio" name="op" id="op-4" value="Audio"> Audio
+                                    </label>
+                                    <label for="op-5" class="option">
+                                        <input type="radio" name="op" id="op-5" value="Quote"> Quote
+                                    </label>
+                                    <label for="op-6" class="option">
+                                        <input type="radio" name="op" id="op-6" value="Link"> Link
+                                    </label>
+                                    <label for="op-7" class="option">
+                                        <input type="radio" name="op" id="op-7" value="Short Story"> Short Story
+                                    </label>
+
+                                </div>
+                            </div>
+                            <!-- THUMBNAIL -->
+                            <div class="option-bar-col-2">
+                                <div class="add-post-name-container">
+                                    <input type="button" value="THUMBNAIL">
+                                </div>
+
+                                <div class="upload-file-container">
+                                    <div id="drop-zone" class="drag-and-drop">
+                                        Drag & Drop Files Here
+                                    </div>
+                                    <input type="file" id="file-input" accept="image/*" style="display: none;"
+                                    onchange="previewThumb(event)">
+                                    <div class="thumb-caption">
+                                        <div class="flex-col add-post-title add-post-input-style">
+                                            <p style="font-size: medium; margin-top: 1rem;">Caption</p>
+                                            <input type="text" placeholder="Type the title of the post">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- TOP BOTTOM SPACE COVER -->
+                                <div class="adjust-space"></div>
+                                <div class="thumb-preview semi-small-font">
+                                    <p>Preview</p>
+                                    <!-- TOP BOTTOM SPACE COVER -->
+                                    <div class="adjust-space border-bottom"></div>
+
+                                    <div class="preview-img">
+                                        <img src="https://dummyimage.com/600x400" alt="">
+                                    </div>
+
+                                    <div class="thumb-details">
+                                        <div>
+                                            <span>Image Size</span>
+                                            <span>Ratio</span>
+                                        </div>
+                                        <div>
+                                            <span id="image-size">1920px x 1080px</span>
+                                            <span id="image-ratio">16:9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!----------------------------------
+                                    2nd Column END
+                        ----------------------------------->
+                    </div>
+                    <!----------------------------------
+                            DASHBOARD MAIN END
+                    ----------------------------------->
+                    <!-- Toggle Button -->
+                    <label class="toggle-submit-container">
+                        <input type="checkbox" class="toggle-checkbox" id="toggleButton">
+                        <span class="toggle-switch"></span>
+                        <input type="submit" name="submit" id="submit-add-post-form">
+                    </label>
+                </form>
+            </section>
+        </div>
+
+        <!----------------------------------
+                    DASHBOARD MAIN END
+            ----------------------------------->
+        </form>
+    </div>
+</body>
+<script src="dashboard-mastors.js"></script>
+<script src="dashboard-addNews.js"></script>
+<script src="live-post-editor.js"></script>
+<script src="navMenu.js"></script>
+
+</html>

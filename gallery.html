@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD DESIGN</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- k2d font -->
+    <link href='https://fonts.googleapis.com/css?family=K2D' rel='stylesheet'>
+    <script src="dashboard-mastors.js"></script>
+    <script src="navMenu.js"></script>
+    <!-- Include CountUp.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body class="dashboard-body">
+
+    <div id="dom-content-loader">
+        <img src="icons/loading.gif" alt="">
+    </div>
+    <div class="dashboard-sticky border-bottom">
+        <div class="inner-dashboard">
+            <!-- LEFT SIDE ICONS -->
+            <div class="deshboard-left-icons">
+                <!-- LOGO -->
+                <a href="#" class="dashboard-logo">
+                    <img src="icons/deshboard-logo.svg" alt="">
+                </a>
+            </div>
+            <!-- SEARCH BAR -->
+            <div class="dashboard-search-bar K2D">
+                <input type="text" placeholder="@User | #Post | %Date | Text">
+                <input type="submit" value="Search">
+            </div>
+            <!-- RIGHT SIDE ICONS -->
+            <div class="deshboard-right-icons">
+                <!-- HELP ICON -->
+                <div id="help-icon" class="icon-size">
+                    <img src="icons/help-icon.svg" alt="">
+                </div>
+                <!-- PLUS ICON -->
+                <div id="plus-icon" class="icon-size">
+                    <img src="icons/plus-icon.svg" alt="">
+                </div>
+                <!-- USER ICON -->
+                <div id="user-icon" class="icon-size">
+                    <img src="icons/user-icon.svg" alt="">
+                </div>
+
+                <!-- HELP ICON POPUP -->
+                <section id="help-icon-popup" class="popupContext hide">
+                    <a href="#">HTML form can be greatly</a>
+                    <a href="#">Styling Input Fields</a>
+                    <a href="#">The example above applies</a>
+                </section>
+                <!-- PLUS ICON POPUP -->
+                <section id="plus-icon-popup" class="popupContext hide">
+                    <a href="#">Bordered Inputs</a>
+                    <a href="#">If you only want a bottom border</a>
+                    <a href="#">Colored Inputs</a>
+                </section>
+                <!-- USER ICON POPUP -->
+                <section id="user-icon-popup" class="popupContext hide">
+                    <a href="#">LEARN HOW TO POST</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                    <a href="#">LEARN HOW TO ADD IMAGE</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <!----------------------------------
+            DASHBOARD LEFT NAVBAR START
+        ----------------------------------->
+        <div class="dashboard-sticky-navbar">
+            <nav class="main-navbar">
+
+                <!-- YOUR LOGO -->
+                <a href="#" class="your-dashboard-logo">
+                    <img src="https://kehem.com/static/kehem.webp" alt="">
+                    <h1>KEHEMIT</h1>
+                </a>
+                <span class="border-bottom"></span>
+
+                <!-- NAV ITEMS -->
+                <nav class="dashboard-navItems">
+                    <a class="flexNav flexNavHover flexNavZippedHover" href="#">
+                        <img class="setNavIcon" src="icons/posts.svg" alt="">
+                        <p class="right-shift">Posts</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/front-end-editior.svg" alt="">
+                        <p class="right-shift">Front-end</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/categories.svg" alt="">
+                        <p class="right-shift">Category</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/pages.svg" alt="">
+                        <p class="right-shift">Pages</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/users.svg" alt="">
+                        <p class="right-shift">Users</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/settings.svg" alt="">
+                        <p class="right-shift">Settings</p>
+                    </a>
+                    <a class="flexNav flexNavHover" href="#">
+                        <img class="setNavIcon" src="icons/plans.svg" alt="">
+                        <p class="right-shift">Plans</p>
+                    </a>
+                </nav>
+
+
+            </nav>
+            <!----------------------------------
+            DASHBOARD LEFT NAVBAR END
+        ----------------------------------->
+        </div>
+
+        <!----------------------------------
+                DASHBOARD MAIN START
+        ----------------------------------->
+        <section class="dashboard-main">
+
+            <style>
+                .total-ads {
+                    padding-top: 1rem;
+                }
+
+                .ad-3-col {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 1rem;
+                }
+
+                .ad-3-col .span-2 {
+                    grid-column: span 2;
+                }
+
+                .ad-3-col .span-3 {
+                    grid-column: span 3;
+                }
+
+                @media (max-width: 720px) {
+                    .ad-3-col {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
+
+                    .ad-3-col .span-2 {
+                        grid-column: 1;
+                    }
+
+                    .ad-3-col .span-3 {
+                        grid-column: 1;
+                    }
+                }
+
+                .ms-ads-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                .ads-div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    justify-content: flex-start;
+                    width: 100%;
+                }
+
+                .ads-div input[type='file'] {
+                    opacity: 0;
+                    padding: 2rem;
+                    cursor: pointer;
+                    width: inherit;
+                }
+
+                .ads-div:hover {
+                    border-color: #d18f39 !important;
+                }
+
+                .ads-div {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    background-color: var(--div-color);
+                    border: 1px dashed green;
+                }
+
+                .ads-div label {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                form .ms-ads-preview {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                form #ads-preview-img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .ads-text-input-div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                .ads-text-input-div label {
+                    font-size: 1.2rem;
+                }
+
+                .ads-text-input-div input {
+                    font-size: 0.9rem;
+                    padding: 0.5rem;
+                    background-color: var(--div-color);
+                    border: 1px solid var(--border-color);
+                }
+
+                .ads-sponsor-data {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    padding: 1rem;
+                    border: 1px solid var(--border-color);
+                }
+
+
+
+                /* TOGGLE */
+                .toggle-wrapper {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                    gap: 1rem;
+                    position: relative;
+                }
+
+                .toggle-input {
+                    display: none;
+                }
+
+                .toggle-label {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 2px;
+                    width: 3rem;
+                    background-color: #db2626;
+                    border-radius: 25px;
+                    transition: background-color 0.3s ease;
+                }
+
+                .toggle-slider {
+                    width: 25px;
+                    height: 20px;
+                    background-color: #fbf1ff;
+                    border-radius: 50px;
+                    margin-right: 10px;
+                    position: relative;
+                    transition: transform 0.3s ease;
+                }
+
+                .toggle-input:checked+.toggle-label .toggle-slider {
+                    transform: translateX(19px);
+                    background-color: #ffffff;
+                }
+
+                .toggle-text {
+                    font-size: 14px;
+                    transition: color 0.3s ease;
+                }
+
+                .toggle-input:checked+.toggle-label {
+                    background-color: #21b125;
+                }
+
+                .toggle-input:checked+.toggle-label .toggle-text {
+                    color: #fff;
+                }
+
+                /* SUBMIT */
+                #new-ads-submit {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    font-size: 1.2rem;
+                    padding: 1rem 2rem;
+                    background-color: #cc4141;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin-bottom: 2rem;
+                }
+
+                #new-ads-submit:hover {
+                    background-color: #b63232;
+                }
+
+                .ads-star {
+                    position: relative;
+                }
+
+                .ads-star::after {
+                    content: '*';
+                    font-size: 1.3rem;
+                    position: absolute;
+                    color: #ff2c2c;
+                    right: 0;
+                    top: 0.1rem;
+                }
+
+                /* TABLE */
+                .ads-saved-table {
+                    padding: 1rem;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                .ads-saved-table th,
+                .ads-saved-table td {
+                    text-align: center;
+                    padding: 0.5rem 1rem;
+                    border: 1px solid var(--border-color);
+                }
+                .edit-ads-btn {
+                    padding: 0.5rem;
+                    border-radius: 0.2rem;
+                    border: 1px solid var(--border-color);
+                    background-color: #cc4141;
+                }
+            </style>
+
+            <!----------------------------------
+                    ANALYSIS START
+            ----------------------------------->
+            <div class="total-ads">
+                <div class="overview-naming">
+                    <span><img class="imgSetHeightAuto" src="icons/overview.svg" alt=""></span>
+                    <h3>ADS</h3>
+                </div>
+            </div>
+            <section class="ad-3-col">
+                <div class="">
+                    <form action="#" method="post" id="ms-ads-form" class="ms-ads-form">
+
+                        <div class="ads-div">
+                            <label for="upload-ads-file">Click To Upload</label>
+                            <input id="ads-file-inp" title="Upload File" type="file" name="Ads_Image" required>
+                        </div>
+
+                        <div class="ms-ads-preview">
+                            <h3>Preview</h3>
+                            <img id="ads-preview-img" alt="" src="https://dummyimage.com/400x300">
+                        </div>
+                        <!-- TITLE -->
+                        <div class="ads-text-input-div ads-star">
+                            <label for="ads-title">Title</label>
+                            <input type="text" maxlength="200" name="Title" placeholder="Type Your Ads Title" required>
+                        </div>
+
+                        <!-- LINK -->
+                        <div class="ads-text-input-div">
+                            <label for="ads-link">Ad Link</label>
+                            <input type="text" name="Ads_Link" maxlength="100" placeholder="Type Your Ads Link">
+                        </div>
+
+                        <!-- START DATE -->
+                        <div class="ads-text-input-div ads-star">
+                            <label for="ads-link">Start Date</label>
+                            <input type="date" name="Ads_SD" maxlength="100" required>
+                        </div>
+
+                        <!-- END DATE -->
+                        <div class="ads-text-input-div ads-star">
+                            <label for="ads-link">Start Date</label>
+                            <input type="date" name="Ads_ED" maxlength="100" required>
+                        </div>
+                        <!-- ADS COST -->
+                        <div class="ads-text-input-div ads-star">
+                            <label for="ads-link">Total Cost</label>
+                            <input type="number" name="Ads_Cost" maxlength="10" placeholder="Ex: 10000" required>
+                        </div>
+
+                        <aside class="ads-sponsor-data">
+                            <!-- SPONSOR -->
+                            <div class="ads-text-input-div ads-star">
+                                <label for="ads-link">Sponsored Name</label>
+                                <input type="text" name="Ads_People" placeholder="Ex: Kehem IT" maxlength="200"
+                                    required>
+                            </div>
+                            <!-- SPONSOR EMAIL -->
+                            <div class="ads-text-input-div ads-star">
+                                <label for="ads-link">Sponsored Email</label>
+                                <input type="email" name="Ads_Email" placeholder="Ex: support@kehem.com" maxlength="100"
+                                    required>
+                            </div>
+                            <!-- SPONSOR PHONE -->
+                            <div class="ads-text-input-div ads-star">
+                                <label for="ads-link">Sponsored Phone</label>
+                                <input type="number" name="Ads_Phone" placeholder="Ex: 01307711384" maxlength="100"
+                                    required>
+                            </div>
+                        </aside>
+
+
+                        <!-- STATUS -->
+                        <div class="toggle-wrapper">
+                            <span class="toggle-text">Deactivate</span>
+                            <input type="checkbox" id="toggle-ads" class="toggle-input">
+                            <label for="toggle-ads" class="toggle-label">
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                        </div>
+                        <input type="submit" name="Submit" placeholder="Submit" id="new-ads-submit">
+                    </form>
+                </div>
+
+                <div class="span-2">
+                    <table class="ads-saved-table">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Ads size</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><img class="imgSetHeightAuto" src="https://dummyimage.com/800x100" alt="Ads Image"></td>
+                                <td>Sample Ads</td>
+                                <td>800x100</td>
+                                <td>12/01/2024</td>
+                                <td>12/02/2024</td>
+                                <td>
+                                    <a href="#" class="edit-ads-btn">Edit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+
+            <!----------------------------------
+                DASHBOARD MAIN END
+        ----------------------------------->
+    </div>
+
+    <script>
+        print = console.log;
+        function formF() {
+            const form = document.getElementById('ms-ads-form');
+            const fileInput = document.getElementById('ads-file-inp');
+            const previewImg = document.getElementById('ads-preview-img');
+            const previewDiv = document.querySelector('.ms-ads-preview');
+
+            fileInput.addEventListener('change', () => {
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', () => {
+                        previewImg.src = reader.result;
+                        previewDiv.classList.remove('hide');
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+
+
+            document.getElementById("toggle-ads").addEventListener("change", function () {
+                const toggleText = document.querySelector(".toggle-text");
+                if (this.checked) {
+                    toggleText.textContent = "Activate";
+                } else {
+                    toggleText.textContent = "Deactivate";
+                }
+            });
+        }
+
+        formF();
+
+    </script>
+</body>
+<script src="dashboard-mastors.js"></script>
+<script src="navMenu.js"></script>
+
+
+</html>
